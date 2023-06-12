@@ -8,6 +8,6 @@ test.describe('API test with new user',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
 
-        await api.loginPage.login(`https://streamsqa.com:3000/login`)
+        await api.loginPage.login(`${apiUrl.qaEnvUrl}/login`)
     })
 })
