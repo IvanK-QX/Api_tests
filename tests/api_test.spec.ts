@@ -8,6 +8,6 @@ test.describe('API test with new user',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
 
-        await api.loginPage.login(`https://siq.azure-api.net/test/documents/api/upload/v2`)
+        await api.loginPage.login(`https://streamsqa.com:3000/login`)
     })
 })
