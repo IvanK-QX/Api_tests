@@ -11,16 +11,41 @@ export class ApiLoginPage {
 
     async login(url: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const query = {authProvider: "ownDeviceId",
-        deviceId: `${faker.string.uuid()}`,
-        language: "uk"}
+        const query = {
+            authProvider: "ownDeviceId",
+            deviceId: `${faker.string.uuid()}`,
+            language: "uk"
+        }
         const data = {
             query: query
         }
         const apiRequest = await apiContext.post(url, {data, headers: {
-            packagename: 'com.plamfy',
-            contentType: 'application/json'
+            'packagename': 'com.plamfy',
+            'content-type': 'application/json',
+            'appversion': '1',
+            'os': 'browser'
+
         }})
+        const response = await apiRequest.json()
+        expect(apiRequest.ok()).toBeTruthy()
+        console.log(response)
+    }
+
+    async loginUgly(url: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiRequest = await apiContext.post(url, {
+            data: {
+                authProvider: "ownDeviceId",
+                deviceId: `${faker.string.uuid()}`,
+                language: "uk"
+            },
+            headers: {
+                'packagename': 'com.plamfy',
+                'content-type': 'application/json',
+                'appversion': '1',
+                'os': 'browser'
+            }
+          })
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         console.log(response)
