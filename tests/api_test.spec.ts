@@ -25,7 +25,7 @@ test.describe('API test with new user',async () => {
         await api.profilePage.getProfile(`${apiUrl.qaEnvUrl}/profile`, user.userToken, user.email)
     })
 
-    test.only('Show Week Leaders',async () => {
+    test('Show Week Leaders',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.leadersPage.getLeders(`${apiUrl.qaEnvUrl}/streams/leaderboard`, user.userToken, 'week')
