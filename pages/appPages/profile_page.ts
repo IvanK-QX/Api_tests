@@ -23,7 +23,6 @@ export class ApiProfilePage {
         }
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.json()
-        console.log(response)
         expect(apiRequest.ok()).toBeTruthy()
         const userName = response.name
         const userAbout = response.about
