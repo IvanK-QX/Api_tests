@@ -29,5 +29,4 @@ export class ApiLeadersPage {
         console.log(`Leaders for period: ${period} is dispalyed`)
     }
 
-
 }
