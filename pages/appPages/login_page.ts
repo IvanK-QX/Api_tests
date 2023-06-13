@@ -28,7 +28,9 @@ export class ApiLoginPage {
         const token = response.token
         const id = response.profile._id
         expect(response.profile.status).toEqual('Active')
+        console.log(`Guest with userID: ${id} logged into the app`)
         return { token, id } 
+
     }
 
     async addEmail(url: string, token: string, deviceId: string) {
@@ -55,6 +57,7 @@ export class ApiLoginPage {
         const userToken = response.token
         const id = response.profile._id
         expect(response.profile.status).toEqual('Active')
+        console.log(`User email: ${email} has been added`)
         return { userToken, email}
     }
 }
