@@ -7,3 +7,4 @@ make test
 ## Open Reports
 npm run allure:generate-open
 ## or with make 
+make report
