@@ -9,3 +9,6 @@ make test
 npm run allure:generate-open
 ## or with make 
 make report
+
+## Run specific tests file 
+npx plawright test /FilePath
