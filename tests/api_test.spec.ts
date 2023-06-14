@@ -12,6 +12,12 @@ test.describe('API test with new user',async () => {
         user = await api.loginPage.addEmail(`${apiUrl.qaEnvUrl}/login`, login.token, apiDataSet.deviceUUID)
     })
 
+    test.afterEach(async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.deleteAccountPage.deleteAccount(`${apiUrl.qaEnvUrl}/delete`, user.userToken)
+    })
+
     test('Edit Profile',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
