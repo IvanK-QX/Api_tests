@@ -39,7 +39,7 @@ export class ApiLoginPage {
             authProvider:"ownEmail",
             email: `api+${Math.floor(Math.random() * (999999-100000) + 100000)}@unitedtech.ai`,
             password: "123456",
-            deviceId: `${faker.string.uuid()}`,
+            deviceId: `${deviceId}`,
             language: "uk",
             pushToken: "string",
             guestUserToken: `${token}`
@@ -56,8 +56,15 @@ export class ApiLoginPage {
         const email = response.profile.email
         const userToken = response.token
         const id = response.profile._id
+        const createdUser = response.profile.createdUser
+        const name = response.profile.name
+        const createdGuest = response.profile.createdGuest
+        const humanReadableId = response.profile.humanReadableId
+        const country = response.profile.lastGeo.country
+        const referalLink = response.profile.referalLink
+        const abTests = response.profile.abTests
         expect(response.profile.status).toEqual('Active')
         console.log(`User email: ${email} has been added`)
-        return { userToken, email}
+        return { userToken, email, id, createdUser, name, createdGuest, humanReadableId, country, referalLink, abTests}
     }
 }
