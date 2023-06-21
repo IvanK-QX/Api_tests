@@ -1,8 +1,8 @@
 import { APIRequestContext } from "@playwright/test"
-import { ApiLoginPage } from "./appPages/login_page"
-import { ApiProfilePage } from "./appPages/profile_page"
-import { ApiLeadersPage } from "./appPages/leader_page"
-import { ApiDeleteAccountPage } from "./appPages/deleteAccount_page"
+import { ApiLoginPage } from "./apiPages/login_page"
+import { ApiProfilePage } from "./apiPages/profile_page"
+import { ApiLeadersPage } from "./apiPages/leader_page"
+import { ApiDeleteAccountPage } from "./apiPages/deleteAccount_page"
 
 export class Api {
     apiContext: any
