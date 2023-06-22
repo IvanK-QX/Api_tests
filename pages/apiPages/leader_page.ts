@@ -1,6 +1,4 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
-import { faker } from '@faker-js/faker';
-import { apiUrl } from "../../utils/apiUrl";
 
 export class ApiLeadersPage {
     apiContext: any

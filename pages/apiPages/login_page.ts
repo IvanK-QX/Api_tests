@@ -1,6 +1,5 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { faker } from '@faker-js/faker';
-import { apiUrl } from "../../utils/apiUrl";
 import { apiDataSet } from "../../utils/dataSet";
 
 export class ApiLoginPage {
