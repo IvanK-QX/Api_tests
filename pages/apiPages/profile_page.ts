@@ -128,6 +128,7 @@ export class ApiProfilePage {
             'Content-Type': 'multipart/form-data',
 
         }})
+        console.log(apiRequest.status())
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`file uploaded to s3 bucket`)
     }
