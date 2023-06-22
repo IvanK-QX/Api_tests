@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = {
     screenshot: 'only-on-failure',
     actionTimeout: 20000,
     // baseURL: '',
-    trace: 'off',
+    trace: 'on',
   },
   // grep:[new RegExp("@smoke")],
   projects: [
