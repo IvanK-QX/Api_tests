@@ -2,8 +2,8 @@ import { request, test } from "@playwright/test";
 import { Api } from "../pages/Api";
 import { apiUrl } from "../utils/apiUrl";
 import { apiDataSet } from "../utils/dataSet";
-import { App } from "../pages/App";
-let user
+
+let user, admin
 
 test.describe('API test with new user',async () => {
     test.beforeEach(async () => {
@@ -11,6 +11,8 @@ test.describe('API test with new user',async () => {
         const api = new Api(apiContext)
         const login = await api.loginPage.login(`${apiUrl.qaEnvUrl}/login`)
         user = await api.loginPage.addEmail(`${apiUrl.qaEnvUrl}/login`, login.token, apiDataSet.deviceUUID)
+        const adminLogin = await api.loginPage.login(`${apiUrl.qaEnvUrl}/login`)
+        admin = await api.loginPage.adminLogin(`${apiUrl.qaEnvUrl}/admin/login`, adminLogin.token, apiDataSet.deviceUUID, apiDataSet.email)
     })
 
     test.afterEach(async () => {
@@ -22,7 +24,6 @@ test.describe('API test with new user',async () => {
     test('Edit Profile',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-
         await api.profilePage.editProfile(`${apiUrl.qaEnvUrl}/profile`, user.userToken, apiDataSet.randomName, apiDataSet.randomAbout)
     })
 
@@ -47,12 +48,36 @@ test.describe('API test with new user',async () => {
         await api.profilePage.otherUserProfile(`${apiUrl.qaEnvUrl}/otherUserProfile`, user.userToken, otherUser.id)
     })
 
-    test.only('Upload File and Change Avatar ',async () => {
+    test('Upload File and Change Avatar ',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const createFileUpload = await api.profilePage.createFileuplaod(`${apiUrl.qaEnvUrl}/createFileUpload`, user.userToken)
         api.profilePage.uploadToS3(createFileUpload.uploadUrl, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
+        // api.profilePage.updateProfileCover(`${apiUrl.qaEnvUrl}/profileAvatar`, user.userToken, createFileUpload.uploadID)
     })
+
+    test('Invite to stream CRUD',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.profilePage.inviteToSteram(`${apiUrl.qaEnvUrl}/profile/setAllowedInviteToStream`, user.userToken, true)
+        await api.profilePage.inviteToSteram(`${apiUrl.qaEnvUrl}/profile/setAllowedInviteToStream`, user.userToken, false)   
+    })
+
+    test('Allow to start premium CRUD',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        console.log(admin.adminToken)
+        await api.profilePage.allowedToStartPremium(`${apiUrl.qaEnvUrl}/admin/profile/allowedToStartPremium`, admin.adminToken, user.id, true)
+        await api.profilePage.allowedToStartPremium(`${apiUrl.qaEnvUrl}/admin/profile/allowedToStartPremium`, admin.adminToken, user.id ,false)   
+    })
+
+    test('Add Diamonds',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        console.log(admin.adminToken)
+        await api.profilePage.addDiamonds(`${apiUrl.qaEnvUrl}/profile/balance/diamonds`, admin.adminToken, user.id)
+    })
+    
 
 
 })

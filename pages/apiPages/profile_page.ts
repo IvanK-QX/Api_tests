@@ -65,8 +65,8 @@ export class ApiProfilePage {
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(url, {data, headers: headers})
-        const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
         const userID = response._id
         expect(userID).toEqual(otherUserId)
         console.log(`Profile with id: ${userID} is displayed`)
@@ -82,8 +82,8 @@ export class ApiProfilePage {
         }
         const apiRequest = await apiContext.post(url, {data,
             headers: Headers.userHeader(userToken)})
-        const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
         const uploadID = response.tempUploadId
         const uploadUrl = response.url
         const uploadKey = Object.values(response.fields)[0]
@@ -94,7 +94,6 @@ export class ApiProfilePage {
         const xAmzDate = Object.values(response.fields)[5]
         const policy = Object.values(response.fields)[6]
         const xAmzSignature = Object.values(response.fields)[7]
-        console.log(response)
         console.log(`URL for upload : ${uploadUrl} is generated`)
         return { uploadID, uploadUrl, uploadKey, xAmzTagging, bucket, xAmzAlgorithm, xAmzCredential, xAmzDate, policy, xAmzSignature}
     }
@@ -129,13 +128,71 @@ export class ApiProfilePage {
             'Content-Type': 'multipart/form-data',
 
         }})
-
-        
-        // const response = await apiRequest.json()
-        console.log(apiRequest.status())
-        console.log(apiRequest)
-        expect(apiRequest.status()).toEqual(204)
+        expect(apiRequest.ok()).toBeTruthy()
         console.log(`file uploaded to s3 bucket`)
+    }
+
+    async updateProfileCover(url: string, userToken: string, uploadId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "avatarPicture": `${uploadId}`,
+            "avatarPictureSmall": `${uploadId}`
+          }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        console.log(response)
+        const avatarPicture = response.avatarPicture
+        expect(avatarPicture).toEqual(uploadId)
+        console.log(`Avatar with id: ${uploadId} is uploaded`)
+    }
+
+    async inviteToSteram(url: string, userToken: string, option: boolean) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "allowedInviteToStream": option
+          }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const allowedInviteToStream = response.allowedInviteToStream
+        expect(allowedInviteToStream).toEqual(option)
+        console.log(`Invite to stream is: ${option}`)
+    }
+
+    async allowedToStartPremium(url: string, adminToken: string, userId: string, option: boolean) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "userId": `${userId}`,
+            "allowedToStartPremium": option
+          }
+        const headers = Headers.userHeader(adminToken)
+
+        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const allowedToStartPremium = response.allowedToStartPremium
+        expect(allowedToStartPremium).toEqual(option)
+        console.log(`User with id: ${userId} is allowedToStartPremium: ${option}`)
+    }
+
+    async addDiamonds(url: string, adminToken: string, userId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "userId": `${userId}`,
+            "diamonds": 100000
+          }
+        const headers = Headers.userHeader(adminToken)
+
+        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        expect(response.diamondsAllTime).toEqual(110000)
+        console.log(`Dimonds ${response.diamondsAllTime} is added for user: ${userId}`)
     }
 
 }

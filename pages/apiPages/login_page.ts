@@ -1,6 +1,7 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { faker } from '@faker-js/faker';
 import { apiUrl } from "../../utils/apiUrl";
+import { apiDataSet } from "../../utils/dataSet";
 
 export class ApiLoginPage {
     apiContext: any
@@ -30,7 +31,34 @@ export class ApiLoginPage {
         expect(response.profile.status).toEqual('Active')
         console.log(`Guest with userID: ${id} logged into the app`)
         return { token, id } 
+    }
 
+    async adminLogin(url: string, adminGuestToken: string, deviceId: string, email: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "authProvider": "ownEmail",
+            "email": `${email}@gmail.com`,
+            "password": `${apiDataSet.password}`,
+            "guestUserToken": `${adminGuestToken}`,
+            "deviceId": `${deviceId}`,
+            "language": "uk",
+            "version": 1
+        }
+        const headers = {
+            'packagename': 'com.plamfy',
+            'content-type': 'application/json',
+            'appversion': '1',
+            'os': 'browser'
+        }
+        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const adminToken = response.token
+        const id = response.profile._id
+        const rolesGroup = response.profile.rolesGroup
+        expect(rolesGroup).toEqual('admin')
+        console.log(`Admin with: ${id} logged into the app`)
+        return { adminToken, id } 
     }
 
     async addEmail(url: string, token: string, deviceId: string) {
