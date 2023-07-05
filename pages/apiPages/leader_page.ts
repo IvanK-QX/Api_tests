@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
-
+import { Headers } from "../../utils/headers"
 export class ApiLeadersPage {
     apiContext: any
 
@@ -14,13 +14,8 @@ export class ApiLeadersPage {
             itemsPerPage: 100,
             skip: 0
         }
-        const headers = {
-            'authorization': `Bearer ${userToken}`,
-            'packagename': 'com.plamfy',
-            'content-type': 'application/json',
-            'appversion': '1',
-            'os': 'browser'
-        }
+        const headers = Headers.userHeader(userToken)
+
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
