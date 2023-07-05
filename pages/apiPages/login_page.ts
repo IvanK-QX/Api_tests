@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
-import { faker } from '@faker-js/faker';
+import { faker, th, ur } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
 
 export class ApiLoginPage {
@@ -93,5 +93,18 @@ export class ApiLoginPage {
         expect(response.profile.status).toEqual('Active')
         console.log(`User email: ${email} has been added`)
         return { userToken, email, id, createdUser, name, createdGuest, humanReadableId, country, referalLink, abTests}
+    }
+
+    async createNewUser(url: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const login = await this.login(`${url}/login`)
+        return await this.addEmail(`${url}/login`, login.token, apiDataSet.deviceUUID)
+    }
+
+    async createNewAdminUser(url: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const adminLogin = await this.login(`${url}/login`)
+        return await this.adminLogin(`${url}/admin/login`, adminLogin.token, apiDataSet.deviceUUID, apiDataSet.email)
+    
     }
 }
