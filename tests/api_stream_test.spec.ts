@@ -82,6 +82,16 @@ test.describe('API test with new user',async () => {
         await api.streamsPage.streamRank(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
+    test('Stream Gifts CRUD',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        const gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
+        await api.streamsPage.addDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId, gift.giftIdOne)
+        await api.streamsPage.removeDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId)
+    })
+
+
     
 
 

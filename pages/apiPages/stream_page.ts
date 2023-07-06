@@ -138,12 +138,48 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/stop`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/streams/rank`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const streamRank = response.streamRank
         expect(streamRank).toEqual(0)
-        console.log(`Stream with id: ${streamId} is stopped`)
+        console.log(`Stream rank is: ${streamRank}`)
+    }
+
+    async addDesireGift(url: string, userToken: string, streamId: string, giftId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`,
+            giftId: `${giftId}`,
+            title: "My Gift"
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const desiredGiftId = response.desiredGiftId
+        const streamerId = response.streamerId
+        const titleDesiredGift = response.titleDesiredGift
+        expect(desiredGiftId).toEqual(giftId)
+        expect(titleDesiredGift).toEqual("My Gift")
+        console.log(`Gift with title: ${streamId} is added`)
+    }
+
+    async removeDesireGift(url: string, userToken: string, streamId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift/delete`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const desiredGiftId = response.desiredGiftId
+        const streamerId = response.streamerId
+        expect(desiredGiftId).toEqual(null)
+        console.log(`Gift is removed, gift id = ${desiredGiftId}`)
     }
 
 }

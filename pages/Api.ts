@@ -4,6 +4,7 @@ import { ApiProfilePage } from "./apiPages/profile_page"
 import { ApiLeadersPage } from "./apiPages/leader_page"
 import { ApiDeleteAccountPage } from "./apiPages/deleteAccount_page"
 import { ApiStreamPage } from "./apiPages/stream_page"
+import { ApiGiftsPage } from "./apiPages/gifts_page"
 
 export class Api {
     apiContext: any
@@ -12,6 +13,7 @@ export class Api {
     leadersPage: ApiLeadersPage
     deleteAccountPage: ApiDeleteAccountPage
     streamsPage: ApiStreamPage
+    giftsPage: ApiGiftsPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -20,5 +22,6 @@ export class Api {
         this.leadersPage = new ApiLeadersPage(apiContext)
         this.deleteAccountPage = new ApiDeleteAccountPage(apiContext)
         this.streamsPage = new ApiStreamPage(apiContext)
+        this.giftsPage = new ApiGiftsPage(apiContext)
     }
 }

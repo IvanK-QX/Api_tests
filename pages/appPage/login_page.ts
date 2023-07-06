@@ -1,6 +1,6 @@
 import { APIRequestContext, expect, request, Page } from "@playwright/test"
 import { Api } from "../Api";
-import { th } from "@faker-js/faker";
+import { apiDataSet } from "../../utils/dataSet";
 
 export class AppLoginPage {
     apiContext: any
@@ -10,23 +10,25 @@ export class AppLoginPage {
         this.page = page 
     }
 
-    async apiLogin(url: string, deviceId: string) {
+    async apiLogin(url: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const api = new Api(apiContext)
-        const login = await api.loginPage.login(url)
-        const user = await api.loginPage.addEmail(url, login.token, deviceId)
-        this.page.addInitScript(value => {
-            window.localStorage.setItem('token', value)
-          }, `"${user.userToken}"`);
-          this.page.addInitScript(value => {
-            window.localStorage.setItem('isAuthorized', value)
-          }, "true");
-
         await this.page.goto('https://webclient.streamsqa.com/')
         await this.page.waitForLoadState('networkidle')
-        console.log('opened')
-        await this.page.pause()
+        const login = await api.loginPage.login(`${url}/login`)
+        const user = await api.loginPage.addEmail(`${url}/login`, login.token, apiDataSet.deviceUUID)
+        this.page.addInitScript(value => {
+          window.localStorage.setItem('token', value)
+        }, `"${user.userToken}"`);
+        this.page.addInitScript(value => {
+          window.localStorage.setItem('isAuthorized', value)
+        }, "true");
+        this.page.addInitScript(value => {
+          window.localStorage.setItem('sendTokenToServer', value)
+        }, "0");
 
+        await this.page.reload()
+        await this.page.waitForLoadState('networkidle')
     }
 
        
