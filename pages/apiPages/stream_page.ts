@@ -1,3 +1,4 @@
+import { apiDataSet } from "../../utils/dataSet"
 import { Headers } from "../../utils/headers"
 import { APIRequestContext, expect, request } from "@playwright/test"
 
@@ -32,10 +33,10 @@ export class ApiStreamPage {
         console.log(`Internals list is dispalyed`)
     }
 
-    async createStream(url: string, userToken: string, option: 'public') {
+    async createStream(url: string, userToken: string, option: 'public', streamTitle: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
-            title:"Come and Watch My Live Broadcast",
+            title: `${streamTitle}`,
             type:`${option}`
         }
         const headers = Headers.userHeader(userToken)
@@ -87,6 +88,98 @@ export class ApiStreamPage {
         const streamID = response[0].streamId
         expect(streamID).toEqual(streamId)
         console.log(`Stream with id: ${streamID} is dispalyed`)
+    }
+
+    async updateStream(url: string, userToken: string, streamId: string, streamTitle: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            _id: `${streamId}`,
+            title: `${streamTitle}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/update`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const streamID = response._id
+        const title = response.title
+        expect(title).toEqual(streamTitle)
+        console.log(`Stream with id: ${streamID} is update`)
+    }
+
+    async stopStream(url: string, userToken: string, streamId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/stop`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        console.log(`Stream with id: ${streamId} is stopped`)
+    }
+
+    async getMyStream(url: string, userToken: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.get(`${url}/streams/my/list`, {headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.text()
+        expect(response).toContain(apiDataSet.streamTitle)
+        console.log(`List of my streams is displayed`)
+    }
+
+    async streamRank(url: string, userToken: string, streamId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/rank`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const streamRank = response.streamRank
+        expect(streamRank).toEqual(0)
+        console.log(`Stream rank is: ${streamRank}`)
+    }
+
+    async addDesireGift(url: string, userToken: string, streamId: string, giftId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`,
+            giftId: `${giftId}`,
+            title: "My Gift"
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const desiredGiftId = response.desiredGiftId
+        const streamerId = response.streamerId
+        const titleDesiredGift = response.titleDesiredGift
+        expect(desiredGiftId).toEqual(giftId)
+        expect(titleDesiredGift).toEqual("My Gift")
+        console.log(`Gift with title: ${streamId} is added`)
+    }
+
+    async removeDesireGift(url: string, userToken: string, streamId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift/delete`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const desiredGiftId = response.desiredGiftId
+        const streamerId = response.streamerId
+        expect(desiredGiftId).toEqual(null)
+        console.log(`Gift is removed, gift id = ${desiredGiftId}`)
     }
 
 }
