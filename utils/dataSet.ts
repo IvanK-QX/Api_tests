@@ -7,6 +7,8 @@ export const apiDataSet = {
     randomAbout : `About me + ${Math.floor(Math.random() * (999999-100000) + 100000)}`,
     searchText: 'supermagic',
     email: 'myleadsp.ace',
-    password: 'dp1181345'
+    password: 'dp1181345',
+    streamTitle: 'My stream Title',
+    updatedStreamTitle: 'My updated title'
 }
 

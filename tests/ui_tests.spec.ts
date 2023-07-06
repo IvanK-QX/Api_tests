@@ -20,7 +20,10 @@ test.describe('API test with new user',async () => {
     })
 
     // TODO
-    test.skip('api login',async ({page}) => {
+    test.only('api login',async ({page}) => {
+        
+        await page.goto('https://webclient.streamsqa.com/')
+        await page.waitForLoadState('networkidle')
         
         const app = new App(page)
         page.addInitScript(value => {
@@ -29,20 +32,20 @@ test.describe('API test with new user',async () => {
         page.addInitScript(value => {
           window.localStorage.setItem('isAuthorized', value)
         }, "true");
-        page.addInitScript(value => {
-            window.localStorage.setItem('Profile', value)
-        }, '{"usersHaveSeenNewFeatureModal":[],"usersHaveClickedByNewFeatureModalMenu":[]}');
+        // page.addInitScript(value => {
+        //     window.localStorage.setItem('Profile', value)
+        // }, '{"usersHaveSeenNewFeatureModal":[],"usersHaveClickedByNewFeatureModalMenu":[]}');
 
         page.addInitScript(value => {
           window.localStorage.setItem('sendTokenToServer', value)
         }, "0");
     
         //todo add incapsulation
-        page.addInitScript(value => {
-          window.localStorage.setItem('profile', value)
-        }, `{"coins":9999,"diamonds":10000,"createdGuest":"${user.createdGuest}","allowedInviteToStream":true,"abTests": [${user.abTests}],"brandId":1,"lastLaunch":{"os":"browser"},"allowedToStartPremium":false,"diamondsAllTimeReal":0,"_id":"${user.id}","humanReadableId":${user.humanReadableId},"rolesGroup":"user","name":"${user.name}","diamondsAllTime":10000,"lastGeo":{"country":"${user.country}"},"gender":"iPreferNotToSay","status":"Active","referalLink":"${user.referalLink}","email":"${user.email}","createdUser":"${user.createdUser}","lt":0,"coinsSpentAllTime":0}`);
+        // page.addInitScript(value => {
+        //   window.localStorage.setItem('profile', value)
+        // }, `{"coins":9999,"diamonds":10000,"createdGuest":"${user.createdGuest}","allowedInviteToStream":true,"abTests": [${user.abTests}],"brandId":1,"lastLaunch":{"os":"browser"},"allowedToStartPremium":false,"diamondsAllTimeReal":0,"_id":"${user.id}","humanReadableId":${user.humanReadableId},"rolesGroup":"user","name":"${user.name}","diamondsAllTime":10000,"lastGeo":{"country":"${user.country}"},"gender":"iPreferNotToSay","status":"Active","referalLink":"${user.referalLink}","email":"${user.email}","createdUser":"${user.createdUser}","lt":0,"coinsSpentAllTime":0}`);
 
-        await page.goto('https://webclient.streamsqa.com/')
+        await page.reload()
         await page.waitForLoadState('networkidle')
         await page.pause()
         
