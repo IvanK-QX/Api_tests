@@ -1,5 +1,9 @@
 # Api_tests
 
+## Install node
+npm install
+## or with make 
+make node
 ## Run Tests
 npm run test 
 ## or with make 

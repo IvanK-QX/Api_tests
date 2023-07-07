@@ -25,6 +25,7 @@ const config: PlaywrightTestConfig = {
     // baseURL: '',
     trace: 'on',
   },
+  
   // grep:[new RegExp("@smoke")],
   projects: [
     {

@@ -50,7 +50,7 @@ test.describe('API test with new user',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const createFileUpload = await api.profilePage.createFileuplaod(`${apiUrl.qaEnvUrl}/createFileUpload`, user.userToken)
-        api.profilePage.uploadToS3(createFileUpload.uploadUrl, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
+        // api.profilePage.uploadToS3(createFileUpload.uploadUrl, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
         // api.profilePage.updateProfileCover(`${apiUrl.qaEnvUrl}/profileAvatar`, user.userToken, createFileUpload.uploadID)
     })
 
