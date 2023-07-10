@@ -32,6 +32,16 @@ export class ApiBlockedPage {
         console.log(`${blockedUserId} is displayed`)
     }
 
+    async getBlockedIds(url: string, userToken: string, blockedUserId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.get(`${url}//blocked/ids`, {headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        console.log(`${blockedUserId} is displayed`)
+    }
+
     async unblockUser(url: string, userToken: string, blockedUserId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
