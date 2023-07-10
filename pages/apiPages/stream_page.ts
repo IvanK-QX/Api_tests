@@ -182,4 +182,86 @@ export class ApiStreamPage {
         console.log(`Gift is removed, gift id = ${desiredGiftId}`)
     }
 
+    async updateStatus(url: string, userToken: string, streamId: string, status = 'Active') {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            status: `${status}`,
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/my/statusUpdate`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const streamerStatus = response.status
+        expect(streamerStatus).toEqual(status)
+        console.log(`Streamer Status is: ${streamerStatus}`)
+    }
+
+    async getByStreamer(url: string, userToken: string, streamerId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamerId: `${streamerId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/getByStreamer`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const isStreaming = response.isStreaming
+        expect(isStreaming).toEqual(false)
+        console.log(`Streaming: ${isStreaming}`)
+    }
+
+    async moderationList(url: string, userToken: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "skip": 0,
+            "itemsPerPage": 0,
+            "byViewers": "nonZero",
+            "gender": "male",
+            "platform": "browser",
+            "streamerType": "Official",
+            "streamType": "public",
+            "sortByWatching": "asc",
+            // remove hardcoded value, neet to find request with all moderators 
+            // possible https://streamsqa.com:3011/admin/moderators/shift
+            // need autorization to admin 
+            "moderatorId": "61f029af8ff8251aac980559",
+            "humanReadableId": 0,
+            "isOnlyNotMp": true
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/streams/list/moderator`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.text()
+        expect(response).toContain('pagination')
+        console.log(`Moderation List is displayed `)
+    }
+
+    async refferalErnings(url: string, userToken: string, period: 'day' | 'week' | 'month') {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            period: `${period}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/referalEarnings`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        console.log(`referral earnings for period: ${period} is displayed `)
+    }
+
+    async streamWatchers(url: string, userToken: string, streamId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            streamId: `${streamId}`
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/stream/watchers`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        console.log(`Stream watchers are displayed`)
+    }
+
 }

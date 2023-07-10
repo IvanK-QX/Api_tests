@@ -40,6 +40,13 @@ test.describe('API test with new user',async () => {
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
     })
 
+    test('Stream watchers',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        await api.streamsPage.streamWatchers(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
+    })
+
     test('Get Stream',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -59,6 +66,7 @@ test.describe('API test with new user',async () => {
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.updateStream(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId, apiDataSet.updatedStreamTitle)
+        await api.streamsPage.updateStatus(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
     test('End Stream',async () => {
@@ -89,6 +97,27 @@ test.describe('API test with new user',async () => {
         const gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
         await api.streamsPage.addDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId, gift.giftIdOne)
         await api.streamsPage.removeDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId)
+    })
+
+    test('Get By Streamer',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        await api.streamsPage.getByStreamer(apiUrl.qaEnvUrl, user.userToken, stream.myStreamerId)
+    })
+
+    test('Moderation List',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.streamsPage.moderationList(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Referral Earnings ',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.streamsPage.refferalErnings(apiUrl.qaEnvUrl, user.userToken, 'day')
+        await api.streamsPage.refferalErnings(apiUrl.qaEnvUrl, user.userToken, 'month')
+        await api.streamsPage.refferalErnings(apiUrl.qaEnvUrl, user.userToken, 'week')
     })
 
 

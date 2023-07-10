@@ -1,5 +1,6 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 
 export class ApiProfilePage {
