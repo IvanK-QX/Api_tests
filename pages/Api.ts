@@ -6,6 +6,7 @@ import { ApiDeleteAccountPage } from "./apiPages/deleteAccount_page"
 import { ApiStreamPage } from "./apiPages/stream_page"
 import { ApiGiftsPage } from "./apiPages/gifts_page"
 import { ApiBlockedPage } from "./apiPages/blocked_page"
+import { ApiFollowingPage } from "./apiPages/following_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -16,6 +17,7 @@ export class Api {
     streamsPage: ApiStreamPage
     giftsPage: ApiGiftsPage
     blockedPage: ApiBlockedPage
+    followingPage: ApiFollowingPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -26,5 +28,6 @@ export class Api {
         this.streamsPage = new ApiStreamPage(apiContext)
         this.blockedPage = new ApiBlockedPage(apiContext)
         this.giftsPage = new ApiGiftsPage(apiContext)
+        this.followingPage = new ApiFollowingPage(apiContext)
     }
 }

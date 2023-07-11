@@ -16,8 +16,8 @@ test.describe('API test with new user',async () => {
     test.afterEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.deleteAccountPage.deleteAccount(`${apiUrl.qaEnvUrl}/delete`, user.userToken)
-        await api.deleteAccountPage.deleteAccount(`${apiUrl.qaEnvUrl}/delete`, user2.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
     test('Stream List',async () => {

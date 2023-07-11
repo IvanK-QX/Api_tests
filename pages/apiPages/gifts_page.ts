@@ -43,10 +43,23 @@ export class ApiGiftsPage {
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}/gifts/send`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const responseGiftId = response.giftId
         expect(responseGiftId).toEqual(giftId)
         console.log(`Gift with Id: ${responseGiftId} has been sent`)
+    }
+    async sendGiftShort(url: string, userToken: string, giftId: string, userId_2: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "gift": `${giftId}`,
+            "to": `${userId_2}`,
+            "type": "other",
+        }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}/gifts/send`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
     }
 
     async myGiftListSend(url: string, userToken: string, giftId: string) {
