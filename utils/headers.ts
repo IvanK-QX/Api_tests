@@ -10,4 +10,15 @@ export class Headers {
         }
         return headers 
     }
+
+    static prodUserHeader(userToken: string) {
+        const headers = {
+            'authorization': `Bearer ${userToken}`,
+            'packagename': 'plamfy',
+            'content-type': 'application/json',
+            'appversion': '1',
+            'os': 'browser'
+        }
+        return headers 
+    }
 }

@@ -41,7 +41,7 @@ export class ApiFollowingPage {
         const data = {
             "userId": `${followedUserId}`
           }
-        const headers = Headers.userHeader(userToken)
+        const headers = Headers.prodUserHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}/follow`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()

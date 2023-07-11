@@ -17,7 +17,7 @@ export class ApiLoginPage {
             language: "uk"
         }
         const headers = {
-            'packagename': 'com.plamfy',
+            'packagename': 'plamfy',
             'content-type': 'application/json',
             'appversion': '1',
             'os': 'browser'
@@ -72,7 +72,7 @@ export class ApiLoginPage {
             guestUserToken: `${token}`
         }
         const headers = {
-            'packagename': 'com.plamfy',
+            'packagename': 'plamfy',
             'content-type': 'application/json',
             'appversion': '1',
             'os': 'browser'
