@@ -8,7 +8,7 @@ import { ApiGiftsPage } from "./apiPages/gifts_page"
 import { ApiBlockedPage } from "./apiPages/blocked_page"
 
 export class Api {
-    apiContext: any
+    apiContext: APIRequestContext
     loginPage: ApiLoginPage
     profilePage: ApiProfilePage
     leadersPage: ApiLeadersPage

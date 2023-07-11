@@ -1,9 +1,9 @@
-import { APIRequestContext, expect, request, Page } from "@playwright/test"
+import { APIRequestContext, request, Page } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
 
 export class AppLoginPage {
-    apiContext: any
+    apiContext: APIRequestContext
     page: Page
 
     constructor(page: Page) {

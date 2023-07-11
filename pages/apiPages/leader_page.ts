@@ -1,7 +1,7 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
 export class ApiLeadersPage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext

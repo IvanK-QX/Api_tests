@@ -2,7 +2,7 @@ import { Page } from "@playwright/test"
 import { AppLoginPage } from "./appPage/login_page"
 
 export class App {
-    page: any
+    page: Page
     loginPage: AppLoginPage
 
     constructor(page: Page) {

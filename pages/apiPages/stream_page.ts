@@ -3,7 +3,7 @@ import { Headers } from "../../utils/headers"
 import { APIRequestContext, expect, request } from "@playwright/test"
 
 export class ApiStreamPage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
