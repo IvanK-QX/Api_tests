@@ -5,7 +5,7 @@ import { apiDataSet } from "../utils/dataSet";
 
 let user, user2, gift
 
-test.describe('API test with new user',async () => {
+test.describe('API Gift Tests with Two user',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -39,8 +39,21 @@ test.describe('API test with new user',async () => {
         await api.giftsPage.myGiftListReceived(apiUrl.qaEnvUrl, user.userToken, gift.giftIdTwo)
     })
 
-    
+    test('Get gift reccomendation and premium',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.giftsPage.getGiftsRecommendation(apiUrl.qaEnvUrl, user.userToken)
+        await api.giftsPage.getGiftsPremium(apiUrl.qaEnvUrl, user.userToken)
+    })
 
+    test('My top/stream gifters',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
+        const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        await api.giftsPage.myTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamerId)
+        await api.giftsPage.stremTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
+    })
 
 })
 

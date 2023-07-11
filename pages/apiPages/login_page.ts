@@ -3,7 +3,7 @@ import { faker, th, ur } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
 
 export class ApiLoginPage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext

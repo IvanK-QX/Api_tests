@@ -4,7 +4,7 @@ import { Headers } from "../../utils/headers"
 const fs = require('fs')
 
 export class ApiProfilePage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
