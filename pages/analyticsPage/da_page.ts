@@ -9,14 +9,14 @@ export class AnalyticsDeviceActivityPage {
         this.apiContext = apiContext
     }
 
-    async methodExample(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android' ) {
+    async showRegModal(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android' ) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const data = DaPayloads.payloadExample(userId, platform)
+        const data = DaPayloads.showRegModal(userId, platform)
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3005/urlExample`, {data, headers: headers})
-        expect(apiRequest.ok()).toBeTruthy()
-        console.log(`example of the result`)
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`request for registration modal send, platform ${platform}`)
     }
 
 }

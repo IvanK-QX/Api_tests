@@ -5,10 +5,11 @@ import { AnalyticsUserActivityPage } from "./analyticsPage/ua_page"
 export class Analytics {
     apiContext: APIRequestContext
     daPage: AnalyticsDeviceActivityPage
+    uaPage: AnalyticsUserActivityPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
         this.daPage = new AnalyticsDeviceActivityPage(apiContext)
-        this.daPage = new AnalyticsUserActivityPage(apiContext)
+        this.uaPage = new AnalyticsUserActivityPage(apiContext)
     }
 }
