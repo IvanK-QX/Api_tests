@@ -12,18 +12,13 @@ test.describe('API test ',async () => {
         user = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
     })
 
-    test.afterEach(async () => {
-        const apiContext = await request.newContext()
-        const api = new Api(apiContext)
-        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
-    })
 
     test.only('block user CRUD',async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
-        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
-        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.userToken, user.id, 'iOS')
+        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.token, user.id, 'iOS')
 
     })
 

@@ -14,10 +14,8 @@ export class AnalyticsDeviceActivityPage {
         const data = DaPayloads.showRegModal(userId, platform)
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3005/urlExample`, {data, headers: headers})
-        // expect(apiRequest.status()).toEqual(200)
-        const response = await apiRequest.json()
-        console.log(response)
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
+        expect(apiRequest.status()).toEqual(200)
         console.log(`example of the result`)
     }
 
