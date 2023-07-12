@@ -5,7 +5,7 @@ import { Analytics } from "../pages/Analytics";
 
 let user
 
-test.describe('API test ',async () => {
+test.describe('Device analytics test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -13,7 +13,7 @@ test.describe('API test ',async () => {
     })
 
 
-    test.only('block user CRUD',async () => {
+    test('Show Registration Modal', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
         await analytics.daPage.showRegModal(apiUrl.qaEnvUrl, user.token, user.id, "Android")

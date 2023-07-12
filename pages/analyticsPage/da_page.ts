@@ -16,7 +16,7 @@ export class AnalyticsDeviceActivityPage {
 
         const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
         expect(apiRequest.status()).toEqual(200)
-        console.log(`example of the result`)
+        console.log(`request for registration modal send, platform ${platform}`)
     }
 
 }
