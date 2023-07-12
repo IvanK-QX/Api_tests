@@ -16,7 +16,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/list`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/list`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`Stream List: ${period} is dispalyed`)
@@ -26,7 +26,7 @@ export class ApiStreamPage {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}/streams/listInternal`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}:3000/streams/listInternal`, { headers: headers })
         const response = await apiRequest.text()
         expect(apiRequest.ok()).toBeTruthy()
         expect(response).toContain('internals')
@@ -41,7 +41,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/create`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/create`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const myStreamId = response._id
@@ -62,7 +62,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/get`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/get`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const streamID = response.stream._id
@@ -82,7 +82,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/sendInvite`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/sendInvite`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const streamID = response[0].streamId
@@ -98,7 +98,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/update`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/update`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const streamID = response._id
@@ -114,7 +114,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/stop`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/stop`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(`Stream with id: ${streamId} is stopped`)
@@ -124,7 +124,7 @@ export class ApiStreamPage {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}/streams/my/list`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3000/streams/my/list`, {headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain(apiDataSet.streamTitle)
@@ -138,7 +138,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/rank`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/rank`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const streamRank = response.streamRank
@@ -155,7 +155,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/desiredGift`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const desiredGiftId = response.desiredGiftId
@@ -173,7 +173,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/streams/my/desiredGift/delete`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/my/desiredGift/delete`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const desiredGiftId = response.desiredGiftId

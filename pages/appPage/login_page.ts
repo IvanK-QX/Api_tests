@@ -15,8 +15,8 @@ export class AppLoginPage {
         const api = new Api(apiContext)
         await this.page.goto('https://webclient.streamsqa.com/')
         await this.page.waitForLoadState('networkidle')
-        const login = await api.loginPage.login(`${url}/login`)
-        const user = await api.loginPage.addEmail(`${url}/login`, login.token, apiDataSet.deviceUUID)
+        const login = await api.loginPage.login(`${url}:3000/login`)
+        const user = await api.loginPage.addEmail(`${url}:3000/login`, login.token, apiDataSet.deviceUUID)
         this.page.addInitScript(value => {
           window.localStorage.setItem('token', value)
         }, `"${user.userToken}"`);

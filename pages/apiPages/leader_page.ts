@@ -16,7 +16,7 @@ export class ApiLeadersPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/streams/leaderboard`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`Leaders for period: ${period} is dispalyed`)

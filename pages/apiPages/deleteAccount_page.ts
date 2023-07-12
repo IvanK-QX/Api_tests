@@ -19,7 +19,7 @@ export class ApiDeleteAccountPage {
             'appversion': '1',
             'os': 'browser'
         }
-        const apiRequest = await apiContext.post(`${url}/delete`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/delete`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         expect(response.success).toEqual(true)

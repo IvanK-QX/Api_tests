@@ -15,7 +15,7 @@ export class ApiFollowingPage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/doIFollow`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/doIFollow`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const doIfollow = response.doIfollow
@@ -27,7 +27,7 @@ export class ApiFollowingPage {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}/suggestUsersToFollow`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3000/suggestUsersToFollow`, {headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const followUserIdOne = response[0]._id
@@ -43,7 +43,7 @@ export class ApiFollowingPage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/follow`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/follow`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(`User with id: ${followedUserId} is followed`)
@@ -56,7 +56,7 @@ export class ApiFollowingPage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/unfollow`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/unfollow`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(`User with id: ${followedUserId} is unfollow`)
@@ -72,7 +72,7 @@ export class ApiFollowingPage {
          }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/followMultiple`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/followMultiple`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(`Users with id: ${followedUserIdOne} and ${followedUserIdTwo} followed`)
@@ -82,7 +82,7 @@ export class ApiFollowingPage {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}/following/ids`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3000/following/ids`, {headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain(followUserIdOne)
@@ -98,7 +98,7 @@ export class ApiFollowingPage {
          }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/following`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/following`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('users')
@@ -112,7 +112,7 @@ export class ApiFollowingPage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/isMutualFollowing`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/isMutualFollowing`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const isMutualFollowing = response.isMutualFollowing
@@ -127,7 +127,7 @@ export class ApiFollowingPage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}/followCounters`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/followCounters`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const responseUserId = response.userId
