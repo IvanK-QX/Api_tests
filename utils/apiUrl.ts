@@ -1,3 +1,3 @@
 export const apiUrl = {
-    qaEnvUrl : `https://streamsqa.com:3000`
+    qaEnvUrl : `https://streamsqa.com`
 }

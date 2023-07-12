@@ -19,7 +19,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/profile`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const userName = response.name
@@ -33,7 +33,7 @@ export class ApiProfilePage {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(url, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3000/profile`, {headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const email = response.email
@@ -48,7 +48,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/find`, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const name = response[0].name
@@ -65,7 +65,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/otherUserProfile`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const userID = response._id
@@ -81,8 +81,7 @@ export class ApiProfilePage {
             "purpose": "avatar",
             "type": "photo"
         }
-        const apiRequest = await apiContext.post(url, {data,
-            headers: Headers.userHeader(userToken)})
+        const apiRequest = await apiContext.post(`${url}:3000/createFileUpload`, {data, headers: Headers.userHeader(userToken)})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const uploadID = response.tempUploadId
@@ -142,7 +141,7 @@ export class ApiProfilePage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/profileAvatar`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const avatarPicture = response.avatarPicture
@@ -157,7 +156,7 @@ export class ApiProfilePage {
           }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/profile/setAllowedInviteToStream`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const allowedInviteToStream = response.allowedInviteToStream
@@ -173,7 +172,7 @@ export class ApiProfilePage {
           }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/allowedToStartPremium`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const allowedToStartPremium = response.allowedToStartPremium
@@ -189,7 +188,7 @@ export class ApiProfilePage {
           }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(url, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3000/profile/balance/diamonds`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response.diamondsAllTime).toEqual(110000)

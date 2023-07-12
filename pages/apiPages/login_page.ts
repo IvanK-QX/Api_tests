@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
 
 export class ApiLoginPage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -96,15 +96,13 @@ export class ApiLoginPage {
     }
 
     async createNewUser(url: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const login = await this.login(`${url}/login`)
-        return await this.addEmail(`${url}/login`, login.token, apiDataSet.deviceUUID)
+        const login = await this.login(`${url}:3000/login`)
+        return await this.addEmail(`${url}:3000/login`, login.token, apiDataSet.deviceUUID)
     }
 
     async createNewAdminUser(url: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const adminLogin = await this.login(`${url}/login`)
-        return await this.adminLogin(`${url}/admin/login`, adminLogin.token, apiDataSet.deviceUUID, apiDataSet.email)
+        const adminLogin = await this.login(`${url}:3000/login`)
+        return await this.adminLogin(`${url}:3000/admin/login`, adminLogin.token, apiDataSet.deviceUUID, apiDataSet.email)
     
     }
 }

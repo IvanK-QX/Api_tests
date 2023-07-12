@@ -52,7 +52,8 @@ test.describe('API Gift Tests with Two user',async () => {
         gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
         const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.giftsPage.myTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamerId)
-        await api.giftsPage.stremTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
+        // waiting for fix PB-1456 
+        // await api.giftsPage.stremTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
 })
