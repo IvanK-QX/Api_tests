@@ -1,9 +1,8 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
-import { apiDataSet } from "../../utils/dataSet";
-import { faker, th, ur } from '@faker-js/faker';
+
 export class ApiPayoutPage {
-    apiContext: any
+    apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext

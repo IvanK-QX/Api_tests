@@ -22,7 +22,7 @@ test.describe('API test ',async () => {
         await api.deleteAccountPage.deleteAccount(`${apiUrl.qaEnvUrl}/delete`, user.userToken)
     })
 
-    test.only('Payouts Request/History',async () => {
+    test('Payouts Request/History',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.payoutPage.payoutRequest(apiUrl.qaEnvUrl, user.userToken, randomPayoneerEmail )
