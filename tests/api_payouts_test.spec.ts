@@ -4,9 +4,8 @@ import { apiUrl } from "../utils/apiUrl";
 import { apiDataSet } from "../utils/dataSet";
 
 let user, admin
-const email = apiDataSet.randomEmail
 
-test.describe.only('API test ',async () => {
+test.describe('API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -21,13 +20,15 @@ test.describe.only('API test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Payouts Request/History',async () => {
+    test('Payouts Request/History/Status',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         
-        await api.payoutPage.payoutRequest(apiUrl.qaEnvUrl, user.userToken, email)
-        await api.payoutPage.getPayoutsHistory(apiUrl.qaEnvUrl, user.userToken, user.id, email)
-        await api.payoutPage.adminPayoutRequest(apiUrl.qaEnvUrl, admin.adminToken, user.id, email)
+        const payoneerEmail = await api.payoutPage.payoutRequest(apiUrl.qaEnvUrl, user.userToken)
+        await api.payoutPage.getPayoutsHistory(apiUrl.qaEnvUrl, user.userToken, user.id, payoneerEmail.randomPayoneerEmail)
+        await api.payoutPage.adminPayoutRequest(apiUrl.qaEnvUrl, admin.adminToken, user.id, payoneerEmail.randomPayoneerEmail)
+        const payoutRequestedId = await api.payoutPage.adminPayoutHistory(apiUrl.qaEnvUrl, admin.adminToken, user.humanReadableId, user.id, payoneerEmail.randomPayoneerEmail)
+        await api.payoutPage.adminSetPayoutStatus(apiUrl.qaEnvUrl, admin.adminToken, payoutRequestedId.payoutRequestId, "paid" )
     
     })
 
