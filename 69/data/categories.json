@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "apiRequestContext.post: Connection timeout\n=========================== logs ===========================\n→ POST https://streamsqa.com/profile/balance/diamonds:3000/profile/balance/diamonds\n  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.5790.24 Safari/537.36\n  accept: */*\n  accept-encoding: gzip,deflate,br\n  authorization: Bearer 259bdfba5fb005c640aca5846c12153b36f6c27edd43f3df6e3aa4e7549cd398ae6430d886fd5aabc0b5ab79162c4c05d4459216db3be448f49f58396353aa0e\n  packagename: com.plamfy\n  content-type: application/json\n  appversion: 1\n  os: browser\n  content-length: 55\n============================================================",
+      "children" : [ {
+        "name" : "Payouts Request/History",
+        "uid" : "aac6ad42c93cd08a",
+        "parentUid" : "009ec30f19ffb028d0d837823b67d1fd",
+        "status" : "failed",
+        "time" : {
+          "start" : 1689236222022,
+          "stop" : 1689236264915,
+          "duration" : 42893
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "009ec30f19ffb028d0d837823b67d1fd"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ],
+  "name" : "categories"
+}
