@@ -28,7 +28,7 @@ async clickCloseReg(url: string, userToken: string, userId: string, platform: 'i
 
     const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
     expect(apiRequest.status()).toEqual(200)
-    console.log(`request for registration modal send, platform ${platform}`)
+    console.log(`request for registration modal closed, platform ${platform}`)
 }
 
 
@@ -39,7 +39,7 @@ async clickStartReg(url: string, userToken: string, userId: string, platform: 'i
 
     const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
     expect(apiRequest.status()).toEqual(200)
-    console.log(`request for registration modal send, platform ${platform}`)
+    console.log(`request for start registration, platform ${platform}`)
 
 }
 
