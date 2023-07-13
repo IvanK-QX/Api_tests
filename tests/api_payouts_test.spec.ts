@@ -3,7 +3,7 @@ import { Api } from "../pages/Api";
 import { apiUrl } from "../utils/apiUrl";
 import { apiDataSet } from "../utils/dataSet";
 
-let user, admin, humanReadableId
+let user, admin
 
 test.describe('API test ',async () => {
     test.beforeEach(async () => {
