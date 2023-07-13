@@ -19,4 +19,29 @@ export class AnalyticsDeviceActivityPage {
         console.log(`request for registration modal send, platform ${platform}`)
     }
 
+
+
+async clickCloseReg(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android' ) {
+    const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+    const data = DaPayloads.clickCloseReg(userId, platform)
+    const headers = Headers.userHeader(userToken)
+
+    const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
+    expect(apiRequest.status()).toEqual(200)
+    console.log(`request for registration modal send, platform ${platform}`)
+}
+
+
+async clickStartReg(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android' ) {
+    const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+    const data = DaPayloads.clickStartReg(userId, platform)
+    const headers = Headers.userHeader(userToken)
+
+    const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
+    expect(apiRequest.status()).toEqual(200)
+    console.log(`request for registration modal send, platform ${platform}`)
+
+}
+
+
 }

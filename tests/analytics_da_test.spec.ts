@@ -22,8 +22,24 @@ test.describe('Device analytics test', async () => {
 
     })
 
+    test.only('Close Registration Modal', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.clickCloseReg(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.daPage.clickCloseReg(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.daPage.clickCloseReg(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+    })
+
+    test('Click Start Registration', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+    })
+})
     
 
 
-})
+
 
