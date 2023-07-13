@@ -55,7 +55,7 @@ export class DaPayloads {
     return query
   }
 
-  static showJoinModal(userId: string, platform: string) {
+  static showJoinModal(userId: string) {
     const query = [
       {
         "eventTimeMs": 1689150326000,
