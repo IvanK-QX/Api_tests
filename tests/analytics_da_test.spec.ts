@@ -22,7 +22,7 @@ test.describe('Device analytics test', async () => {
 
     })
 
-    test.only('Close Registration Modal', async () => {
+    test('Close Registration Modal', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
         await analytics.daPage.clickCloseReg(apiUrl.qaEnvUrl, user.token, user.id, "Android")
@@ -37,8 +37,14 @@ test.describe('Device analytics test', async () => {
         await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "Web")
         await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
     })
+
+    test('Show Join Modal', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.showJoinModal(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+    })
 })
-    
+
 
 
 

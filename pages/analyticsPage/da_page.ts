@@ -44,4 +44,15 @@ async clickStartReg(url: string, userToken: string, userId: string, platform: 'i
 }
 
 
+async showJoinModal(url: string, userToken: string, userId: string, platform: 'Web' ) {
+    const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+    const data = DaPayloads.clickStartReg(userId, platform)
+    const headers = Headers.userHeader(userToken)
+
+    const apiRequest = await apiContext.post(`${url}:3005/a/da`, {data, headers: headers})
+    expect(apiRequest.status()).toEqual(200)
+    console.log(`request for registration modal send, platform ${platform}`)
+
+}
+
 }

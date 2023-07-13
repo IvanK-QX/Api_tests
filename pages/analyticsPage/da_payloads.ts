@@ -54,4 +54,24 @@ export class DaPayloads {
     ]
     return query
   }
+
+  static showJoinModal(userId: string, platform: string) {
+    const query = [
+      {
+        "eventTimeMs": 1689150326000,
+        "category": "All Streams",
+        "guestUserId":  `${userId}`,
+        "deviceId": "25bb6193-29d5-4946-ba07-fa64c3ff05aa",
+        "brandId": 1,
+        "event": "show_join_modal",
+        "params": "{\"anchor\":\"all_streams\",\"q\":\"874\"}",
+        "platform": "Web",
+        "appName": "plamfy",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+        "context": "All Streams"
+    }
+    ]
+    return query
+  }
+
 }
