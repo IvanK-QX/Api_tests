@@ -1,7 +1,7 @@
 import { request, test } from "@playwright/test";
-import { Api } from "../pages/Api";
-import { apiUrl } from "../utils/apiUrl";
-import { App } from "../pages/App";
+import { Api } from "../../pages/Api";
+import { apiUrl } from "../../utils/apiUrl";
+import { App } from "../../pages/App";
 let user 
 
 test.describe('API test with new user', async () => {
