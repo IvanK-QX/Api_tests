@@ -6,7 +6,7 @@ export class Headers {
             'packagename': 'com.plamfy',
             'content-type': 'application/json',
             'appversion': '1',
-            'os': 'browser'
+            'os': 'ios'
         }
         return headers 
     }

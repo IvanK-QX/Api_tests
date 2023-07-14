@@ -17,8 +17,33 @@ test.describe('User analytics test', async () => {
         const analytics = new Analytics(apiContext)
 
     })
-   
+
+    test.only('Create account success', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+    })
+
+
+    test('Pageview Follow Top', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+    })
+
+    test('Click Follow Top', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+    })
 })
+
 
 
 
