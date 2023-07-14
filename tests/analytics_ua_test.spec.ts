@@ -29,7 +29,7 @@ test.describe('User analytics test', async () => {
         await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 
-    test.only('Click Follow Top', async () => {
+    test('Click Follow Top', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
         await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
