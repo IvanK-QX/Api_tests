@@ -11,6 +11,24 @@ test:
 	npm run test
 
 ##############################
+# Run Analytics tests 
+##############################
+analytics:
+	npm run test:analytics
+
+##############################
+# Run UI test 
+##############################
+ui:
+	npm run test:ui
+
+##############################
+# Run API only 
+##############################
+api:
+	npm run test:api
+
+##############################
 # Open Reporter
 ##############################
 report:

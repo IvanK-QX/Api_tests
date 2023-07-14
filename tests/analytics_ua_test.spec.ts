@@ -15,6 +15,7 @@ test.describe('User analytics test', async () => {
     test('Show Registration Modal', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
+        console.log('test')
 
     })
    

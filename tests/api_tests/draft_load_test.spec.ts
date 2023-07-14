@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 import { test, request} from '@playwright/test';
-import { Api } from '../pages/Api';
-import { apiUrl } from '../utils/apiUrl';
+import { Api } from '../../pages/Api';
+import { apiUrl } from '../../utils/apiUrl';
 let user
 
 test.describe.skip('Get data', () => {

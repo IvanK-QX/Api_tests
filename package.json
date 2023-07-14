@@ -8,7 +8,10 @@
     "allure:open": "npx allure open ./allure-report",
     "allure:generate-open": "npx allure generate ./allure-results --clean && allure open",
     "test": "npx playwright test || :",
-    "posttest": "npm run allure:generate"
+    "test:analytics": "npx playwright test /analytics_da_test.spec.ts && npx playwright test /analytics_ua_test.spec.ts || :",
+    "posttest": "npm run allure:generate",
+    "test:api": "npx playwright test /api_tests/* || :",
+    "test:ui": "npx playwright test /ui_tests/* || :"
   },
   "repository": {
     "type": "git",
