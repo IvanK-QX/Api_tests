@@ -1,7 +1,7 @@
 import { request, test } from "@playwright/test";
-import { apiUrl } from "../utils/apiUrl";
-import { Api } from "../pages/Api";
-import { Analytics } from "../pages/Analytics";
+import { apiUrl } from "../../utils/apiUrl";
+import { Api } from "../../pages/Api";
+import { Analytics } from "../../pages/Analytics";
 
 let user
 

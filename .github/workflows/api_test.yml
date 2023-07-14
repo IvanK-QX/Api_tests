@@ -1,9 +1,6 @@
-name: CI - All Tests
+name: Api
 
-on:
-  pull_request:
-    branches: [main]
-    
+on:   
   workflow_dispatch:
     inputs:
       logLevel:
@@ -11,9 +8,7 @@ on:
         required: true
         default: 'warning'
       tags:
-        description: 'Manual scenario'  
-  schedule:
-    - cron: '00 1 * * *'
+        description: 'Manual scenario for API tests'  
 
 jobs:
   e2e-tests:
@@ -34,7 +29,7 @@ jobs:
 
       - name: Run Playwright Tests 
         run: |
-          npm run test
+          make api
 
       - uses: actions/upload-artifact@v3
         with:
