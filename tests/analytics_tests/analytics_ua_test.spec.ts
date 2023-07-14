@@ -12,6 +12,12 @@ test.describe('User analytics test', async () => {
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
     })
 
+    test.afterEach(async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
+    })
+
     test('Create account success', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
