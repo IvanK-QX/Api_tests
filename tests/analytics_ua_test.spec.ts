@@ -12,35 +12,29 @@ test.describe('User analytics test', async () => {
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
     })
 
-    test('Show Registration Modal', async () => {
+    test('Create account success', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-
-    })
-
-    test.only('Create account success', async () => {
-        const apiContext = await request.newContext()
-        const analytics = new Analytics(apiContext)
-        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
-        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Web")
-        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.showCreateAccountSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 
 
     test('Pageview Follow Top', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Android")
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Web")
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 
-    test('Click Follow Top', async () => {
+    test.only('Click Follow Top', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Android")
-        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "Web")
-        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 })
 
