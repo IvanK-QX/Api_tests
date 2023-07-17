@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = {
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
     actionTimeout: 20000,
-    // baseURL: '',
+    baseURL: 'https://webclient.streamsqa.com',
     trace: 'on',
   },
   

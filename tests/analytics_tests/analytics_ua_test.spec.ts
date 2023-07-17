@@ -81,6 +81,94 @@ test.describe('User analytics test', async () => {
         await analytics.uaPage.clickGetCoins(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
         await analytics.uaPage.clickGetCoins(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
+
+    test('Preview Coin Shop', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.previewCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.previewCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.previewCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show Coin Shop', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.showCoinShop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click Buy Pack', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickBuyPack(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickBuyPack(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickBuyPack(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Page View Paying menu', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.pageViewPayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.pageViewPayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.pageViewPayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click Close Paying Menu', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickClosePayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickClosePayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickClosePayingMenu(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show Paying Menu Success', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showPayingMenuSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showPayingMenuSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.showPayingMenuSuccess(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show Premium Join', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.showPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click Premium Join', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickPremiumJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show Room Join', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.showRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click Room Join', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickRoomJoin(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click Gift Shop', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickGiftShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickGiftShop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.clickGiftShop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
 })
 
 
