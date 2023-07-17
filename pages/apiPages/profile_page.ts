@@ -195,4 +195,18 @@ export class ApiProfilePage {
         console.log(`Dimonds ${response.diamondsAllTime} is added for user: ${userId}`)
     }
 
+    async kyc(url: string, userToken: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+          }
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3000/profile/kyc`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const idvId = response.idvId
+        console.log(`IDV is received`)
+        return { idvId }
+    }
+
 }

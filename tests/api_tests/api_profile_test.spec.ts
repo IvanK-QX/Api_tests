@@ -1,4 +1,4 @@
-import { request, test } from "@playwright/test";
+import { expect, request, test } from "@playwright/test";
 import { apiUrl } from "../../utils/apiUrl";
 import { Api } from "../../pages/Api";
 import { apiDataSet } from "../../utils/dataSet";
@@ -71,9 +71,17 @@ test.describe('API test with new user', async () => {
 
     test('Add Diamonds', async () => {
         const apiContext = await request.newContext()
-        const api = new Api(apiContext)
-        console.log(admin.adminToken)
+        const api = new Api(apiContext) 
         await api.profilePage.addDiamonds(apiUrl.qaEnvUrl, admin.adminToken, user.id)
+    })
+
+    test('Profile > KYC', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
+        // TODO waiting until idv will be uniq
+        // const idvId2 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
+        // expect(idvId1.idvId).toEqual(idvId2.idvId)
     })
     
 
