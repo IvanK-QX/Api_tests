@@ -4,7 +4,7 @@ import { Api } from "../../pages/Api";
 
 let user, user2
 
-test.describe('API test ',async () => {
+test.describe('Blocked API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
