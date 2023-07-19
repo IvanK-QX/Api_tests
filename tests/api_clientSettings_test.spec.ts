@@ -17,16 +17,26 @@ test.describe('API test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Client Setting/Add Media Source',async () => {
+    test('Add Media Source snapchat',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.clientSettings.addMediaSource(apiUrl.qaEnvUrl, user.userToken, 'snapchat_int')
+ 
+    })
+
+    test('Add Media Source facebook',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.clientSettings.addMediaSource(apiUrl.qaEnvUrl, user.userToken, 'facebook')
+ 
+    })
+
+    test('Client Setting',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.clientSettings.getClientSettings(apiUrl.qaEnvUrl, user.userToken)
-        await api.clientSettings.addMediaSource(apiUrl.qaEnvUrl, user.userToken, 'snapchat_int')
-
-        
+          
     })
-
-    
 
 
 })
