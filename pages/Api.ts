@@ -8,6 +8,8 @@ import { ApiGiftsPage } from "./apiPages/gifts_page"
 import { ApiBlockedPage } from "./apiPages/blocked_page"
 import { ApiFollowingPage } from "./apiPages/following_page"
 import { ApiPayoutPage } from "./apiPages/payout_page"
+import { ApiModeratorPage } from "./apiPages/moderator_page"
+import { ApiReferalPage } from "./apiPages/referal_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -20,6 +22,8 @@ export class Api {
     blockedPage: ApiBlockedPage
     followingPage: ApiFollowingPage
     payoutPage: ApiPayoutPage
+    moderatorPage: ApiModeratorPage
+    referalPage: ApiReferalPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -32,5 +36,7 @@ export class Api {
         this.payoutPage = new ApiPayoutPage(apiContext)
         this.giftsPage = new ApiGiftsPage(apiContext)
         this.followingPage = new ApiFollowingPage(apiContext)
+        this.moderatorPage = new ApiModeratorPage(apiContext)
+        this.referalPage = new ApiReferalPage(apiContext)
     }
 }
