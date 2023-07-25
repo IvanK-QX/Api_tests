@@ -5,7 +5,7 @@ import { apiDataSet } from "../../utils/dataSet";
 
 let user, admin
 
-test.describe('API test with new user', async () => {
+test.describe('Profile API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)

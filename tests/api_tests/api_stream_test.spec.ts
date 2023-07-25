@@ -5,7 +5,7 @@ import { apiDataSet } from "../../utils/dataSet";
 
 let user, user2, stream
 
-test.describe('API test with new user',async () => {
+test.describe('Stream API test',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
