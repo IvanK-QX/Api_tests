@@ -1,6 +1,7 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { faker } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
+import { Headers } from "../../utils/headers";
 
 export class ApiLoginPage {
     apiContext: APIRequestContext
@@ -16,12 +17,7 @@ export class ApiLoginPage {
             deviceId: `${faker.string.uuid()}`,
             language: "uk"
         }
-        const headers = {
-            'packagename': 'com.plamfy',
-            'content-type': 'application/json',
-            'appversion': '1',
-            'os': 'browser'
-        }
+        const headers = Headers.guestHeader()
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()

@@ -2,6 +2,7 @@ import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
 import { faker } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
+import { ModetarorPayloads } from "./moderator_payloads";
 
 
 export class ApiModeratorPage {
@@ -11,15 +12,9 @@ export class ApiModeratorPage {
         this.apiContext = apiContext
     }
 
-    async createNewModerator(url: string, adminToken: string) {
+    async createNewModerator(url: string, adminToken: string, email: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const email = apiDataSet.randomEmail
-        const data = {
-            "authProvider": "ownEmail",
-            "role": "admin",
-            "email": `${email}`,
-            "password": "password"
-        }
+        const data = ModetarorPayloads.createNewModerator(email)
 
         const headers = Headers.userHeader(adminToken)
 
@@ -33,23 +28,10 @@ export class ApiModeratorPage {
         return { id, email }
     }
 
-    async moderatorLogin(url: string, guestUserToken: string, email: string) {
+    async moderatorLogin(url: string, guestUserToken: string, email: string, deviceId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const data = {
-            "authProvider": "ownEmail",
-            "email": `${email}`,
-            "password": "password",
-            "guestUserToken": `${guestUserToken}`,
-            "deviceId": `${faker.string.uuid()}`,
-            "language": "uk",
-            "version": 1  
-        }
-        const headers = {
-            'packagename': 'com.plamfy',
-            'content-type': 'application/json',
-            'appversion': '1',
-            'os': 'browser'
-        }
+        const data = ModetarorPayloads.moderatorLogin(guestUserToken, email, deviceId )
+        const headers = Headers.guestHeader()
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/login`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
@@ -80,10 +62,10 @@ export class ApiModeratorPage {
         console.log(`Correct ${returnedUserId} is displayed`)
     }
 
-    async setAdminProfileStatus(url: string, adminToken: string, referralUserId: string) {
+    async setAdminProfileStatus(url: string, adminToken: string, referralUserId: string, currentStatus: string, newStatus: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
-            "status": "Blocked",
+            "status": `${newStatus}`,
             "userIds": [
                 `${referralUserId}`
             ]
@@ -93,8 +75,9 @@ export class ApiModeratorPage {
         const apiRequest = await apiContext.post(`${url}:3000/admin/profile/status`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        const returnedProfileStatus = response.success
-        expect(returnedProfileStatus).toEqual(true)
+        const success = response.success
+        let checkSucces = (currentStatus !== newStatus) ? true : false
+        expect(success).toEqual(checkSucces)
         console.log(`Correct Profile Status is set`)
     }
 
@@ -175,6 +158,7 @@ export class ApiModeratorPage {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedDeclinedAvatarId = response[0].id
+        console.log(returnedDeclinedAvatarId)
         const declineStatus = response[0].success
         expect(returnedDeclinedAvatarId).toEqual(pendingAvatarId)
         expect(declineStatus).toEqual(true)
@@ -207,9 +191,10 @@ export class ApiModeratorPage {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedProfileUserId = response._id
+        const userStatus = response.status
         expect(returnedProfileUserId).toEqual(userId)
         console.log(`The Profile with id ${returnedProfileUserId} is displayed`)
-        return returnedProfileUserId
+        return { returnedProfileUserId, userStatus } 
     }
 
     async getAgentProfile(url: string, adminToken: string, userId: string) {
@@ -228,20 +213,11 @@ export class ApiModeratorPage {
         return returnedAgentUserId
     }
 
-    async AdminProfileUpdate(url: string, adminToken: string, userId: string, action: string) {
+    async AdminProfileUpdate(url: string, adminToken: string, userId: string, action: string, userName: string, payoneerEmail: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const randomPayoneerEmail = apiDataSet.randomEmail
         const randomName = apiDataSet.randomName
-        const data = {
-            "userId": `${userId}`,
-            "action": `${action}`,
-            "updateFields": {
-              "name": `${randomName}`,
-              "status": "Active",
-              "payoutEmail": `${randomPayoneerEmail}`,
-              "defaultPaymentMethod": "payoneerEmail"
-            }
-        }
+        const data = ModetarorPayloads.AdminProfileUpdate(userId, action, userName, payoneerEmail)
         const headers = Headers.userHeader(adminToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/profile/update`, {data, headers: headers})
@@ -272,13 +248,7 @@ export class ApiModeratorPage {
 
     async adminModeratorAction(url: string, adminToken: string, streamId: string, reason: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const data = {
-            "type": "warning",
-            "streamIds": [
-                `${streamId}`
-            ],
-            "reason": `${reason}`
-          }
+        const data = ModetarorPayloads.adminModeratorAction(streamId, reason)
         const headers = Headers.userHeader(adminToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/moderator/action`, {data, headers: headers})
@@ -295,14 +265,7 @@ export class ApiModeratorPage {
 
     async getAdminActionList(url: string, adminToken: string, streamId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const data = {
-            "type": "warning",
-            "streamIds": [
-                `${streamId}`
-            ],
-            "skip": 0,
-            "itemsPerPage": 10
-        }
+        const data = ModetarorPayloads.getAdminActionList(streamId)
         const headers = Headers.userHeader(adminToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/action/list`, {data, headers: headers})
