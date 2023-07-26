@@ -26,9 +26,10 @@ export class AppLoginPage {
         this.page.addInitScript(value => {
           window.localStorage.setItem('sendTokenToServer', value)
         }, "0");
-
+        const userToken = user.userToken
         await this.page.reload()
         await this.page.waitForLoadState('networkidle')
+        return { userToken }
     }
 
        
