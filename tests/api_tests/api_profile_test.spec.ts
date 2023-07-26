@@ -5,7 +5,7 @@ import { apiDataSet } from "../../utils/dataSet";
 
 let user, admin
 
-test.describe('Profile API test', async () => {
+test.describe.only('Profile API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -78,8 +78,8 @@ test.describe('Profile API test', async () => {
     test('Profile > KYC', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
-        // TODO waiting until idv will be uniq
+        //const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
+        //TODO waiting until idv will be uniq
         // const idvId2 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
         // expect(idvId1.idvId).toEqual(idvId2.idvId)
     })

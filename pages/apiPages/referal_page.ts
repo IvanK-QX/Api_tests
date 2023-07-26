@@ -44,7 +44,7 @@ export class ApiReferalPage {
         console.log(`The Rules List is displayed`)  
     }
 
-    async getReferralUsersStatistics (url: string, userToken: string, period: string) {
+    async getReferralUsersStatistics (url: string, userToken: string, period: "day" | "week" | "month") {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
             "period": `${period}`

@@ -114,15 +114,15 @@ export class ApiProfilePage {
 
         const apiRequest = await apiContext.post(url, {
             multipart:{
-                key: uploadKey,
+                key: uploadKey,  
                 'x-amz-tagging': xAmzTagging,
-                bucket: bucket, 
+                bucket: bucket,  
                 'X-Amz-Algorithm': xAmzAlgorithm,
                 'X-Amz-Credential': xAmzCredential,
                 'X-Amz-Date': xAmzDate,
                 'Policy': policy, 
                 'X-Amz-Signature': xAmzSignature,
-                file: fs.ReadStream('./100KB.bin')
+                file: fs.ReadStream('./100KB.bin') 
             },
         headers: {
             'Content-Type': 'multipart/form-data',
@@ -144,6 +144,7 @@ export class ApiProfilePage {
         const apiRequest = await apiContext.post(`${url}:3000/profileAvatar`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
+        console.log(response)
         const avatarPicture = response.avatarPicture
         expect(avatarPicture).toEqual(uploadId)
         console.log(`Avatar with id: ${uploadId} is uploaded`)
