@@ -9,9 +9,12 @@ test.describe('API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
-        const admin = await api.loginPage.createNewAdminUser(apiUrl.qaEnvUrl)
-        const createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
+        let guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
+        let admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
+        let  createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
+        guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
+        admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
+        createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
         newAdmin = await api.moderatorPage.moderatorLogin(apiUrl.qaEnvUrl, guestUser.token, createdNewAdmin.email, apiDataSet.deviceUUID)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         referralUser = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
@@ -32,7 +35,6 @@ test.describe('API test ',async () => {
         const api = new Api(apiContext)
         await api.referalPage.setReferal(apiUrl.qaEnvUrl, user.userToken, user.id, referralUser.id)
         await api.moderatorPage.getAdminReferralEarnings(apiUrl.qaEnvUrl, user.userToken, user.id)
-        
     }) 
     
     test('Admin Profile Get/Update',async () => {
@@ -43,8 +45,7 @@ test.describe('API test ',async () => {
         await api.moderatorPage.getAdminProfileList(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
         await api.moderatorPage.getAgentProfile(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id)
         await api.moderatorPage.adminProfileUpdate(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "updateFields", apiDataSet.randomName, apiDataSet.randomEmail)
-        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, apiDataSet.randomEmail)
-        
+        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "test@test.com")
     }) 
 
     test('Admin Avatar Approve/Decline',async () => {

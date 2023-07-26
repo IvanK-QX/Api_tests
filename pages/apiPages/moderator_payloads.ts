@@ -22,7 +22,6 @@ export class ModetarorPayloads {
             "version": 1  
         }
         return query
-    
     }
 
     static adminProfileUpdate(userId: string, action: string, userName: string, payoneerEmail: string ){
@@ -35,8 +34,8 @@ export class ModetarorPayloads {
               "payoutEmail": `${payoneerEmail}`,
               "defaultPaymentMethod": "payoneerEmail"
             }
-    }
-    return query
+        }
+        return query
     }
 
     static adminModeratorAction(streamId: string, reason: string){

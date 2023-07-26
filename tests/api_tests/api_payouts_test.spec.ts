@@ -9,7 +9,7 @@ test.describe('Payouts API test ',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
-        admin = await api.loginPage.createNewAdminUser(apiUrl.qaEnvUrl)
+        admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
         await api.profilePage.addDiamonds(apiUrl.qaEnvUrl, admin.adminToken, user.id) 
     })
 
