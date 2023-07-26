@@ -10,6 +10,8 @@ import { ApiFollowingPage } from "./apiPages/following_page"
 import { ApiPayoutPage } from "./apiPages/payout_page"
 import { ApiClientSettingsPage } from "./apiPages/clientSettings_page"
 import { ApiSalaryRulesPage } from "./apiPages/salaryRules_page"
+import { ApiModeratorPage } from "./apiPages/moderator_page"
+import { ApiReferalPage } from "./apiPages/referal_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -24,6 +26,8 @@ export class Api {
     payoutPage: ApiPayoutPage
     clientSettingsPage: ApiClientSettingsPage
     selaryRulesPage: ApiSalaryRulesPage
+    moderatorPage: ApiModeratorPage
+    referalPage: ApiReferalPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -38,5 +42,7 @@ export class Api {
         this.followingPage = new ApiFollowingPage(apiContext)
         this.clientSettingsPage = new ApiClientSettingsPage(apiContext)
         this.selaryRulesPage = new ApiSalaryRulesPage(apiContext)
+        this.moderatorPage = new ApiModeratorPage(apiContext)
+        this.referalPage = new ApiReferalPage(apiContext)
     }
 }

@@ -20,8 +20,8 @@ export class ApiProfilePage {
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/profile`, {data, headers: headers})
-        const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
         const userName = response.name
         const userAbout = response.about
         expect(userName).toEqual(name)
@@ -114,15 +114,15 @@ export class ApiProfilePage {
 
         const apiRequest = await apiContext.post(url, {
             multipart:{
-                key: uploadKey,
+                key: uploadKey,  
                 'x-amz-tagging': xAmzTagging,
-                bucket: bucket, 
+                bucket: bucket,  
                 'X-Amz-Algorithm': xAmzAlgorithm,
                 'X-Amz-Credential': xAmzCredential,
                 'X-Amz-Date': xAmzDate,
                 'Policy': policy, 
                 'X-Amz-Signature': xAmzSignature,
-                file: fs.ReadStream('./100KB.bin')
+                file: fs.ReadStream('./100KB.bin') 
             },
         headers: {
             'Content-Type': 'multipart/form-data',

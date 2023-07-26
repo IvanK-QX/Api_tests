@@ -1,6 +1,7 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { faker } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
+import { Headers } from "../../utils/headers";
 
 export class ApiLoginPage {
     apiContext: APIRequestContext
@@ -16,12 +17,7 @@ export class ApiLoginPage {
             deviceId: `${faker.string.uuid()}`,
             language: "uk"
         }
-        const headers = {
-            'packagename': 'com.plamfy',
-            'content-type': 'application/json',
-            'appversion': '1',
-            'os': 'browser'
-        }
+        const headers = Headers.guestHeader()
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
@@ -29,7 +25,7 @@ export class ApiLoginPage {
         const id = response.profile._id
         expect(response.profile.status).toEqual('Active')
         console.log(`Guest with userID: ${id} logged into the app`)
-        return { token, id } 
+        return { token, id} 
     }
 
     async adminLogin(url: string, adminGuestToken: string, deviceId: string, email: string) {
@@ -100,7 +96,7 @@ export class ApiLoginPage {
         return await this.addEmail(`${url}:3000/login`, login.token, faker.string.uuid())
     }
 
-    async createNewAdminUser(url: string) {
+    async loginWithAdminUser(url: string) {
         const adminLogin = await this.login(`${url}:3000/login`)
         return await this.adminLogin(`${url}:3000/admin/login`, adminLogin.token, faker.string.uuid(), apiDataSet.email)
     

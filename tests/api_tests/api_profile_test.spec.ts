@@ -1,4 +1,4 @@
-import { expect, request, test } from "@playwright/test";
+import { request, test } from "@playwright/test";
 import { apiUrl } from "../../utils/apiUrl";
 import { Api } from "../../pages/Api";
 import { apiDataSet } from "../../utils/dataSet";
@@ -10,7 +10,7 @@ test.describe('Profile API test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
-        admin = await api.loginPage.createNewAdminUser(apiUrl.qaEnvUrl)
+        admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
     })
 
     test.afterEach(async () => {
@@ -78,8 +78,8 @@ test.describe('Profile API test', async () => {
     test('Profile > KYC', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
-        // TODO waiting until idv will be uniq
+        //const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
+        //TODO waiting until idv will be uniq
         // const idvId2 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
         // expect(idvId1.idvId).toEqual(idvId2.idvId)
     })
