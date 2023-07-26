@@ -1,6 +1,5 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
-import { faker } from '@faker-js/faker';
 import { apiDataSet } from "../../utils/dataSet";
 import { ModetarorPayloads } from "./moderator_payloads";
 
@@ -41,7 +40,7 @@ export class ApiModeratorPage {
         const newAdminToken = response.token
         expect(rolesGroup).toEqual('admin')
         console.log(`Admin with: ${id}, ${email} and "password" is Logged In`)
-        return { id, email, newAdminToken }
+        return { newAdminToken }
     }
 
 
@@ -62,7 +61,7 @@ export class ApiModeratorPage {
         console.log(`Correct ${returnedUserId} is displayed`)
     }
 
-    async setAdminProfileStatus(url: string, adminToken: string, referralUserId: string, currentStatus: string, newStatus: string) {
+    async setAdminProfileStatus(url: string, adminToken: string, referralUserId: string, currentStatus: string, newStatus: "Active" | "Suspended" | "Blocked" | "Shutdown") {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
             "status": `${newStatus}`,
@@ -76,7 +75,7 @@ export class ApiModeratorPage {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const success = response.success
-        let checkSucces = (currentStatus !== newStatus) ? true : false
+        const checkSucces = (currentStatus !== newStatus) ? true : false
         expect(success).toEqual(checkSucces)
         console.log(`Correct Profile Status is set`)
     }
@@ -213,11 +212,11 @@ export class ApiModeratorPage {
         return returnedAgentUserId
     }
 
-    async AdminProfileUpdate(url: string, adminToken: string, userId: string, action: string, userName: string, payoneerEmail: string) {
+    async adminProfileUpdate(url: string, adminToken: string, userId: string, action: string, userName: string, payoneerEmail: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const randomPayoneerEmail = apiDataSet.randomEmail
         const randomName = apiDataSet.randomName
-        const data = ModetarorPayloads.AdminProfileUpdate(userId, action, userName, payoneerEmail)
+        const data = ModetarorPayloads.adminProfileUpdate(userId, action, userName, payoneerEmail)
         const headers = Headers.userHeader(adminToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/profile/update`, {data, headers: headers})
@@ -246,7 +245,7 @@ export class ApiModeratorPage {
         console.log(`The PayoutEmail is updated to ${returnedPayoutEmail}`)
     }
 
-    async adminModeratorAction(url: string, adminToken: string, streamId: string, reason: string) {
+    async adminModeratorAction(url: string, adminToken: string, streamId: string, reason: "closedCamera/emptyRoom" | "adultContent" | "minorsInTheStream" ) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = ModetarorPayloads.adminModeratorAction(streamId, reason)
         const headers = Headers.userHeader(adminToken)
@@ -290,15 +289,5 @@ export class ApiModeratorPage {
         expect(returnedActionId).toEqual(actionId)
         console.log(`The Timer fo the ${returnedActionId} Action is stopped`)
     }
-
-
-
-
-
-    
-
-
-
-
 
 }

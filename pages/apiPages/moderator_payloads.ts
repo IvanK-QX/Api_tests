@@ -25,7 +25,7 @@ export class ModetarorPayloads {
     
     }
 
-    static AdminProfileUpdate(userId: string, action: string, userName: string, payoneerEmail: string ){
+    static adminProfileUpdate(userId: string, action: string, userName: string, payoneerEmail: string ){
         const query = {
             "userId": `${userId}`,
             "action": `${action}`,

@@ -13,8 +13,6 @@ import { ApiSalaryRulesPage } from "./apiPages/salaryRules_page"
 import { ApiModeratorPage } from "./apiPages/moderator_page"
 import { ApiReferalPage } from "./apiPages/referal_page"
 
-
-
 export class Api {
     apiContext: APIRequestContext
     loginPage: ApiLoginPage
