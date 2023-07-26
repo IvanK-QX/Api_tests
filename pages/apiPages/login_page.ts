@@ -25,7 +25,7 @@ export class ApiLoginPage {
         const id = response.profile._id
         expect(response.profile.status).toEqual('Active')
         console.log(`Guest with userID: ${id} logged into the app`)
-        return { token, id } 
+        return { token, id} 
     }
 
     async adminLogin(url: string, adminGuestToken: string, deviceId: string, email: string) {
@@ -93,7 +93,7 @@ export class ApiLoginPage {
 
     async createNewUser(url: string) {
         const login = await this.login(`${url}:3000/login`)
-        return await this.addEmail(`${url}:3000/login`, login.token, apiDataSet.deviceUUID)
+        return await this.addEmail(`${url}:3000/login`, login.token, faker.string.uuid())
     }
 
     async loginWithAdminUser(url: string) {
