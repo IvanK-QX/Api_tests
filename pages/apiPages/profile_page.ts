@@ -20,8 +20,8 @@ export class ApiProfilePage {
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/profile`, {data, headers: headers})
-        const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
         const userName = response.name
         const userAbout = response.about
         expect(userName).toEqual(name)

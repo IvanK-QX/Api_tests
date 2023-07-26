@@ -1,11 +1,11 @@
-import { expect, request, test } from "@playwright/test";
+import { request, test } from "@playwright/test";
 import { apiUrl } from "../../utils/apiUrl";
 import { Api } from "../../pages/Api";
 import { apiDataSet } from "../../utils/dataSet";
 
 let user, admin
 
-test.describe.only('Profile API test', async () => {
+test.describe('Profile API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
