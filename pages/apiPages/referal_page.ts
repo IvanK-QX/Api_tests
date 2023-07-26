@@ -1,6 +1,5 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
-
 export class ApiReferalPage {
     apiContext: APIRequestContext
 
