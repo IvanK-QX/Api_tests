@@ -45,12 +45,13 @@ export class ApiModeratorPage {
 
 
 
-    async getAdminReferralEarnings(url: string, userToken: string, userId: string) {
+    async getAdminReferralEarnings(url: string, userToken: string, userId: string, startDate: string, endDate: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
-            "period": "day",
-            "userId": `${userId}`
-        }
+            "userId": `${userId}`,
+            "startDate": `${startDate}`,
+            "endDate": `${endDate}`
+          }
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/agent/referalEarnings`, {data, headers: headers})

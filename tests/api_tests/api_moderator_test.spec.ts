@@ -5,16 +5,13 @@ import { apiDataSet } from "../../utils/dataSet";
 
 let newAdmin, user, referralUser, newStream
 
-test.describe('API test ',async () => {
+test.describe.only('API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        let guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
-        let admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
-        let  createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
-        guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
-        admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
-        createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
+        const guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
+        const admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
+        const  createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
         newAdmin = await api.moderatorPage.moderatorLogin(apiUrl.qaEnvUrl, guestUser.token, createdNewAdmin.email, apiDataSet.deviceUUID)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         referralUser = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
@@ -33,7 +30,7 @@ test.describe('API test ',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.referalPage.setReferal(apiUrl.qaEnvUrl, user.userToken, user.id, referralUser.id)
-        await api.moderatorPage.getAdminReferralEarnings(apiUrl.qaEnvUrl, user.userToken, user.id)
+        await api.moderatorPage.getAdminReferralEarnings(apiUrl.qaEnvUrl, user.userToken, user.id, apiDataSet.isoDate, apiDataSet.isoDate)
     }) 
     
     test('Admin Profile Get/Update',async () => {

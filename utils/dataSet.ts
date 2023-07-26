@@ -9,6 +9,6 @@ export const apiDataSet = {
     email: 'myleadsp.ace',
     password: 'dp1181345',
     streamTitle: 'My stream Title',
-    updatedStreamTitle: 'My updated title'
+    updatedStreamTitle: 'My updated title',
+    isoDate: new Date().toISOString()
 }
-
