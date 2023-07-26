@@ -144,7 +144,6 @@ export class ApiProfilePage {
         const apiRequest = await apiContext.post(`${url}:3000/profileAvatar`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        console.log(response)
         const avatarPicture = response.avatarPicture
         expect(avatarPicture).toEqual(uploadId)
         console.log(`Avatar with id: ${uploadId} is uploaded`)

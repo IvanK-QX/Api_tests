@@ -28,8 +28,7 @@ test.describe('API Gift Tests with Two user',async () => {
         await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
     })
     
-    //need to add coins to the users 
-    test.skip('Sent and Receive Gift',async () => {
+    test('Sent and Receive Gift',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
