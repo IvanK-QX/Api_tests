@@ -3,6 +3,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
+  
   testDir: './tests',
   timeout: 2 * 60 * 1000,
   expect: {
@@ -10,7 +11,7 @@ const config: PlaywrightTestConfig = {
   },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: 2,
+  retries: 0,
   workers: process.env.CI ? 1 : 6,
   reporter: [
     ['line'],
@@ -32,7 +33,13 @@ const config: PlaywrightTestConfig = {
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome'],
+        launchOptions: {
+          args: [
+            '--use-fake-ui-for-media-stream', // avoids the need to grant camera/microphone permissions
+            '--use-fake-device-for-media-stream', // feeds a test pattern to getUserMedia() instead of live camera input
+          ]},
+        ...devices[
+          'Desktop Chrome'],
       },
     } 
     // {
