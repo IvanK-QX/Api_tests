@@ -31,9 +31,11 @@ test.describe.skip('API test with new user', async () => {
         await filechooser.setFiles('./utils/unnamed.jpg')
       })
       await page.click('button.user-data-entris__button-upload')
+      await page.waitForTimeout(1000)
       await page.click('button span.ui-button__text')
-
-      await page.pause()
+      await page.waitForTimeout(2000)
+      await page.waitForLoadState('networkidle')
+      await page.locator('#stream-main-action').getByRole('button').click()
 
       await newPage.goto('/chat')
       await newPage.click('button.header-chat__button')
