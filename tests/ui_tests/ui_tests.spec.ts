@@ -34,7 +34,7 @@ test.describe.skip('API test with new user', async () => {
       await page.click('button span.ui-button__text')
 
       await page.pause()
-      
+
       await newPage.goto('/chat')
       await newPage.click('button.header-chat__button')
       await newPage.waitForTimeout(3000)
