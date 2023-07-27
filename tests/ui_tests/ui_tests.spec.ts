@@ -2,19 +2,23 @@ import { request, test } from "@playwright/test";
 import { Api } from "../../pages/Api";
 import { apiUrl } from "../../utils/apiUrl";
 import { App } from "../../pages/App";
-let user 
+let streamer, watcher, newPage
 
 test.describe.skip('API test with new user', async () => {
-    test.beforeEach(async ({page}) => {
+    test.beforeEach(async ({page, browser}) => {
         const app = new App(page)
-        user = await app.loginPage.apiLogin(apiUrl.qaEnvUrl)
+        streamer = await app.loginPage.apiLogin(apiUrl.qaEnvUrl)
+        const contetext = await browser.newContext();
+        newPage = await contetext.newPage()
+        const watcherPage = new App(newPage)
+        watcher = await watcherPage.loginPage.apiLogin(apiUrl.qaEnvUrl)
     })
 
     test.afterEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        console.log(user.userToken)
-        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, streamer.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, watcher.userToken)
     })
 
     test('api login',async ({page}) => {
@@ -28,6 +32,14 @@ test.describe.skip('API test with new user', async () => {
       })
       await page.click('button.user-data-entris__button-upload')
       await page.click('button span.ui-button__text')
+
+      await page.pause()
+      
+      await newPage.goto('/chat')
+      await newPage.click('button.header-chat__button')
+      await newPage.waitForTimeout(3000)
+
+
     })
 })
 

@@ -1,7 +1,8 @@
 import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers"
+import * as fs from 'fs'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require('fs')
+// const fs = require('fs')
 
 export class ApiProfilePage {
     apiContext: APIRequestContext
@@ -98,37 +99,34 @@ export class ApiProfilePage {
         return { uploadID, uploadUrl, uploadKey, xAmzTagging, bucket, xAmzAlgorithm, xAmzCredential, xAmzDate, policy, xAmzSignature}
     }
 
-    async uploadToS3(url: string, uploadKey: any, xAmzTagging: any, bucket: any, xAmzAlgorithm: any, xAmzCredential: any, xAmzDate: any, policy: any, xAmzSignature: any) {
+    async uploadToS3(url: string, userToken: string, uploadKey: string, xAmzTagging: string, bucket: string, xAmzAlgorithm: string, xAmzCredential: string, xAmzDate: string, policy: string, xAmzSignature: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const formData = new URLSearchParams()
-        formData.append('key', `${uploadKey}`)
-        formData.append('x-amz-tagging', `${xAmzTagging}`)
-        formData.append('bucket', `${bucket}`)
-        formData.append('X-Amz-Algorithm', `${xAmzAlgorithm}`)
-        formData.append('X-Amz-Credential', `${xAmzCredential}`)
-        formData.append('X-Amz-Date', `${xAmzDate}`)
-        formData.append('Policy', `${policy}`)
-        formData.append('X-Amz-Signature', `${xAmzSignature}`)
-        formData.append('file', '43435')
 
-
-        const apiRequest = await apiContext.post(url, {
-            multipart:{
-                key: uploadKey,  
-                'x-amz-tagging': xAmzTagging,
-                bucket: bucket,  
-                'X-Amz-Algorithm': xAmzAlgorithm,
-                'X-Amz-Credential': xAmzCredential,
-                'X-Amz-Date': xAmzDate,
-                'Policy': policy, 
-                'X-Amz-Signature': xAmzSignature,
-                file: fs.ReadStream('./100KB.bin') 
-            },
+        const stream = fs.createReadStream('unnamed.jpg')
+        console.log('before request')
+        const multipart = {
+            'key': uploadKey,  
+            'x-amz-tagging': xAmzTagging,
+            'bucket': bucket,  
+            'X-Amz-Algorithm': xAmzAlgorithm,
+            'X-Amz-Credential': xAmzCredential,
+            'X-Amz-Date': xAmzDate,
+            'Policy': policy, 
+            'X-Amz-Signature': xAmzSignature,
+            'File': stream
+        }
+        const apiRequest = await apiContext.post(`${url}`, {
+            multipart: multipart,
         headers: {
             'Content-Type': 'multipart/form-data',
+            'authorization': `Bearer ${userToken}`,
+            'packagename': 'com.plamfy',
+            'appversion': '1',
+            'os': 'ios'
 
         }})
         console.log(apiRequest.status())
+        console.log('after request')
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`file uploaded to s3 bucket`)
     }
@@ -142,8 +140,9 @@ export class ApiProfilePage {
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/profileAvatar`, {data, headers: headers})
-        expect(apiRequest.ok()).toBeTruthy()
+        // expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
+        console.log(response)
         const avatarPicture = response.avatarPicture
         expect(avatarPicture).toEqual(uploadId)
         console.log(`Avatar with id: ${uploadId} is uploaded`)

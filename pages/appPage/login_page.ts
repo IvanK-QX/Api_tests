@@ -1,4 +1,4 @@
-import { APIRequestContext, request, Page } from "@playwright/test"
+import { APIRequestContext, request, Page, Browser } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
 
@@ -31,6 +31,5 @@ export class AppLoginPage {
         await this.page.waitForLoadState('networkidle')
         return { userToken }
     }
-
        
 }
