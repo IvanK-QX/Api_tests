@@ -50,7 +50,7 @@ test.describe('Profile API test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const createFileUpload = await api.profilePage.createFileuplaod(apiUrl.qaEnvUrl, user.userToken)
-        // api.profilePage.uploadToS3(createFileUpload.uploadUrl, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
+        // api.profilePage.uploadToS3(createFileUpload.uploadUrl, user.userToken, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
         // api.profilePage.updateProfileCover(apiUrl.qaEnvUrl, user.userToken, createFileUpload.uploadID)
     })
 
