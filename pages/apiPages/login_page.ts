@@ -51,9 +51,10 @@ export class ApiLoginPage {
         const adminToken = response.token
         const id = response.profile._id
         const rolesGroup = response.profile.rolesGroup
+        const adminHumanReadableId = response.profile.humanReadableId
         expect(rolesGroup).toEqual('admin')
         console.log(`Admin with: ${id} logged into the app`)
-        return { adminToken, id } 
+        return { adminToken, id, adminHumanReadableId } 
     }
 
     async addEmail(url: string, token: string, deviceId: string) {

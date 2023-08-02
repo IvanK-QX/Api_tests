@@ -10,5 +10,6 @@ export const apiDataSet = {
     password: 'dp1181345',
     streamTitle: 'My stream Title',
     updatedStreamTitle: 'My updated title',
-    isoDate: new Date().toISOString()
+    isoDate: new Date().toISOString(),
+    randomWord: `word${(Math.random() + 1).toString(36).substring(7)}`
 }

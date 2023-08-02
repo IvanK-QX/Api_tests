@@ -43,15 +43,13 @@ export class ApiModeratorPage {
         return { newAdminToken }
     }
 
-
-
     async getAdminReferralEarnings(url: string, userToken: string, userId: string, startDate: string, endDate: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
             "userId": `${userId}`,
             "startDate": `${startDate}`,
             "endDate": `${endDate}`
-          }
+        }
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/agent/referalEarnings`, {data, headers: headers})
@@ -246,9 +244,9 @@ export class ApiModeratorPage {
         console.log(`The PayoutEmail is updated to ${returnedPayoutEmail}`)
     }
 
-    async adminModeratorAction(url: string, adminToken: string, streamId: string, reason: "closedCamera/emptyRoom" | "adultContent" | "minorsInTheStream" ) {
+    async adminModeratorAction(url: string, adminToken: string, streamId: string, type: "warning" | "blockStream", reason: "closedCamera/emptyRoom" | "adultContent" | "minorsInTheStream" ) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
-        const data = ModetarorPayloads.adminModeratorAction(streamId, reason)
+        const data = ModetarorPayloads.adminModeratorAction(streamId, type, reason)
         const headers = Headers.userHeader(adminToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/admin/moderator/action`, {data, headers: headers})
