@@ -41,7 +41,7 @@ test.describe('API test ',async () => {
         await api.moderatorPage.getAdminProfileList(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
         await api.moderatorPage.getAgentProfile(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id)
         await api.moderatorPage.adminProfileUpdate(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "updateFields", apiDataSet.randomName, apiDataSet.randomEmail)
-        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "test@test.com")
+        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "test@test2222.com")
     }) 
 
     // test('Admin Avatar Approve/Decline',async () => {
