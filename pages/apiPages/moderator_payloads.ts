@@ -38,9 +38,9 @@ export class ModetarorPayloads {
         return query
     }
 
-    static adminModeratorAction(streamId: string, reason: string){
+    static adminModeratorAction(streamId: string, type: string, reason: string){
         const query = {
-            "type": "warning",
+            "type": `${type}`,
             "streamIds": [
                 `${streamId}`
             ],

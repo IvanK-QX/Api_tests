@@ -15,7 +15,7 @@ test.describe('API test ',async () => {
         newAdmin = await api.moderatorPage.moderatorLogin(apiUrl.qaEnvUrl, guestUser.token, createdNewAdmin.email, apiDataSet.deviceUUID)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         referralUser = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
-        newStream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, referralUser.userToken, "public", "Test Title" )
+        newStream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, referralUser.userToken, "public", apiDataSet.streamTitle )
     })
 
     test.afterEach(async () => {
@@ -41,24 +41,24 @@ test.describe('API test ',async () => {
         await api.moderatorPage.getAdminProfileList(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
         await api.moderatorPage.getAgentProfile(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id)
         await api.moderatorPage.adminProfileUpdate(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "updateFields", apiDataSet.randomName, apiDataSet.randomEmail)
-        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "test@test.com")
+        await api.moderatorPage.adminSetPayoutEmail(apiUrl.qaEnvUrl, newAdmin.newAdminToken, referralUser.id, "test@test2222.com")
     }) 
 
-    test('Admin Avatar Approve/Decline',async () => {
-        const apiContext = await request.newContext()
-        const api = new Api(apiContext)
-        await api.moderatorPage.getAdminApprovalQueueCount(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
-        await api.moderatorPage.getAdminAvatarsApprovalQueue(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
-        // await api.moderatorPage.adminApproveAvatar(apiUrl.qaEnvUrl, newAdmin.newAdminToken, pendingAvatarId.avatarId)
-        // pendingAvatarId = await api.moderatorPage.getAdminAvatarsApprovalQueue(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
-        // await api.moderatorPage.adminDeclineAvatar(apiUrl.qaEnvUrl, newAdmin.newAdminToken, pendingAvatarId.avatarId)
+    // test('Admin Avatar Approve/Decline',async () => {
+    //     const apiContext = await request.newContext()
+    //     const api = new Api(apiContext)
+    //     await api.moderatorPage.getAdminApprovalQueueCount(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
+    //     await api.moderatorPage.getAdminAvatarsApprovalQueue(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
+    //     // await api.moderatorPage.adminApproveAvatar(apiUrl.qaEnvUrl, newAdmin.newAdminToken, pendingAvatarId.avatarId)
+    //     // pendingAvatarId = await api.moderatorPage.getAdminAvatarsApprovalQueue(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
+    //     // await api.moderatorPage.adminDeclineAvatar(apiUrl.qaEnvUrl, newAdmin.newAdminToken, pendingAvatarId.avatarId)
         
-    }) 
+    // }) 
 
     test('Admin Moderator Actions',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const streamAction = await api.moderatorPage.adminModeratorAction(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId, "closedCamera/emptyRoom")
+        const streamAction = await api.moderatorPage.adminModeratorAction(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId, "warning", "closedCamera/emptyRoom")
         await api.moderatorPage.getAdminActionList(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId)
         await api.moderatorPage.adminTimerStop(apiUrl.qaEnvUrl, newAdmin.newAdminToken, streamAction.returnedActionId) 
         

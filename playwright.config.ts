@@ -10,9 +10,10 @@ const config: PlaywrightTestConfig = {
     timeout: 20000
   },
   fullyParallel: true,
+  reportSlowTests: { max: 0, threshold: 60001 },
   forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: process.env.CI ? 1 : 6,
+  workers: process.env.CI ? 6: undefined,
   reporter: [
     ['line'],
     ['allure-playwright']
@@ -23,9 +24,9 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    trace: 'retain-on-failure',
     actionTimeout: 20000,
     baseURL: 'https://webclient.streamsqa.com',
-    trace: 'on',
   },
   
   // grep:[new RegExp("@smoke")],
