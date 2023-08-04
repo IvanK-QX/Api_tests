@@ -14,6 +14,7 @@ import { ApiModeratorPage } from "./apiPages/moderator_page"
 import { ApiReferalPage } from "./apiPages/referal_page"
 import { ApiModerationsPage } from "./apiPages/moderations_page"
 import { ApiReportsPage } from "./apiPages/reports_page"
+import { ApiNotificationsContentPage } from "./apiPages/notificationsContent_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -32,6 +33,7 @@ export class Api {
     referalPage: ApiReferalPage
     moderationsPage: ApiModerationsPage
     reportPage: ApiReportsPage
+    notificationsContentPage: ApiNotificationsContentPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -50,5 +52,6 @@ export class Api {
         this.referalPage = new ApiReferalPage(apiContext)
         this.moderationsPage = new ApiModerationsPage(apiContext)
         this.reportPage = new ApiReportsPage(apiContext)
+        this.notificationsContentPage = new ApiNotificationsContentPage(apiContext)
     }
 }
