@@ -5,7 +5,7 @@ import { apiDataSet } from "../../utils/dataSet";
 
 let admin
 
-test.describe.only('API test ',async () => {
+test.describe('API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)

@@ -14,8 +14,8 @@ export class NotificationsContentPayloads {
         const query = {
             "id": `${notificationContentId}`,
             "type": "giftReceived",
-            "title": "contentTitle Test Title",
-            "text": "contentText"
+            "title": `${contentTitle}`,
+            "text": `${contentText}`
           }
         return query
     
