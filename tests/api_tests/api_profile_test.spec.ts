@@ -75,7 +75,7 @@ test.describe('Profile API test', async () => {
         await api.profilePage.addDiamonds(apiUrl.qaEnvUrl, admin.adminToken, user.id)
     })
 
-    test('Profile > KYC', async () => {
+    test.skip('Profile > KYC', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         //const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)

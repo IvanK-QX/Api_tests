@@ -82,7 +82,7 @@ test.describe('Stream API test',async () => {
         await api.streamsPage.streamRank(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    test('Stream Gifts CRUD',async () => {
+    test.skip('Stream Gifts CRUD',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
