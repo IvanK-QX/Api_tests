@@ -28,11 +28,25 @@ test.describe('Payouts API test ',async () => {
         await api.payoutPage.adminPayoutRequest(apiUrl.qaEnvUrl, admin.adminToken, user.id, payoneerEmail.randomPayoneerEmail)
         const payoutRequestedId = await api.payoutPage.adminPayoutHistory(apiUrl.qaEnvUrl, admin.adminToken, user.humanReadableId, user.id, payoneerEmail.randomPayoneerEmail)
         await api.payoutPage.adminSetPayoutStatus(apiUrl.qaEnvUrl, admin.adminToken, payoutRequestedId.payoutRequestId, "paid" )
-    
     })
 
-    
+    test('Streamer Type _Internal',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.internalPage.stremerType(apiUrl.qaEnvUrl, admin.adminToken, user.id)
+    })
 
+    test('Analytics Revcat _Internal',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.internalPage.analyticsRevcat(apiUrl.qaEnvUrl, admin.adminToken)
+    })
+
+    test('Webhook Revcat _Internal',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.internalPage.webhooksRevcat(apiUrl.qaEnvUrl, admin.adminToken)
+    })
 
 })
 

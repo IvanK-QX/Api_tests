@@ -10,7 +10,6 @@ test.describe('Sallary Rules API Test ',async () => {
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
-        
     })
 
     test.afterEach(async () => {

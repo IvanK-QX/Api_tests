@@ -25,8 +25,7 @@ test.describe('API test ',async () => {
         await api.referalPage.setReferal(apiUrl.qaEnvUrl, user.userToken, user.id, referralUser.id)
         await api.referalPage.getReferalUsers(apiUrl.qaEnvUrl, user.userToken, referralUser.id)
         await api.referalPage.getReferalRulsList(apiUrl.qaEnvUrl, user.userToken)
-        await api.referalPage.getReferralUsersStatistics(apiUrl.qaEnvUrl, user.userToken, "week")
-        
+        await api.referalPage.getReferralUsersStatistics(apiUrl.qaEnvUrl, user.userToken, "week") 
     })
 
 })
