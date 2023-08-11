@@ -27,8 +27,5 @@ test.describe('Blocked API test ',async () => {
         await api.blockedPage.unblockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
 
-    
-
-
 })
 

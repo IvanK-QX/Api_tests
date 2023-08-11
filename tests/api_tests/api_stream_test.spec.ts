@@ -82,8 +82,7 @@ test.describe('Stream API test',async () => {
         await api.streamsPage.streamRank(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    //need to fix PB-1501
-    test.skip('Stream Gifts CRUD',async () => {
+    test('Stream Gifts CRUD',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
@@ -91,10 +90,6 @@ test.describe('Stream API test',async () => {
         await api.streamsPage.addDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId, gift.giftIdOne)
         await api.streamsPage.removeDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId)
     })
-
-
-    
-
 
 })
 
