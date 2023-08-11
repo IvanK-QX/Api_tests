@@ -16,6 +16,7 @@ import { ApiModerationsPage } from "./apiPages/moderations_page"
 import { ApiReportsPage } from "./apiPages/reports_page"
 import { ApiNotificationsContentPage } from "./apiPages/notificationsContent_page"
 import { ApiInternalPage } from "./apiPages/internal_page"
+import { ApiOtherPage } from "./apiPages/other_functionality_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -36,6 +37,7 @@ export class Api {
     reportPage: ApiReportsPage
     notificationsContentPage: ApiNotificationsContentPage
     internalPage: ApiInternalPage
+    otherTestsPage: ApiOtherPage
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -56,5 +58,7 @@ export class Api {
         this.reportPage = new ApiReportsPage(apiContext)
         this.notificationsContentPage = new ApiNotificationsContentPage(apiContext)
         this.internalPage = new ApiInternalPage(apiContext)
+        this.otherTestsPage = new ApiOtherPage(apiContext)
+
     }
 }
