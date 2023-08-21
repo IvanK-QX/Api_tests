@@ -83,8 +83,41 @@ test.describe('Profile API test', async () => {
         // const idvId2 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
         // expect(idvId1.idvId).toEqual(idvId2.idvId)
     })
-    
 
+    test('Get Ratios', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext) 
+        await api.otherTestsPage.getRatios(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Get Coins For Last 30 Days', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext) 
+        await api.otherTestsPage.getCoinsBoughtLast30Days(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Last Launch', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext) 
+        await api.otherTestsPage.lastLaunch(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Get Model Problem', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext) 
+        await api.otherTestsPage.getModelProblem(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Get Mounthly Bonus', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext) 
+        await api.otherTestsPage.mounthlyBonus(apiUrl.qaEnvUrl, user.userToken)
+    })
+
+    test('Get feature flags',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.otherTestsPage.getFeatureFlag(apiUrl.qaEnvUrl, admin.adminToken)
+    })
 
 })
-
