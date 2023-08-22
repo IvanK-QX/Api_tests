@@ -4,7 +4,7 @@ import { Api } from "../../pages/Api";
 
 let user
 
-test.describe('Other1 API test', async () => {
+test.describe('Other API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
