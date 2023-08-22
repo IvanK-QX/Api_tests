@@ -99,11 +99,9 @@ export class ApiOtherPage {
 
         const apiRequest = await apiContext.get(`${url}:3000/modelProblem`, {headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
-        const response = await apiRequest.json()
-        const ps = response.ps
-        const cs = response.cs
-        expect(ps).toEqual(true)
-        expect(cs).toEqual(true)
+        const response = await apiRequest.text()
+        expect(response).toEqual('ps')
+        expect(response).toEqual('cs')
         console.log(`Model Problem is displayed`)
     }
 
@@ -141,5 +139,5 @@ export class ApiOtherPage {
         expect(response).toContain("0")
         console.log(`Agent Mounthly bonuses is displayed`)
     }
-    
+
 }
