@@ -22,7 +22,7 @@ test.describe('Profile API test', async () => {
     test('Edit Profile', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.profilePage.editProfile(apiUrl.qaEnvUrl, user.userToken, apiDataSet.randomName)
+        await api.profilePage.editProfile(apiUrl.qaEnvUrl, user.userToken, apiDataSet.randomName, apiDataSet.randomAbout)
     })
 
     test('Get Profile', async () => {
