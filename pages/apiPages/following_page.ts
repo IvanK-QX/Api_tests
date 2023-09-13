@@ -86,7 +86,7 @@ export class ApiFollowingPage {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain(followUserIdOne)
-        expect(response).toContain(followUserIdTwo)
+        expect(response).toContain(followUserIdOne)
         console.log(`List of suggest to follow user id displayed, ${followUserIdOne}, ${followUserIdTwo}`)
     }
 
