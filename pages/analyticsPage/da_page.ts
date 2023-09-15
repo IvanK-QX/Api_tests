@@ -52,4 +52,183 @@ export class AnalyticsDeviceActivityPage {
 
     }
 
+    async firstOpen(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.firstOpen(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for first open, platform ${platform}`)
+    }
+
+    async showSplash(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showSplash(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Splash screen, platform ${platform}`)
+    }
+
+    async showTerms(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showTerms(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Show Terms ${platform}`)
+    }
+
+    async showIdfa(url: string, userToken: string, userId: string, platform: 'iOS') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showIdfa(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Show Idfa, platform`)
+    }
+
+    async clickIdfa(url: string, userToken: string, userId: string, platform: 'iOS') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickIdfa(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for click Idfa, platform`)
+    }
+
+    async showPush(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showPush(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for show push, platform ${platform}`)
+    }
+
+    async clickPush(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickPush(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for click push, platform ${platform}`)
+    }
+
+    async showEnterNumber(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showEnterNumber(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for click push, platform ${platform}`)
+    }
+
+    async clickConfirmNumber(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickConfirmNumber(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for confirm number, platform ${platform}`)
+    }
+
+    async showVerify(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showVerify(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for verify, platform ${platform}`)
+    }
+
+    async showInvalidCode(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showInvalidCode(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for invalid code, platform ${platform}`)
+    }
+
+    async clickСonfirmСode(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickСonfirmСode(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for confirm code, platform ${platform}`)
+    }
+
+    async showCamAccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showCamAccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for access camera, platform ${platform}`)
+    }
+
+    async clickCamAccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickCamAccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for click access camera, platform ${platform}`)
+    }
+
+    async startBeautyFilterDownload(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.startBeautyFilterDownload(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for download Beauty filter, platform ${platform}`)
+    }
+
+    async beautyFilterDownloadSuccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.beautyFilterDownloadSuccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Beauty filter download success, platform ${platform}`)
+    }
+
+    async beautyFilterDownloadFailed(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.beautyFilterDownloadFailed(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Beauty filter download failed, platform ${platform}`)
+    }
+
+    async socketChannelsCountSubscription(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.socketChannelsCountSubscription(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request for Socket Channel, platform ${platform}`)
+    }
 }

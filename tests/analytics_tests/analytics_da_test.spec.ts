@@ -41,9 +41,11 @@ test.describe('Device analytics test', async () => {
         const analytics = new Analytics(apiContext)
         await analytics.daPage.showJoinModal(apiUrl.qaEnvUrl, user.token, user.id, "Web")
     })
+
+    test('First open', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.daPage.clickStartReg(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
 })
-
-
-
-
-
+})
