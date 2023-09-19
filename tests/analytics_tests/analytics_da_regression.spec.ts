@@ -136,4 +136,47 @@ test.describe('Device analytics test', async () => {
     })
 
 
+    test('Logout success', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.logoutSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.logoutSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+        await analytics.daPage.logoutSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Web")
+    })
+
+    test('Show mic access', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.showMicAccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.showMicAccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+    })
+
+    test('Click mic access', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.clickMicAccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.clickMicAccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+    })
+
+    test('Start gift animation download', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.startGiftAnimationDownload(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.startGiftAnimationDownload(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+    })
+
+    test('Gift animation download success', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.giftAnimationDownloadSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.giftAnimationDownloadSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+    })
+
+    test.only('Media source success', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.daPage.mediaSourceSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")
+        await analytics.daPage.mediaSourceSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
+    })
+
 })

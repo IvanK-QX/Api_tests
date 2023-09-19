@@ -391,4 +391,110 @@ export class DaPayloads {
     ]
     return query
   }
+
+
+  static logoutSuccess(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"userRole\":\"guest\",\"context\":\"Account management\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\"}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "4FEDD250-27EE-491A-99CB-928F3A036FA4",
+        "event": "logout_success",
+        "guestUserId": "64b10e2cf02c0b9507ca828e",
+        "eventTimeMs": 1689929034429,
+        "context": "Account management"
+      }
+    ]
+    return query
+  }
+
+  static showMicAccess(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"os\":\"iOS 16.1\",\"context\":\"Start Stream\",\"userRole\":\"guest\",\"deviceType\":\"iPhone XR\"}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "348A1B41-0C44-4A22-B7B1-FBD2B0DB6852",
+        "event": "show_mic_access",
+        "guestUserId": "64d4a3ff7f6aa4abe8fae8e4",
+        "eventTimeMs": 1692091306978,
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickMicAccess(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"userRole\":\"guest\",\"button\":\"while_using_app\",\"context\":\"Start Stream\"}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "348A1B41-0C44-4A22-B7B1-FBD2B0DB6852",
+        "event": "click_mic_access",
+        "guestUserId": "64d4a3ff7f6aa4abe8fae8e4",
+        "eventTimeMs": 1692091307986,
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static startGiftAnimationDownload(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"userRole\":\"guest\"}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "2C0AA165-1C89-42A3-AA19-7C93C898AD2C",
+        "event": "start_gift_animation_download",
+        "guestUserId": "64db85ae4c2c9d211684a756",
+        "eventTimeMs": 1693913557118
+      }
+    ]
+    return query
+  }
+
+  static giftAnimationDownloadSuccess(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"userRole\":\"guest\",\"duration_of_download\":14.789468050003052}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "2C0AA165-1C89-42A3-AA19-7C93C898AD2C",
+        "event": "gift_animation_download_success",
+        "guestUserId": "64db85ae4c2c9d211684a756",
+        "eventTimeMs": 1693913571902
+      }
+    ]
+    return query
+  }
+
+  static mediaSourceSuccess(userId: string, platform: string) {
+    const query = [
+      {
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"media_source\":\"Organic\",\"time_received\":9.3086020946502686,\"userRole\":\"guest\"}",
+        "brandId": 1,
+        "appName": "plamfy",
+        "platform": "iOS",
+        "idfv": "2C0AA165-1C89-42A3-AA19-7C93C898AD2C",
+        "event": "media_source_success",
+        "guestUserId": "64db85ae4c2c9d211684a756",
+        "eventTimeMs": 1693913553031
+      }
+    ]
+    return query
+  }
 }

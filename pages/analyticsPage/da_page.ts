@@ -231,4 +231,64 @@ export class AnalyticsDeviceActivityPage {
         expect(apiRequest.status()).toEqual(200)
         console.log(`Regression/ request for Socket Channel, platform ${platform}`)
     }
+
+    async logoutSuccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.logoutSuccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ sign out of the account success, platform ${platform}`)
+    }
+
+    async showMicAccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.showMicAccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ modal window for turning on the microphone, platform ${platform}`)
+    }
+
+    async clickMicAccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.clickMicAccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ turn on the microphone, platform ${platform}`)
+    }
+
+    async startGiftAnimationDownload(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.startGiftAnimationDownload(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ 3D animation loading, platform ${platform}`)
+    }
+
+    async giftAnimationDownloadSuccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.giftAnimationDownloadSuccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ animation downloaded successfully, platform ${platform}`)
+    }
+
+    async mediaSourceSuccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = DaPayloads.mediaSourceSuccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/da`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ mediasource downloaded successfully, platform ${platform}`)
+    }
 }
