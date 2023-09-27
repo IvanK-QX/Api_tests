@@ -172,7 +172,7 @@ test.describe('Device analytics test', async () => {
         await analytics.daPage.giftAnimationDownloadSuccess(apiUrl.qaEnvUrl, user.token, user.id, "Android")
     })
 
-    test.only('Media source success', async () => {
+    test('Media source success', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
         await analytics.daPage.mediaSourceSuccess(apiUrl.qaEnvUrl, user.token, user.id, "iOS")

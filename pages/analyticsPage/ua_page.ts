@@ -198,4 +198,266 @@ export class AnalyticsUserActivityPage {
         expect(apiRequest.status()).toEqual(200)
         console.log(`Click Gift Shop, platform ${platform}`)
     }
+
+    async pageviewUserInfo(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewUserInfo(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression / displaying the user info screen, platform ${platform}`)
+    }
+
+    async clickSave(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickSave(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ save profile information, platform ${platform}`)
+    }
+
+    async clickSkipProfileSetUp(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickSkipProfileSetUp(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ closed profile set up, platform ${platform}`)
+    }
+
+    async clickLogout(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickLogout(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ Logout from account, platform ${platform}`)
+    }
+
+    async clickDeleteProfile(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickDeleteProfile(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on button delete, platform ${platform}`)
+    }
+
+    async showReasonDelete(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showReasonDelete(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ page with delete's reason, platform ${platform}`)
+    }
+
+    async clickConfirmDeleteProfile(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickConfirmDeleteProfile(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ chose reason and confirm, platform ${platform}`)
+    }
+
+    async profileDeletedSuccess(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.profileDeletedSuccess(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ profile delete success, platform ${platform}`)
+    }
+
+    async showConfirmDelete(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showConfirmDelete(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ modal window that the account has been deleted, platform ${platform}`)
+    }
+
+    async clickProfile(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickProfile(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on button profile on navigation bar, platform ${platform}`)
+    }
+
+    async pageviewEditProfile(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewEditProfile(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ edit profile page, platform ${platform}`)
+    }
+
+    async clickPhotoEdit(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickPhotoEdit(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click to chose a photo for profile, platform ${platform}`)
+    }
+
+
+    async clickSettings(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickSettings(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click to settings, platform ${platform}`)
+    }
+
+    async pageviewSettings(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewSettings(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ settings page, platform ${platform}`)
+    }
+
+    async clickFollowers(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickFollowers(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page followers, platform ${platform}`)
+    }
+
+    async pageviewFollowers(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewFollowers(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ followers page, platform ${platform}`)
+    }
+
+    async clickMyFollowings(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickMyFollowings(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page followings, platform ${platform}`)
+    }
+
+    async pageviewMyFollowings(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewMyFollowings(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page my followings, platform ${platform}`)
+    }
+
+    async clickRefferalProgram(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickRefferalProgram(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page refferal program, platform ${platform}`)
+    }
+
+    async pageviewReferralProgram(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewReferralProgram(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ page referral program, platform ${platform}`)
+    }
+
+    async clickRedeemCash(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickRedeemCash(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page redeem cash, platform ${platform}`)
+    }
+
+    async pageviewTransactionsHistory(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewTransactionsHistory(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ page transaction history, platform ${platform}`)
+    }
+
+    async clickTopGifters(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickTopGifters(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on page top gifters, platform ${platform}`)
+    }
+
+    async pageviewTopGifters(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewTopGifters(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ page top gifters, platform ${platform}`)
+    }
+
+    async clickMyVipStatus(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickMyVipStatus(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click page vip status, platform ${platform}`)
+    }
+
+    async pageviewMyVipStatus(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewMyVipStatus(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ page my vip status, platform ${platform}`)
+    }
+
 }
