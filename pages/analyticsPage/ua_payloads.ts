@@ -19,7 +19,7 @@ export class UaPayloads {
     return query
   }
 
-  static pageviewFollowTop(userId: string, platform: string) {
+  static pageViewFollowTop(userId: string, platform: string) {
     const query = [
       {
         "params": "{\"context\":\"Splash\",\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\"}",

@@ -1,7 +1,7 @@
 import { request, test } from "@playwright/test";
-import { apiUrl } from "../../utils/apiUrl";
-import { Api } from "../../pages/Api";
-import { apiDataSet } from "../../utils/dataSet";
+import { apiUrl } from "../../../utils/apiUrl";
+import { Api } from "../../../pages/Api";
+import { apiDataSet } from "../../../utils/dataSet";
 
 let user, admin
 
