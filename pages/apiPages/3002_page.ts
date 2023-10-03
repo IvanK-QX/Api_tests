@@ -49,7 +49,6 @@ export class Api3002Page {
         const apiRequest = await apiContext.post(`${url}:3002/moderator/getAgoraTokenForChannel`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        console.log(response)
         expect(response[0].streamId).toContain(streamerId)
         expect(response[1].streamId).toContain(streamerId2)
         console.log(`List Of Tokens For Moderator is received`)

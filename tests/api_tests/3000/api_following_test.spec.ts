@@ -1,6 +1,6 @@
 import { request, test } from "@playwright/test";
-import { apiUrl } from "../../utils/apiUrl";
-import { Api } from "../../pages/Api";
+import { Api } from "../../../pages/Api";
+import { apiUrl } from "../../../utils/apiUrl";
 
 let user, following
 
