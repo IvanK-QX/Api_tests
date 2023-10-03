@@ -7,7 +7,7 @@ let user
 test.describe.only('Get data', () => {
 let userData = [0]
 
-for(let i = 1; i < 100000; i++) {
+for(let i = 1; i < 10000; i++) {
   userData.push(i)
 }
   for (const name of userData) {

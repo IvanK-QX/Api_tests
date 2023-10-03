@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 
 export const apiDataSet = {
     deviceUUID : `${faker.string.uuid()}`,
-    randomEmail  : `api+f${Math.floor(Math.random() * (999999-100000) + 100000)}@unitedtech.ai`,
+    randomEmail  : `api+a${Math.floor(Math.random() * (999999-100000) + 100000)}@unitedtech.ai`,
     randomName : `Lloy${(Math.random() + 1).toString(36).substring(7)}`,
     randomAbout : `About me ${(Math.random() + 1).toString(36).substring(10)}`,
     searchText: 'supermagic',
