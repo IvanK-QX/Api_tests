@@ -23,7 +23,7 @@ export class ApiMessage3003Page {
         const chatId = response.chatId
         const toUserId = response.toUserId
         const status = response.status
-        expect(text).toEqual("jksajfha")
+        expect(text).toEqual(messageText)
         expect(toUserId).toEqual(userId)
         expect(status).toEqual('Sent')
         return{chatId}

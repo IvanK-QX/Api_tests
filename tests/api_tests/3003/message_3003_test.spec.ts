@@ -22,7 +22,7 @@ test.describe('3003 API test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
-    test.only('Message Api Test', async () => {
+    test('Message Api Test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
