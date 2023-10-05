@@ -9,6 +9,7 @@ export const apiDataSet = {
     email: 'myleadsp.ace',
     password: 'dp1181345',
     streamTitle: 'My stream Title',
-    updatedStreamTitle: 'My updated title'
+    updatedStreamTitle: 'My updated title',
+    messageText: `Message Text + ${Math.floor(Math.random() * (999999-100000) + 100000)}`
 }
 
