@@ -38,6 +38,7 @@ const config: PlaywrightTestConfig = {
           args: [
             '--use-fake-ui-for-media-stream', // avoids the need to grant camera/microphone permissions
             '--use-fake-device-for-media-stream', // feeds a test pattern to getUserMedia() instead of live camera input
+            // '--use-file-for-fake-video-capture=~/utils/webcam.y4m'
           ]},
         ...devices[
           'Desktop Chrome'],
