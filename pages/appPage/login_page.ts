@@ -1,4 +1,4 @@
-import { APIRequestContext, request, Page, Browser } from "@playwright/test"
+import { APIRequestContext, request, Page } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
 
@@ -23,10 +23,21 @@ export class AppLoginPage {
         await this.page.evaluate(
           `window.localStorage.setItem('isAuthorized', "true")`
         )
+        await this.page.evaluate(
+          `window.localStorage.setItem('streamData', 'null')`
+        )
+        await this.page.evaluate(
+          `window.localStorage.setItem('streamStatus', 'null')`
+        )
+        await this.page.evaluate(
+          `window.localStorage.setItem('streamId', 'null')`
+        )
         const userToken = user.userToken
+        const id = user.id,
+        name = user.name
         await this.page.reload()
         await this.page.waitForLoadState('networkidle')
-        return { userToken }
+        return { userToken , id , name}
     }
        
 }

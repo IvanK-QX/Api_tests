@@ -12,6 +12,7 @@ export const apiDataSet = {
     updatedStreamTitle: 'My updated title',
     isoDate: new Date().toISOString(),
     randomWord: `word${(Math.random() + 1).toString(36).substring(7)}`,
-    messageText: `Message Text + ${Math.floor(Math.random() * (999999-100000) + 100000)}`
+    messageText: `Message Text + ${Math.floor(Math.random() * (999999-100000) + 100000)}`,
+    uiStreamMessage: 'hello this is playwright message for chat in real-time'
 
 }
