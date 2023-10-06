@@ -18,6 +18,7 @@ import { ApiNotificationsContentPage } from "./apiPages/notificationsContent_pag
 import { ApiInternalPage } from "./apiPages/internal_page"
 import { ApiOtherPage } from "./apiPages/other_functionality_page"
 import { Api3002Page } from "./apiPages/3002_page"
+import { ApiLoginPageNegFlow } from "./apiPagesNegFlow/loginNegFlow_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -40,6 +41,8 @@ export class Api {
     internalPage: ApiInternalPage
     otherTestsPage: ApiOtherPage
     agora3002Page: Api3002Page
+    loginPageNegFlow: ApiLoginPageNegFlow
+    static loginPageNegFlow: any
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -62,6 +65,7 @@ export class Api {
         this.internalPage = new ApiInternalPage(apiContext)
         this.otherTestsPage = new ApiOtherPage(apiContext)
         this.agora3002Page = new Api3002Page(apiContext)
+        this.loginPageNegFlow = new ApiLoginPageNegFlow(apiContext)
 
     }
 }
