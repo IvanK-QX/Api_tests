@@ -3,7 +3,7 @@ import { apiUrl } from "../../../utils/apiUrl";
 import { Api } from "../../../pages/Api";
 import { loginAdminTestCases, loginGuestTestCases, loginUserTestCases } from "../../../pages/apiPagesNegFlow/loginNegFlow_testCases";
 
-test.describe('API test ',async () => {
+test.describe('Login Negative Flow',async () => {
 
     // //Login Guest Negative Flow 
     for (const testCase of loginGuestTestCases) {
