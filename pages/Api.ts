@@ -19,6 +19,7 @@ import { ApiInternalPage } from "./apiPages/internal_page"
 import { ApiOtherPage } from "./apiPages/other_functionality_page"
 import { Api3002Page } from "./apiPages/3002_page"
 import { ApiLoginPageNegFlow } from "./apiPagesNegFlow/loginNegFlow_page"
+import { ApiMessage3003Page } from "./apiPages/message_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -43,6 +44,7 @@ export class Api {
     agora3002Page: Api3002Page
     loginPageNegFlow: ApiLoginPageNegFlow
     static loginPageNegFlow: any
+    messagePage: ApiMessage3003Page
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -66,6 +68,6 @@ export class Api {
         this.otherTestsPage = new ApiOtherPage(apiContext)
         this.agora3002Page = new Api3002Page(apiContext)
         this.loginPageNegFlow = new ApiLoginPageNegFlow(apiContext)
-
+        this.messagePage = new ApiMessage3003Page(apiContext)
     }
 }
