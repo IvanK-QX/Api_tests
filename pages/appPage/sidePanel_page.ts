@@ -9,7 +9,7 @@ export class AppSidePanelPage {
 
     async clickCreateStreamBtn() {
         await this.page.locator('.sidebar__create-button').click()
-        await this.page.waitForLoadState()
+        await this.page.locator('[placeholder="Stream title"]').waitFor()
     }
 
 

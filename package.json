@@ -11,7 +11,7 @@
     "test:analytics": "npx playwright test /analytics_tests/* || :",
     "posttest": "npm run allure:generate",
     "test:api": "npx playwright test /api_tests/* || :",
-    "test:ui": "xvfb-run npx playwright test /ui_tests/* || :"
+    "test:ui": "npx playwright test ./ui_tests/* || :"
   },
   "repository": {
     "type": "git",

@@ -26,7 +26,7 @@ test.describe('UI Tests', async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, watcher.userToken)
     })
 
-    test('api login',async ({page}) => {
+    test.only('api login',async ({page}) => {
       const app = new App(page)
       const watcherPage = new App(newPage)
       await app.ediProfilePage.open()
@@ -36,12 +36,15 @@ test.describe('UI Tests', async () => {
       await app.preStreamPage.uploadAvatar()
       await app.preStreamPage.clickStartStreamBtn()
       await app.preStreamPage.observeStream()
+      await watcherPage.sidePanelPage.clickCreateStreamBtn()
+      await page.waitForTimeout(1000)
+      await watcherPage.mainPage.open()
       await watcherPage.mainPage.joinStream(streamer.name)
       await watcherPage.streamPage.waitForStreamLoadingWatcher()
       await watcherPage.streamPage.sendMessageInStreamChat(apiDataSet.uiStreamMessage)
       await app.streamPage.observeReceivedMessage(apiDataSet.uiStreamMessage)
       await app.streamPage.closeStreamAsStreamer()
-      // await page.waitForTimeout(10000)
+
       
      
 

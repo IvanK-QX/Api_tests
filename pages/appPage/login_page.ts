@@ -1,6 +1,7 @@
 import { APIRequestContext, request, Page } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
+import { apiUrl } from "../../utils/apiUrl";
 
 export class AppLoginPage {
     apiContext: APIRequestContext
@@ -26,11 +27,9 @@ export class AppLoginPage {
         await this.page.evaluate(
           `window.localStorage.setItem('streamData', 'null')`
         )
+        const date  = new Date().toISOString()
         await this.page.evaluate(
-          `window.localStorage.setItem('streamStatus', 'null')`
-        )
-        await this.page.evaluate(
-          `window.localStorage.setItem('streamId', 'null')`
+          `window.localStorage.setItem('lastGiftListRequestDate', '${date}')`
         )
         const userToken = user.userToken
         const id = user.id,
