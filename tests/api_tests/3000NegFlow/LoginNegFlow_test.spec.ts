@@ -1,7 +1,7 @@
 import { request, test } from "@playwright/test";
 import { apiUrl } from "../../../utils/apiUrl";
 import { Api } from "../../../pages/Api";
-import { loginAdminTestCases, loginGuestTestCases, loginUserTestCases } from "../../../pages/apiPagesNegFlow/loginNegFlow_testCases";
+import { loginAdminTestCases, loginGuestTestCases, loginUserTestCases } from "../../../pages/apiPagesNegFlow/loginNegFlow_payload";
 
 test.describe('Login Negative Flow',async () => {
 
@@ -11,7 +11,7 @@ test.describe('Login Negative Flow',async () => {
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
-            await api.loginPageNegFlow.loginNegFlow(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
+            await api.negativeFlowTemplate.negativeFlowTemplate(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
         })
     }
     
@@ -21,7 +21,7 @@ test.describe('Login Negative Flow',async () => {
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
-            await api.loginPageNegFlow.loginNegFlow(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
+            await api.negativeFlowTemplate.negativeFlowTemplate(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
         })
     }
 
@@ -31,7 +31,7 @@ test.describe('Login Negative Flow',async () => {
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
-            await api.loginPageNegFlow.loginNegFlow(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
+            await api.negativeFlowTemplate.negativeFlowTemplate(`${apiUrl.qaEnvUrl}:3000/login`,testCase.payload,testCase.expectedStatus,testCase.errorMessage, testCase.testSuite, testCase.case)
         })
     }
 })

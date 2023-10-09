@@ -2,14 +2,14 @@ import { APIRequestContext, expect, request } from "@playwright/test"
 import { Headers } from "../../utils/headers";
 
 
-export class ApiLoginPageNegFlow {
+export class ApiNegativeFlowTemplate {
     apiContext: APIRequestContext
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
     }
 
-    async loginNegFlow(url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string) {
+    async negativeFlowTemplate(url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = payload
         const headers = Headers.guestHeader()

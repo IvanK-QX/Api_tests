@@ -73,7 +73,7 @@ export const loginUserTestCases = [
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,
             "language": "UK",            
-            "guestUserToken": apiDataSet.guestUserToken
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
@@ -86,7 +86,7 @@ export const loginUserTestCases = [
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,
             "language": "UK",            
-            "guestUserToken": apiDataSet.guestUserToken
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
@@ -99,7 +99,7 @@ export const loginUserTestCases = [
             "email": apiDataSet.randomEmail,
             "deviceId": apiDataSet.deviceUUID,
             "language": "UK",            
-            "guestUserToken": apiDataSet.guestUserToken
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
@@ -112,7 +112,7 @@ export const loginUserTestCases = [
             "email": apiDataSet.randomEmail,
             "password": apiDataSet.password,
             "language": "UK",            
-            "guestUserToken": apiDataSet.guestUserToken
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
@@ -125,7 +125,7 @@ export const loginUserTestCases = [
             "email": apiDataSet.randomEmail,
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,        
-            "guestUserToken": apiDataSet.guestUserToken
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
@@ -151,7 +151,7 @@ export const loginUserTestCases = [
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,
             "language":"string",   
-            "guestUserToken": apiDataSet.guestUserToken + "1234"     
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow + "1234"     
         }, 
         expectedStatus: 500, 
         errorMessage: 'wrong final block length', 
@@ -165,7 +165,7 @@ export const loginUserTestCases = [
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,  
             "language":"string",
-            "guestUserToken": apiDataSet.guestUserToken + "Test"     
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow + "Test"     
         }, 
         expectedStatus: 418, 
         errorMessage: 'TOKEN_MALFORMED', 
@@ -178,7 +178,7 @@ export const loginUserTestCases = [
             "email": apiDataSet.randomEmail,
             "password": apiDataSet.password,
             "deviceId": apiDataSet.deviceUUID,   
-            "guestUserToken": apiDataSet.guestUserToken + "Test"     
+            "guestUserToken": apiDataSet.guestUserTokenNegativeFlow + "Test"     
         }, 
         expectedStatus: 400, 
         errorMessage: 'Error while validating request', 
