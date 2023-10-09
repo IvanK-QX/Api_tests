@@ -2,16 +2,21 @@ import { request, test } from "@playwright/test";
 import { Api } from "../../pages/Api";
 import { apiUrl } from "../../utils/apiUrl";
 import { App } from "../../pages/App";
-let streamer, watcher, newPage
+import { apiDataSet } from "../../utils/dataSet";
+let streamer, watcher, newPage, watcherPage
 
-test.describe.skip('API test with new user', async () => {
+test.describe('UI Tests', async () => {
     test.beforeEach(async ({page, browser}) => {
-        const app = new App(page)
-        streamer = await app.loginPage.apiLogin(apiUrl.qaEnvUrl)
+        const apiContext = await request.newContext()
         const contetext = await browser.newContext();
         newPage = await contetext.newPage()
-        const watcherPage = new App(newPage)
+        const app = new App(page)
+        const api = new Api(apiContext)
+        watcherPage = new App(newPage)
+        streamer = await app.loginPage.apiLogin(apiUrl.qaEnvUrl)
         watcher = await watcherPage.loginPage.apiLogin(apiUrl.qaEnvUrl)
+        await api.followingPage.follow(apiUrl.qaEnvUrl, watcher.userToken, streamer.id)
+
     })
 
     test.afterEach(async () => {
@@ -22,24 +27,23 @@ test.describe.skip('API test with new user', async () => {
     })
 
     test('api login',async ({page}) => {
-      console.log('api login done ')
-      await page.click('.sidebar__create-button')
-      await page.locator('[placeholder="Stream title"]').fill('lets go')
-      await page.click('.stream-main-action__button--public button')
+      const app = new App(page)
+      const watcherPage = new App(newPage)
+      await app.ediProfilePage.open()
+      await app.sidePanelPage.clickCreateStreamBtn()
+      await app.preStreamPage.changeStreamTitle()
+      await app.preStreamPage.clickStartStreamBtn()
+      await app.preStreamPage.uploadAvatar()
+      await app.preStreamPage.clickStartStreamBtn()
+      await app.preStreamPage.observeStream()
+      await watcherPage.mainPage.joinStream(streamer.name)
+      await watcherPage.streamPage.waitForStreamLoadingWatcher()
+      await watcherPage.streamPage.sendMessageInStreamChat(apiDataSet.uiStreamMessage)
+      await app.streamPage.observeReceivedMessage(apiDataSet.uiStreamMessage)
+      await app.streamPage.closeStreamAsStreamer()
+      // await page.waitForTimeout(10000)
       
-      page.on('filechooser', async (filechooser) => {
-        await filechooser.setFiles('./utils/unnamed.jpg')
-      })
-      await page.click('button.user-data-entris__button-upload')
-      await page.waitForTimeout(1000)
-      await page.click('button span.ui-button__text')
-      await page.waitForTimeout(2000)
-      await page.waitForLoadState('networkidle')
-      await page.locator('#stream-main-action').getByRole('button').click()
-
-      await newPage.goto('/chat')
-      await newPage.click('button.header-chat__button')
-      await newPage.waitForTimeout(3000)
+     
 
 
     })
