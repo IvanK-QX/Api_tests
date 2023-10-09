@@ -26,7 +26,7 @@ test.describe('UI Tests', async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, watcher.userToken)
     })
 
-    test.only('api login',async ({page}) => {
+    test('Star sand Join Stream',async ({page}) => {
       const app = new App(page)
       const watcherPage = new App(newPage)
       await app.ediProfilePage.open()
