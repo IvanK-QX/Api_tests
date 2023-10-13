@@ -1,4 +1,4 @@
-import { request, test } from "@playwright/test";
+import { expect, request, test } from "@playwright/test";
 import { Api } from "../../pages/Api";
 import { apiUrl } from "../../utils/apiUrl";
 import { App } from "../../pages/App";
@@ -43,11 +43,25 @@ test.describe('UI Tests', async () => {
       await watcherPage.streamPage.waitForStreamLoadingWatcher()
       await watcherPage.streamPage.sendMessageInStreamChat(apiDataSet.uiStreamMessage)
       await app.streamPage.observeReceivedMessage(apiDataSet.uiStreamMessage)
+      await app.streamPage.openWatchersList()
+      await app.streamPage.clickFollowOnWatchersList()
+      await app.streamPage.closeWatchersList()
       await app.streamPage.closeStreamAsStreamer()
-
-      
-     
-
+      await watcherPage.streamPage.closeEndStreamModalAsWatcher()
+      await app.chatPage.open()
+      await app.chatPage.startChetWithSpecificUser(watcher.name)
+      await app.chatPage.sendMessage('hello')
+      await watcherPage.chatPage.open()
+      await watcherPage.chatPage.openExistingChat(streamer.name)
+      await watcherPage.chatPage.observeNewMessage('hello')
+      await watcherPage.chatPage.sendObusiveWord('bitch')
+      await app.chatPage.observeNewMessage('*****')
+      await app.chatPage.blockUser()
+      await app.chatPage.doNotSeeChatForSpecificUser(watcher.name)
+      await app.blockedPage.open()
+      await app.blockedPage.oberveBlockedUser(watcher.name)
+      await app.blockedPage.unblockUser(watcher.name)
+      await app.blockedPage.doNotOberveBlockedUser(watcher.name)
 
     })
 })
