@@ -878,4 +878,992 @@ export class UaPayloads {
     ]
     return query
   }
+
+  static showGiftReceived(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"premiumStatus\":0,\"giftId\":\"64ba86415a559609e7b72ec2\",\"deviceType\":\"iPhone XR\",\"streamStatus\":0,\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\",\"isfree\":\"false\",\"streamId\":\"64ba863328f16b0019e08215\",\"receiverId\":\"64b5349252add82001513a15\",\"userRole\":\"user\"}",
+        "event": "show_gift_received",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "Streamer's Stream",
+        "userId": "63ff390d9c3118d3d2eca849",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "64b5349252add82001513a15",
+        "eventTimeMs": 1689945665490,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "59EF82CE-C901-41C6-9795-8C0C8394D72A"
+      }
+    ]
+    return query
+  }
+
+  static clickGiftsShop(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"anchor\":\"chat\",\"os\":\"iOS 16.1\",\"context\":\"Chat\",\"deviceType\":\"iPhone XR\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_gifts_shop",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689946934191,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Chat"
+      }
+    ]
+    return query
+  }
+
+  static showGiftsShop(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"coinBalance\":526,\"deviceType\":\"iPhone XR\",\"streamStatus\":0,\"premiumStatus\":0,\"anchor\":\"personal_chat\",\"os\":\"iOS 16.1\",\"context\":\"Chat\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_gifts_shop",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689946934261,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Chat"
+      }
+    ]
+    return query
+  }
+
+  static clickStartStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"context\":\"All streams\",\"anchor\":\"all_streams\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_start_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689947458424,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "All streams"
+      }
+    ]
+    return query
+  }
+
+  static clickStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"context\":\"All streams\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"receiverId\":\"14196\",\"userRole\":\"user\"}",
+        "event": "click_stream",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "All streams",
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "14196",
+        "eventTimeMs": 1689947819889,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED"
+      }
+    ]
+    return query
+  }
+
+  static clickCoinsShop(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"context\":\"Coins Shop\",\"referrer\":\"refill_coins\",\"shopType\":\"default\",\"deviceType\":\"iPhone XR\",\"coinBalance\":526,\"userRole\":\"user\",\"os\":\"iOS 16.1\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_coins_shop",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689948010774,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Coins Shop"
+      }
+    ]
+    return query
+  }
+
+  static pageviewСoinsShop(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"context\":\"Coins Shop\",\"coinBalance\":526,\"shopType\":\"default\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_coins_shop",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689948010799,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Coins Shop"
+      }
+    ]
+    return query
+  }
+
+  static pageviewFollowings(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"cs\":true,\"deviceType\":\"iPhone XR\",\"followings\":0,\"ps\":\"1\",\"state\":\"empty\",\"context\":\"Followings\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_followings",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689948989367,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Followings"
+      }
+    ]
+    return query
+  }
+
+  static clickFollowings(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"context\":\"Followings\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_followings",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689948998786,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Followings"
+      }
+    ]
+    return query
+  }
+
+  static pageviewAllStreams(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"ps\":\"1\",\"context\":\"All streams\",\"deviceType\":\"iPhone XR\",\"cs\":true,\"coinBalance\":\"526\",\"os\":\"iOS 16.1\",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_all_streams",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689949302854,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "All streams"
+      }
+    ]
+    return query
+  }
+
+  static clickLeaderboard(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"context\":\"All streams\",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_leaderboard",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689949320954,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "All streams"
+      }
+    ]
+    return query
+  }
+
+  static clickCloseShop(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"role\":\"user\",\"shopType\":\"default\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"context\":\"Chat\",\"referrer\":\"gift_shop_stream\",\"os\":\"iOS 16.1\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_close_shop",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689949647190,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "Chat"
+      }
+    ]
+    return query
+  }
+
+  static pageviewNoInternet(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"context\":\"No internet\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_no_internet",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1689949725210,
+        "idfv": "054DAF5A-9623-4EA1-91C7-268995BF94ED",
+        "context": "No internet"
+      }
+    ]
+    return query
+  }
+
+  static showStartPremiumGifts(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"streamStatus\":0,\"receiverId\":\"5347\",\"context\":\"Start Stream\",\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"premiumStatus\":1}",
+        "event": "show_start_premium_gifts",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "Start Stream",
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "5347",
+        "eventTimeMs": 1691581121953,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static clickStartPremiumGifts(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"receiverId\":\"5347\",\"context\":\"Start Stream\",\"button\":\"start\",\"gift_id\":\"614c4d1574faac3e988b2c79\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\"}",
+        "event": "click_start_premium_gifts",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "Start Stream",
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "5347",
+        "eventTimeMs": 1691581125860,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static showInviteTopGifters(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"type\":\"room\",\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"context\":\"Streamer's Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_invite_top_gifters",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583933418,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickInviteTopGifters(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\",\"streamId\":\"64d37ac68ac717f51edccd88\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"type\":\"start_premium\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_invite_top_gifters",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691581142763,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showInvitesSent(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"type\":\"start_premium\",\"streamId\":\"64d37ac68ac717f51edccd88\",\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_invites_sent",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691581143598,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showPopupEndStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"context\":\"Streamer's Stream\",\"deviceType\":\"iPhone XR\",\"verify_identity\":0,\"type\":\"end_stream\",\"os\":\"iOS 16.1\",\"reason\":\"streamerUnder18\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_popup_end_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584465297,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showPopupEndPremium(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"streamId\":\"64d37ac68ac717f51edccd88\",\"context\":\"Streamer's Stream\",\"deviceType\":\"iPhone XR\",\"type\":\"5_min\",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_popup_end_premium",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691581147540,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickCloseStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"streamStatus\":0,\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"receiverId\":\"5347\",\"context\":\"Streamer's Stream\",\"premiumStatus\":1,\"deviceType\":\"iPhone XR\"}",
+        "event": "click_close_stream",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "Streamer's Stream",
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "5347",
+        "eventTimeMs": 1691581147511,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static clickPreviewStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"context\":\"Start Stream\",\"receiverId\":\"5347\",\"deviceType\":\"iPhone XR\"}",
+        "event": "click_preview_stream",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "context": "Start Stream",
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "platform": "iOS",
+        "brandId": 1,
+        "receiverId": "5347",
+        "eventTimeMs": 1691582199027,
+        "role": "user",
+        "appName": "plamfy",
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static pageviewPreviewStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"context\":\"Start Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_preview_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582196834,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static pageviewGoLive(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"context\":\"Start Stream\",\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"premiumStatus\":1,\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "pageview_go_live",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582199029,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickGoLive(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"context\":\"Start Stream\",\"button\":\"public\",\"title_status\":\"1\",\"title\":\"Picked for you…fuck \",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_go_live",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582252017,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static showInappropriateTitle(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"context\":\"Start Stream\",\"os\":\"iOS 16.1\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_inappropriate_title",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582196822,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static showSetPhoto(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"context\":\"Start Stream\",\"deviceType\":\"iPhone XR\",\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_set_photo",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582199031,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickSetPhoto(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"context\":\"Start Stream\",\"button\":\"edit\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_set_photo",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691582202642,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Start Stream"
+      }
+    ]
+    return query
+  }
+
+  static startBeautyFilterDownload(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "start_beauty_filter_download",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583230883,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static beautyFilterDownloadSuccess(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"duration_of_download\":3.3629429340362549,\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "beauty_filter_download_success",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583234245,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static beautyFilterDownloadFailed(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"duration_of_download\":3.3629429340362549,\"userRole\":\"user\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "beauty_filter_download_failed",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583234245,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static newStreamStarted(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"context\":\"Streamer's Stream\",\"start_action\":\"public\",\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"streamId\":\"64d3830723e7d54b8523194d\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "new_stream_started",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583240060,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickEndStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"context\":\"Streamer's Stream\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"streamStatus\":1,\"premiumStatus\":1}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_end_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583243759,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickPauseStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"context\":\"Streamer's Stream\",\"premiumStatus\":0,\"streamStatus\":0,\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"action\":\"pause\",\"streamId\":\"64d385ab80cd91cda0139732\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_pause_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583921668,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static streamShared(userId: string, platform: string) {
+    const query = [
+      {
+        "eventTimeMs": 1.692108004107E12,
+        "idfv": "f1db37ee994aa1a1",
+        "deviceId": "f1db37ee994aa1a1",
+        "event": "stream_shared",
+        "params": "{\"context\":\"Streamer's Stream\",\"streamId\":\"64db84ddaa1d11e51bb5ef88\",\"type\":\"copy_link\"}",
+        "platform": "android",
+        "appName": "plamfy",
+        "context": "Streamer's Stream",
+        "brandId": 1.0,
+        "role": "user",
+        "osVersion": "12",
+        "deviceType": "Xiaomi M2003J15SC",
+        "userId": "646dfefe4948f19596a0a27a"
+      }
+    ]
+    return query
+  }
+
+  static clickChooseSticker(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"premiumStatus\":0,\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"streamId\":\"64d387889f83cd781ba9d87c\",\"streamStatus\":0,\"coins\":\"7\",\"context\":\"Streamer's Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_choose_sticker",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584442357,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showAddStickerText(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"streamStatus\":0,\"premiumStatus\":0,\"context\":\"Streamer's Stream\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"streamId\":\"64d387889f83cd781ba9d87c\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_add_sticker_text",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584442358,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickAddStickerText(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"streamId\":\"64d387889f83cd781ba9d87c\",\"context\":\"Streamer's Stream\",\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"premiumStatus\":0,\"streamStatus\":0}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_add_sticker_text",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584444272,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showInappropriateStickerText(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"streamId\":\"64d387889f83cd781ba9d87c\",\"deviceType\":\"iPhone XR\",\"streamStatus\":0,\"userRole\":\"user\",\"premiumStatus\":0,\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_inappropriate_sticker_text",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584430739,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showAddSticker(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"premiumStatus\":0,\"context\":\"Streamer's Stream\",\"streamId\":\"64d387889f83cd781ba9d87c\",\"userRole\":\"user\",\"streamStatus\":0,\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_add_sticker",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584441676,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showStickerAdded(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"streamStatus\":1,\"context\":\"Streamer's Stream\",\"premiumStatus\":1,\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"coins\":\"7\",\"giftId\":\"614d9a5f785de79b84c6a2ca\",\"streamId\":\"64d387889f83cd781ba9d87c\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_sticker_added",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584444950,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickChangeSticker(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"context\":\"Streamer's Stream\",\"userRole\":\"user\",\"streamId\":\"64d387889f83cd781ba9d87c\",\"os\":\"iOS 16.1\",\"premiumStatus\":1,\"deviceType\":\"iPhone XR\",\"streamStatus\":1}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_change_sticker",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584437982,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickDeleteDesiredGift(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"coins\":\"69\",\"streamStatus\":1,\"premiumStatus\":1,\"userRole\":\"user\",\"context\":\"Streamer's Stream\",\"streamId\":\"64d387889f83cd781ba9d87c\",\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_delete_desired_gift",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691584439117,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickBeautyFilter(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"streamId\":\"64d38d5c3b3c63f5be695242\",\"stream_type\":\"public\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_beauty_filter",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691585940837,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static showEditBeautyFilter(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"streamId\":\"64d38d5c3b3c63f5be695242\",\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"stream_type\":\"public\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_edit_beauty_filter",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691585892344,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static showBeautyFilterAdded(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"stream_type\":\"public\",\"userRole\":\"user\",\"os\":\"iOS 16.1\",\"streamId\":\"64d38d5c3b3c63f5be695242\",\"deviceType\":\"iPhone XR\",\"added_filters\":\"Whiten, Fine Smooth\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_beauty_filter_added",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691585933388,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static beautyFilterError(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"streamId\":\"64d38d5c3b3c63f5be695242\",\"deviceType\":\"iPhone XR\",\"userRole\":\"user\",\"stream_type\":\"public\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "beauty_filter_error",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691585892344,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static showEndStream(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"userRole\":\"user\",\"streamStatus\":1,\"os\":\"iOS 16.1\",\"deviceType\":\"iPhone XR\",\"premiumStatus\":1,\"context\":\"Streamer's Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_end_stream",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583243758,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static beautyFeedback(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"deviceType\":\"iPhone XR\",\"feedback\":\"Super \",\"rate\":5}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "beauty_feedback",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691586038388,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245"
+      }
+    ]
+    return query
+  }
+
+  static clickEndConfirmation(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"streamStatus\":1,\"button\":\"end\",\"deviceType\":\"iPhone XR\",\"os\":\"iOS 16.1\",\"userRole\":\"user\",\"premiumStatus\":1,\"context\":\"Streamer's Stream\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "click_end_confirmation",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583244765,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static showBroadcastEnded(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\",\"duration\":0,\"streamId\":\"64d3830723e7d54b8523194d\",\"followers\":0,\"deviceType\":\"iPhone XR\",\"duration_text\":\"00:00:04\",\"userRole\":\"user\",\"premiumStatus\":0,\"viewers\":0,\"diamonds\":0,\"leaderboard\":1}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "635fdb9c0d9fac6ccfc1c838",
+        "role": "user",
+        "event": "show_broadcast_ended",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1691583247535,
+        "idfv": "38592022-4545-4C79-A405-CE1859D16245",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
+
+  static clickChangeStreamType(userId: string, platform: string) {
+    const query = [
+      {
+        "params": "{\"deviceType\":\"iPhone XR\",\"streamId\":\"64db87d66f4cc66801dcb3f8\",\"userRole\":\"user\",\"anchor\":\"public\",\"os\":\"iOS 16.1\",\"context\":\"Streamer's Stream\",\"type\":\"battle\"}",
+        "deviceId": "6817C448-897A-45ED-A889-4C249D0C1BF9",
+        "brandId": 1,
+        "userId": "63ff390d9c3118d3d2eca849",
+        "role": "user",
+        "event": "click_change_stream_type",
+        "platform": "iOS",
+        "appName": "plamfy",
+        "eventTimeMs": 1692108780376,
+        "idfv": "432E12FC-6C3C-4E8E-8C78-88EC2E037174",
+        "context": "Streamer's Stream"
+      }
+    ]
+    return query
+  }
 }
