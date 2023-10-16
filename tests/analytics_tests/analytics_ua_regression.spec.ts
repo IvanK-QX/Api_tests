@@ -668,5 +668,190 @@ test.describe('User analytics test', async () => {
         await analytics.uaPage.clickChangeStreamType(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
         await analytics.uaPage.clickChangeStreamType(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
     })
+
+    test('Show invite streamer', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showInviteStreamer(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showInviteStreamer(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show streamer invited', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showStreamerInvited(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showStreamerInvited(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click invite streamer answer', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickInviteStreamerAnswer(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickInviteStreamerAnswer(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show invite streamer request', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showInviteStreamerRequest(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showInviteStreamerRequest(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show invite streamer accepted', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showInviteStreamerAccepted(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showInviteStreamerAccepted(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show invite streamer rejected', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showInviteStreamerRejected(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showInviteStreamerRejected(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show battle results', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showBattleResults(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showBattleResults(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.showBattleResults(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Swipe tutorial', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.swipeTutorial(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.swipeTutorial(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Swipe ui', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.swipeUi(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.swipeUi(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Stream swipe', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.streamSwipe(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.streamSwipe(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show stream paused', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showStreamPaused(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showStreamPaused(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Show popup follow', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showPopupFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showPopupFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click message', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickMessage(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickMessage(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click share', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickShare(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickShare(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.clickShare(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Show profile preview', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showProfilePreview(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showProfilePreview(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.showProfilePreview(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Click block', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickBlock(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickBlock(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.clickBlock(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('User blocked', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.userBlocked(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.userBlocked(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.userBlocked(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Click report', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickReport(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickReport(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.clickReport(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Report send', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.reportSend(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.reportSend(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.reportSend(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Show push invite to premium', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showPushInviteToPremium(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showPushInviteToPremium(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.showPushInviteToPremium(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Show push invite to room', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.showPushInviteToRoom(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.showPushInviteToRoom(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.showPushInviteToRoom(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Click translate', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickTranslate(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickTranslate(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.clickTranslate(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+    })
+
+    test('Gift shop swipe', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.giftShopSwipe(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.giftShopSwipe(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Click chat messages', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.clickChatMessages(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.clickChatMessages(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
+
+    test('Pageview stream ended', async () => {
+        const apiContext = await request.newContext()
+        const analytics = new Analytics(apiContext)
+        await analytics.uaPage.pageviewStreamEnded(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.pageviewStreamEnded(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+    })
 })
 

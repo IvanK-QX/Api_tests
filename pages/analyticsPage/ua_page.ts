@@ -980,4 +980,254 @@ export class AnalyticsUserActivityPage {
         console.log(`Regression/ change stream type, platform ${platform}`)
     }
 
+    async showInviteStreamer(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showInviteStreamer(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ list of streamers who we can start battle/party, platform ${platform}`)
+    }
+
+    async showStreamerInvited(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showStreamerInvited(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ request is sent to streamer, platform ${platform}`)
+    }
+
+    async clickInviteStreamerAnswer(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickInviteStreamerAnswer(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ streamer add answer on request:accept, decline, do_not_disturb_me, platform ${platform}`)
+    }
+
+    async showInviteStreamerRequest(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showInviteStreamerRequest(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ battle request from streamer, platform ${platform}`)
+    }
+
+    async showInviteStreamerAccepted(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showInviteStreamerAccepted(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ streamer accepted invitation, platform ${platform}`)
+    }
+
+    async showInviteStreamerRejected(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showInviteStreamerRejected(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ streamer rejected invitation, platform ${platform}`)
+    }
+
+    async showBattleResults(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showBattleResults(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ result of battle, platform ${platform}`)
+    }
+
+    async swipeTutorial(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.swipeTutorial(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ tutorial about swipe UI in stream, platform ${platform}`)
+    }
+
+    async swipeUi(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.swipeUi(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user swipe UI in stream, platform ${platform}`)
+    }
+
+    async streamSwipe(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.streamSwipe(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user swipe stream, platform ${platform}`)
+    }
+
+    async showStreamPaused(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showStreamPaused(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ stream is paused, platform ${platform}`)
+    }
+
+    async showPopupFollow(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showPopupFollow(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ popup about follow streamer, platform ${platform}`)
+    }
+
+    async clickMessage(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickMessage(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user tap on message field, platform ${platform}`)
+    }
+
+    async clickShare(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickShare(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on Share button, platform ${platform}`)
+    }
+
+    async showProfilePreview(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showProfilePreview(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ profile preview of user, platform ${platform}`)
+    }
+
+    async clickBlock(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickBlock(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on block button, platform ${platform}`)
+    }
+
+    async userBlocked(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.userBlocked(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ a message that the user is blocked, platform ${platform}`)
+    }
+
+    async clickReport(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickReport(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ click on report button, platform ${platform}`)
+    }
+
+    async reportSend(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.reportSend(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ a message that report is send, platform ${platform}`)
+    }
+
+    async showPushInviteToPremium(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showPushInviteToPremium(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ streamer invite watcher to premium stream, platform ${platform}`)
+    }
+
+    async showPushInviteToRoom(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.showPushInviteToRoom(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ streamer invite watcher to 1:1 stream, platform ${platform}`)
+    }
+
+    async clickTranslate(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickTranslate(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user click on translate button , platform ${platform}`)
+    }
+
+    async giftShopSwipe(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.giftShopSwipe(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user swipe gift shop, platform ${platform}`)
+    }
+
+    async clickChatMessages(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.clickChatMessages(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ user click on message in group chat, platform ${platform}`)
+    }
+
+    async pageviewStreamEnded(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android') {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = UaPayloads.pageviewStreamEnded(userId, platform)
+        const headers = Headers.userHeader(userToken)
+
+        const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
+        expect(apiRequest.status()).toEqual(200)
+        console.log(`Regression/ end stream for watcher, platform ${platform}`)
+    }
+
 }
