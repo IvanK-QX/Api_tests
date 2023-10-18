@@ -255,9 +255,9 @@ test.describe('User analytics test', async () => {
     test('Click start stream', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.uaPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
-        await analytics.uaPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
-        await analytics.uaPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaStreamPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaStreamPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaStreamPage.clickStartStream(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
 
     })
 

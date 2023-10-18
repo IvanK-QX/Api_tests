@@ -490,6 +490,7 @@ export class AnalyticsUserActivityPage {
         console.log(`Regression/ page of gift shop, platform ${platform}`)
     }
 
+    // Deprecated
     async clickStartStream(url: string, userToken: string, userId: string, platform: 'iOS' | 'Android' | 'Web') {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = UaPayloads.clickStartStream(userId, platform)
