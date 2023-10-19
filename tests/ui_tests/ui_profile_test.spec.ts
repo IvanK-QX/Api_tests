@@ -2,6 +2,7 @@ import { request, test } from "@playwright/test";
 import { Api } from "../../pages/Api";
 import { apiUrl } from "../../utils/apiUrl";
 import { App } from "../../pages/App";
+import { apiDataSet } from "../../utils/dataSet";
 let user
 
 test.describe('UI - Profile Tests', async () => {
@@ -17,32 +18,48 @@ test.describe('UI - Profile Tests', async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Profile - My Info',async ({page}) => {
+    test('Profile - My Info', async ({page}) => {
         const app = new App(page)
         await app.profilePage.observeStartStreamButton()
         await app.profilePage.observeBuyCoinsButton()
         await app.profilePage.observePersonalInfo(user.name)
     })
 
-    test('Profile - Buy Coins',async ({page}) => {
+    test('Profile - Buy Coins', async ({page}) => {
         const app = new App(page)
         await app.profilePage.clickBuyCoinsBtn()
     })
 
-    test('Profile - Start Stream',async ({page}) => {
+    test('Profile - Start Stream', async ({page}) => {
         const app = new App(page)
         await app.profilePage.clickStartStreamBtn()
     })
 
-    test('Profile - Edit Profile',async ({page}) => {
+    test('Profile - Edit Profile', async ({page}) => {
         const app = new App(page)
         await app.profilePage.clickKebabMenuBtn()
         await app.profilePage.clickEditProfileBtn()
     })
 
-    test('Profile - Redeem Cash',async ({page}) => {
+    test('Profile - Redeem Cash', async ({page}) => {
         const app = new App(page)
         await app.profilePage.clickKebabMenuBtn()
         await app.profilePage.clickRedeemCashBtn()
+    })
+
+    test('Profile - Edit Profile e2e', async ({page}) => {
+        const app = new App(page)
+        const name = apiDataSet.randomName
+        const bio = apiDataSet.randomBio
+        await app.ediProfilePage.open()
+        await app.ediProfilePage.chageName(name)
+        await app.ediProfilePage.chageBio(bio)
+        await app.ediProfilePage.selectDate()
+        await app.ediProfilePage.clickSaveBtn()
+        await app.profilePage.open()
+        await app.profilePage.observeMyBio(bio)
+        await app.profilePage.observePersonalInfo(name)
+    
+
     })
 })

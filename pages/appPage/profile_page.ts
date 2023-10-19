@@ -46,7 +46,7 @@ export class AppProfilePage {
     async observePersonalInfo(userName: string) {
         await this.folowerCounters.waitFor()
         await this.page.getByRole('img', { name: `Avatar ${userName} picture` }).click()
-        await this.page.getByText(`${userName}`).waitFor()
+        await this.page.locator('p.profile-info__name', {hasText: `${userName}`}).waitFor()
     }
 
     async clickBuyCoinsBtn() {
@@ -72,6 +72,10 @@ export class AppProfilePage {
     async clickRedeemCashBtn() {
         await this.redeemCashBtn.click()
         await this.redemCashTitle.waitFor()
+    }
+
+    async observeMyBio(bio: string) {
+        await this.page.locator('p.profile-info__description-text', {hasText: `${bio}`}).waitFor()
     }
 
     
