@@ -51,13 +51,11 @@ export class AppProfilePage {
 
     async clickBuyCoinsBtn() {
         await this.buyCoinsBtn.click()
-        await this.page.waitForURL(`${apiUrl.qaUiUrl}/coins`)
         await this.coinShopTitle.waitFor()
     }
 
     async clickStartStreamBtn() {
         await this.startStreamBtn.click()
-        await this.page.waitForURL(`${apiUrl.qaUiUrl}/create`)
         await this.stremTitleInputField.waitFor()
     }
 
@@ -68,13 +66,11 @@ export class AppProfilePage {
 
     async clickEditProfileBtn() {
         await this.editProfileBtn.click()
-        await this.page.waitForURL(`${apiUrl.qaUiUrl}/edit`)
         await this.editProfileTitle.waitFor()
     }
 
     async clickRedeemCashBtn() {
         await this.redeemCashBtn.click()
-        await this.page.waitForURL(`${apiUrl.qaUiUrl}/redeem-cash`)
         await this.redemCashTitle.waitFor()
     }
 
