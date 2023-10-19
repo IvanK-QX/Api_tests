@@ -39,14 +39,16 @@ export class AnalyticsUserActivityPage {
         console.log(`request for follow top send, platform ${platform}`)
     }
 
-    async clickFollow(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android') {
+    // todo > example od all methods, 
+    // you should use the same structure in all methods 
+    async clickFollow1(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android', event: string, context: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-        const data = UaPayloads.clickFollow(userId, platform)
+        const data = UaPayloads.uaQueryParmeter(userId, event, context, platform)
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })
         expect(apiRequest.status()).toEqual(200)
-        console.log(`request for follow send, platform ${platform}`)
+        console.log(`request for ${event} send, platform ${platform}`)
     }
 
     async pageviewStream(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android') {

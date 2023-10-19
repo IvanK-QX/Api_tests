@@ -2,6 +2,7 @@ import { request, test } from "@playwright/test";
 import { apiUrl } from "../../utils/apiUrl";
 import { Api } from "../../pages/Api";
 import { Analytics } from "../../pages/Analytics";
+import { analyticsDataSet } from "../../utils/analyticsDataSet";
 
 let user
 
@@ -42,13 +43,33 @@ test.describe('User analytics test', async () => {
         await analytics.uaPage.clickFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 
-    test('Click Follow', async () => {
+
+
+
+
+
+    
+
+    // TODO > Example of the test,
+    // add all variables to analyticsDataSet
+    // all method should use one payload, please rename to defaultPayload, it should be fitted to all UA test 
+    test.only('Click Follow', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.uaPage.clickFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
-        await analytics.uaPage.clickFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
-        await analytics.uaPage.clickFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.clickFollow1(apiUrl.qaEnvUrl, user.userToken, user.id, 'Android', analyticsDataSet.events.clickFollow, analyticsDataSet.context.spalsh)
+        // await analytics.uaPage.clickFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        // await analytics.uaPage.clickFollow(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
+
+    // 
+    // 
+    // 
+    // 
+    // 
+    // 
+    // 
+    // 
+    //     
 
     test('Pageview stream', async () => {
         const apiContext = await request.newContext()
