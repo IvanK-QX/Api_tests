@@ -1,14 +1,16 @@
-import { Page } from "@playwright/test"
+import { Locator, Page } from "@playwright/test"
 
 export class AppPreStreamPage {
     page: Page
+    streamTitleField: Locator
 
     constructor(page: Page) {
         this.page = page 
+        this.streamTitleField = page.locator('[placeholder="Stream title"]')
     }
 
     async changeStreamTitle() {
-        await this.page.locator('[placeholder="Stream title"]').fill('lets go')
+        await this.streamTitleField.fill('lets go')
     }
 
     async clickStartStreamBtn() {
