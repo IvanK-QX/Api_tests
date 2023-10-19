@@ -1,0 +1,94 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "locator.waitFor: Timeout 20000ms exceeded.\n=========================== logs ===========================\nwaiting for getByText('0 followers 0 following') to be visible\n============================================================",
+      "children" : [ {
+        "name" : "Profile - My Info",
+        "uid" : "39dd585300e4f086",
+        "parentUid" : "7541cf4ba6c658058d130828bead1566",
+        "status" : "failed",
+        "time" : {
+          "start" : 1697701068604,
+          "stop" : 1697701224327,
+          "duration" : 155723
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "7541cf4ba6c658058d130828bead1566"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  }, {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "Test finished within timeout of 120000ms, but tearing down \"context\" ran out of time.\nPlease allow more time for the test, since teardown is attributed towards the test timeout budget.",
+      "children" : [ {
+        "name" : "Profile - Redeem Cash",
+        "uid" : "f322dd54d657d20",
+        "parentUid" : "2fb3ff93ae0cab039040675cfa3b8b5b",
+        "status" : "broken",
+        "time" : {
+          "start" : 1697701094441,
+          "stop" : 1697701239361,
+          "duration" : 144920
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      }, {
+        "name" : "Profile - Edit Profile",
+        "uid" : "cc9fd654f010192f",
+        "parentUid" : "2fb3ff93ae0cab039040675cfa3b8b5b",
+        "status" : "broken",
+        "time" : {
+          "start" : 1697701097534,
+          "stop" : 1697701240773,
+          "duration" : 143239
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "2fb3ff93ae0cab039040675cfa3b8b5b"
+    }, {
+      "name" : "Test timeout of 120000ms exceeded.",
+      "children" : [ {
+        "name" : "Profile - Start Stream",
+        "uid" : "c5c97726bfde8c1c",
+        "parentUid" : "b4658691ece848c4869c9232d40e04bc",
+        "status" : "broken",
+        "time" : {
+          "start" : 1697701104607,
+          "stop" : 1697701246209,
+          "duration" : 141602
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "b4658691ece848c4869c9232d40e04bc"
+    }, {
+      "name" : "Test timeout of 120000ms exceeded while running \"beforeEach\" hook.",
+      "children" : [ {
+        "name" : "Star sand Join Stream",
+        "uid" : "8e52c637ed670bf9",
+        "parentUid" : "0add4a86d62f10485e427a06f4fb17a4",
+        "status" : "broken",
+        "time" : {
+          "start" : 1697701108304,
+          "stop" : 1697701252783,
+          "duration" : 144479
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "0add4a86d62f10485e427a06f4fb17a4"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ],
+  "name" : "categories"
+}
