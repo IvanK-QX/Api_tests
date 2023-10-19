@@ -19,7 +19,7 @@ export class AppProfilePage {
         this.page = page 
         this.buyCoinsBtn = page.getByRole('button', { name: 'Buy Coins' })
         this.startStreamBtn = page.getByRole('button', { name: 'Start Stream' })
-        this.folowerCounters = page.getByText('0 followers 0 following')
+        this.folowerCounters = page.getByText('0 followers')
         this.coinShopTitle = page.locator('span.coins-shop-modal__title-text')
         this.stremTitleInputField = page.locator('[placeholder="Stream title"]')
         this.kebabMenuBtn = page.locator('div.context-menu')
