@@ -19,9 +19,9 @@ export class AnalyticsUserActivityPage {
         console.log(`request for create new account ${platform}`)
     }
 
-    async pageviewFollowTop(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android') {
+    async pageViewFollowTop(url: string, userToken: string, userId: string, platform: 'iOS' | 'Web' | 'Android') {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-        const data = UaPayloads.pageviewFollowTop(userId, platform)
+        const data = UaPayloads.pageViewFollowTop(userId, platform)
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3005/a/ua`, { data, headers: headers })

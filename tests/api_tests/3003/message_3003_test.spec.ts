@@ -1,15 +1,18 @@
 import { request, test } from "@playwright/test";
-import { apiUrl } from "../../utils/apiUrl";
-import { Api } from "../../pages/Api";
+import { apiUrl } from "../../../utils/apiUrl";
+import { Api } from "../../../pages/Api";
+import { apiDataSet } from "../../../utils/dataSet";
 
 let user, user2
 
-test.describe('Blocked API test ',async () => {
+test.describe('3003 API test ',async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        await api.followingPage.follow(apiUrl.qaEnvUrl, user.userToken, user2.id)
+        await api.followingPage.follow(apiUrl.qaEnvUrl, user2.userToken, user.id)
     })
 
     test.afterEach(async () => {
@@ -19,13 +22,14 @@ test.describe('Blocked API test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
-    test('block user CRUD',async () => {
+    test('Message Api Test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.blockedPage.blockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
-        await api.blockedPage.getBlockedUsers(apiUrl.qaEnvUrl, user.userToken, user2.id)
-        await api.blockedPage.unblockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
+        await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+
     })
 
-})
 
+    
+
+})

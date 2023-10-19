@@ -49,7 +49,7 @@ export class UaPayloads {
     return query
   }
 
-  static pageviewFollowTop(userId: string, platform: string) {
+  static pageViewFollowTop(userId: string, platform: string) {
     const query = [
       {
         ...this.defaultQueryParams,
