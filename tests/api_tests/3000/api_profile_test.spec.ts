@@ -39,7 +39,7 @@ test.describe('Profile API test', async () => {
         await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, "month")
     })
 
-    test.only('Search and Preview Other Profile',async () => {
+    test('Search and Preview Other Profile',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const otherUser = await api.profilePage.search(apiUrl.qaEnvUrl, user.userToken, apiDataSet.searchText)
