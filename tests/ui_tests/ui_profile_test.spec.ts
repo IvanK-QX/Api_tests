@@ -5,7 +5,7 @@ import { App } from "../../pages/App";
 import { apiDataSet } from "../../utils/dataSet";
 let user
 
-test.describe.skip('UI - Profile Tests', async () => {
+test.describe('UI - Profile Tests', async () => {
     test.beforeEach(async ({page}) => {
         const app = new App(page)
         user = await app.loginPage.apiLogin(apiUrl.qaEnvUrl)
@@ -59,7 +59,5 @@ test.describe.skip('UI - Profile Tests', async () => {
         await app.profilePage.open()
         await app.profilePage.observeMyBio(bio)
         await app.profilePage.observePersonalInfo(name)
-    
-
     })
 })
