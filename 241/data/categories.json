@@ -1,0 +1,99 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "Test finished within timeout of 120000ms, but tearing down \"context\" ran out of time.\nPlease allow more time for the test, since teardown is attributed towards the test timeout budget.",
+      "children" : [ {
+        "name" : "Profile - My Info",
+        "uid" : "8edbfd9d0b3d24df",
+        "parentUid" : "2fb3ff93ae0cab039040675cfa3b8b5b",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215869716,
+          "stop" : 1698215994290,
+          "duration" : 124574
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "2fb3ff93ae0cab039040675cfa3b8b5b"
+    }, {
+      "name" : "Test timeout of 120000ms exceeded.",
+      "children" : [ {
+        "name" : "Profile - Start Stream",
+        "uid" : "e233e8bed7bc636d",
+        "parentUid" : "b4658691ece848c4869c9232d40e04bc",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215877951,
+          "stop" : 1698216054686,
+          "duration" : 176735
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      }, {
+        "name" : "Profile - Buy Coins",
+        "uid" : "e40a9645349a83eb",
+        "parentUid" : "b4658691ece848c4869c9232d40e04bc",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215882610,
+          "stop" : 1698216058444,
+          "duration" : 175834
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "b4658691ece848c4869c9232d40e04bc"
+    }, {
+      "name" : "Test timeout of 120000ms exceeded while running \"beforeEach\" hook.",
+      "children" : [ {
+        "name" : "Profile - Edit Profile",
+        "uid" : "d8f9ee8937811cdd",
+        "parentUid" : "0add4a86d62f10485e427a06f4fb17a4",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215897543,
+          "stop" : 1698216066545,
+          "duration" : 169002
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      }, {
+        "name" : "Profile - Redeem Cash",
+        "uid" : "fe050a8e34aba1fa",
+        "parentUid" : "0add4a86d62f10485e427a06f4fb17a4",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215903087,
+          "stop" : 1698216070541,
+          "duration" : 167454
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      }, {
+        "name" : "Profile - Edit Profile e2e",
+        "uid" : "646d824ce6d40ab0",
+        "parentUid" : "0add4a86d62f10485e427a06f4fb17a4",
+        "status" : "broken",
+        "time" : {
+          "start" : 1698215905458,
+          "stop" : 1698216069941,
+          "duration" : 164483
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "0add4a86d62f10485e427a06f4fb17a4"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ],
+  "name" : "categories"
+}
