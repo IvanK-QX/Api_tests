@@ -44,6 +44,8 @@ test.describe('Other API test', async () => {
     test('Get Mounthly Bonus', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext) 
+        const admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
+        await api.internalPage.stremerType(apiUrl.qaEnvUrl, admin.adminToken,user.id)
         await api.otherTestsPage.mounthlyBonus(apiUrl.qaEnvUrl, user.userToken)
     })
 
