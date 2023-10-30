@@ -17,6 +17,9 @@ import { ApiReportsPage } from "./apiPages/reports_page"
 import { ApiNotificationsContentPage } from "./apiPages/notificationsContent_page"
 import { ApiInternalPage } from "./apiPages/internal_page"
 import { ApiOtherPage } from "./apiPages/other_functionality_page"
+import { Api3002Page } from "./apiPages/3002_page"
+import { ApiNegativeFlowTemplate } from "./apiPagesNegFlow/negativeFlowTemplate_page"
+import { ApiMessage3003Page } from "./apiPages/message_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -38,6 +41,9 @@ export class Api {
     notificationsContentPage: ApiNotificationsContentPage
     internalPage: ApiInternalPage
     otherTestsPage: ApiOtherPage
+    agora3002Page: Api3002Page
+    negativeFlowTemplate: ApiNegativeFlowTemplate
+    messagePage: ApiMessage3003Page
 
     constructor(apiContext: APIRequestContext) {
         this.apiContext = apiContext
@@ -59,6 +65,8 @@ export class Api {
         this.notificationsContentPage = new ApiNotificationsContentPage(apiContext)
         this.internalPage = new ApiInternalPage(apiContext)
         this.otherTestsPage = new ApiOtherPage(apiContext)
-
+        this.agora3002Page = new Api3002Page(apiContext)
+        this.negativeFlowTemplate = new ApiNegativeFlowTemplate(apiContext)
+        this.messagePage = new ApiMessage3003Page(apiContext)
     }
 }

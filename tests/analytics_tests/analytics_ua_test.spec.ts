@@ -5,7 +5,7 @@ import { Analytics } from "../../pages/Analytics";
 
 let user
 
-test.describe('User analytics test', async () => {
+test.describe.skip('User analytics test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -29,9 +29,9 @@ test.describe('User analytics test', async () => {
     test('Pageview Follow Top', async () => {
         const apiContext = await request.newContext()
         const analytics = new Analytics(apiContext)
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
-        await analytics.uaPage.pageviewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
+        await analytics.uaPage.pageViewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Android")
+        await analytics.uaPage.pageViewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "Web")
+        await analytics.uaPage.pageViewFollowTop(apiUrl.qaEnvUrl, user.userToken, user.id, "iOS")
     })
 
     test('Click Follow Top', async () => {

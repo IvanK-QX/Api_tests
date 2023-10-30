@@ -1,4 +1,4 @@
-import { APIRequestContext, request, Page, Browser } from "@playwright/test"
+import { APIRequestContext, request, Page } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
 
@@ -23,10 +23,19 @@ export class AppLoginPage {
         await this.page.evaluate(
           `window.localStorage.setItem('isAuthorized', "true")`
         )
+        await this.page.evaluate(
+          `window.localStorage.setItem('streamData', 'null')`
+        )
+        const date  = new Date().toISOString()
+        await this.page.evaluate(
+          `window.localStorage.setItem('lastGiftListRequestDate', '${date}')`
+        )
         const userToken = user.userToken
-        await this.page.reload()
-        await this.page.waitForLoadState('networkidle')
-        return { userToken }
+        const id = user.id,
+        name = user.name
+        await this.page.goto('https://webclient.streamsqa.com/edit')
+        await this.page.waitForTimeout(500)
+        return { userToken , id , name}
     }
        
 }

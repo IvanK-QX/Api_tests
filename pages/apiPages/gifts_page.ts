@@ -14,10 +14,11 @@ export class ApiGiftsPage {
         const apiRequest = await apiContext.get(`${url}:3000/gifts/list`, { headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
+        const giftList = await apiRequest.text()
         const giftIdOne = response[0]._id
         const giftIdTwo = response[1]._id
         console.log(`List of gists is dispalyed`)
-        return { giftIdOne, giftIdTwo }
+        return { giftIdOne, giftIdTwo, giftList }
     }
 
     async getGiftsAll(url: string, userToken: string) {
