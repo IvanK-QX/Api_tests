@@ -26,7 +26,7 @@ export class ApiProfilePage {
         const userName = response.name
         const userAbout = response.about
         expect(userName).toEqual(name)
-        expect(userAbout).toEqual('null')
+        expect(userAbout).toEqual(about)
         console.log(`Profile has been changed`)
     }
 

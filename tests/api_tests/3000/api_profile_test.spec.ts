@@ -19,7 +19,7 @@ test.describe('Profile API test', async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Edit Profile', async () => {
+    test.only('Edit Profile', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.profilePage.editProfile(apiUrl.qaEnvUrl, user.userToken, apiDataSet.randomName, apiDataSet.randomAbout)
