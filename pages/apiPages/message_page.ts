@@ -29,10 +29,10 @@ export class ApiMessage3003Page {
         return{chatId}
     }
 
-    async MessageList (url:string, userToken: string, chatId: string) {
+    async messageList (url:string, userToken: string, chatId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors:true})
         const data = {
-            "chatId" : `${chatId}`,
+            "chatId" : `${chatId}`, 
             "itemsPerPage" : 100,
             "skip" : 0
         }
@@ -48,14 +48,7 @@ export class ApiMessage3003Page {
        // expect(text).toEqual(messageText)
         expect(status).toEqual('Sent')
         return {chatId, status, fromUserId, toUserId }
-
-
-    
     }
-        
-    
-
-
 
    
 }
