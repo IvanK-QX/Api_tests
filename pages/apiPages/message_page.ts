@@ -50,6 +50,28 @@ export class ApiMessage3003Page {
         return { chatId, status, fromUserId, toUserId }
         
     }
+    async doIcanChatting ( url: string, userToken: string, userId: string ) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors:true})
+        const data = {
+            "toUserId" : `${userId}`
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/doIcanChatting`,{data,headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        console.log(response)
+        const chatId = response.chatId
+        const doICanChatting = response.doICanChatting
+        const blockedBySender = response.blockedBySender
+        expect(chatId).toEqual(chatId)
+        expect(doICanChatting).toEqual(true)
+        expect(blockedBySender).toEqual(false)
+        return { blockedBySender, doICanChatting, chatId }
 
-   
+
+
+
+
+
+    }
 }
