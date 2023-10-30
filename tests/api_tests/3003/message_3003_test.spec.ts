@@ -29,10 +29,12 @@ test.describe('3003 API test ',async () => {
 
     })
 
-    test('MessageList Api Test', async () => {
+    test.only('MessageList Api Test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.messagePage.MessageList(apiUrl.qaEnvUrl, user)
+        const chat = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.messageList(apiUrl.qaEnvUrl, user.userToken, chat.chatId, chat.text)
+        console.log(chat)
     })
     
 

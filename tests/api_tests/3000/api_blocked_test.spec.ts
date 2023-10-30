@@ -27,17 +27,5 @@ test.describe('Blocked API test ',async () => {
         await api.blockedPage.unblockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
 
-<<<<<<< Updated upstream:tests/api_tests/api_blocked_test.spec.ts
-=======
-    test('Message List Api Test', async () => {
-        const apiContext = await request.newContext()
-        const api = new Api(apiContext)
-        await api.messagePage.MessageList(apiUrl.qaEnvUrl, user.userToken,chatid ???)
-    })
-
-
-    
-
->>>>>>> Stashed changes:tests/api_tests/3003/message_3003_test.spec.ts
 })
 

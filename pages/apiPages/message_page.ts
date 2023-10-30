@@ -26,10 +26,10 @@ export class ApiMessage3003Page {
         expect(text).toEqual(messageText)
         expect(toUserId).toEqual(userId)
         expect(status).toEqual('Sent')
-        return{chatId}
+        return { chatId, text }
     }
 
-    async messageList (url:string, userToken: string, chatId: string) {
+    async messageList (url:string, userToken: string, chatId: string, messageText: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors:true})
         const data = {
             "chatId" : `${chatId}`, 
@@ -40,14 +40,15 @@ export class ApiMessage3003Page {
         const apiRequest = await apiContext.post(`${url}:3003/message/list`,{data,headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        const fromUserId = response.fromUserId
-        const toUserId = response.toUserId
-        const status = response.status
-        const text = response.text
+        const fromUserId = response.documents[0].fromUserId
+        const toUserId = response.documents[0].toUserId
+        const status = response.documents[0].status
+        const text = response.documents[0].text
         expect(chatId).toEqual(chatId)
-       // expect(text).toEqual(messageText)
+        expect(text).toEqual(messageText)
         expect(status).toEqual('Sent')
-        return {chatId, status, fromUserId, toUserId }
+        return { chatId, status, fromUserId, toUserId }
+        
     }
 
    
