@@ -41,7 +41,12 @@ test.describe('3003 API test ',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.messagePage.doIcanChatting(apiUrl.qaEnvUrl, user.userToken, user2.id )
-        
+    })
+
+    test.only('Chat Unblock Api Test', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.messagePage.chatUnbloc(apiUrl.qaEnvUrl, user.userToken, user2.id)
 
 
     })
