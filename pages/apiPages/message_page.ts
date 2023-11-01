@@ -81,7 +81,6 @@ export class ApiMessage3003Page {
         const responsetext = await apiRequest.text ()
         expect(responsetext).toContain(userId)
         expect(responsetext).toContain(user2)
-        console.log(response)
         const chatId = response._id
         const type = response.type
         expect(chatId).toEqual(chatId)
