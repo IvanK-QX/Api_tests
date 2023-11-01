@@ -69,7 +69,7 @@ export class ApiMessage3003Page {
 
     }
     
-    async chatUnbloc ( url: string, userToken: string , userId: string ) { 
+    async chatUnbloc ( url: string, userToken: string , userId: string, user2: string ) { 
         const apiContext = await request.newContext({ignoreHTTPSErrors:true})
         const data = {
             "userId" : `${userId}`
@@ -78,15 +78,14 @@ export class ApiMessage3003Page {
         const apiRequest = await apiContext.post(`${url}:3003/chat/unblock`,{data,headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
+        const responsetext = await apiRequest.text ()
+        expect(responsetext).toContain(userId)
+        expect(responsetext).toContain(user2)
         console.log(response)
         const chatId = response._id
         const type = response.type
-        const user = response.users
-        const user2 = response.users
         expect(chatId).toEqual(chatId)
         expect(type).toEqual('private')
-        expect(user2).toEqual(user)
-        expect(user).toEqual(user)
-        return { chatId , type, user, user2}
+        return { chatId , type }
     }    
 }
