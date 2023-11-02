@@ -29,7 +29,27 @@ test.describe('3003 API test ',async () => {
 
     })
 
+    test('MessageList Api Test', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const chat = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.messageList(apiUrl.qaEnvUrl, user.userToken, chat.chatId, chat.text)
+        console.log(chat)
+    })
 
+    test('DoICanChatting Api Test', async () => { 
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.messagePage.doIcanChatting(apiUrl.qaEnvUrl, user.userToken, user2.id )
+    })
+
+    test('Chat Unblock Api Test', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.messagePage.chatUnbloc(apiUrl.qaEnvUrl, user.userToken, user2.id, user.id)
+
+
+    })
     
 
 })
