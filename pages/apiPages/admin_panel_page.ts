@@ -25,29 +25,78 @@ export class AdminPanelPage {
         console.log(`Moderators list is received`)
     }
 
-    async getModeratorsOnShift(url: string, userToken: string) {
+    async getModeratorsOnShift(url: string, userToken: string, moderatorId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {}
         const headers = Headers.userHeader(userToken)
         const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/shift/ids`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const responseJson = await apiRequest.json()
-        console.log(responseJson)
+        expect(responseJson).toContain(moderatorId)
         console.log(`Moderators on Shift list is received`)
     }
 
-    async startShiftForModerator(url: string, userToken: string, moderatorId: string, isMp: boolean) {
+    async getModeratorsOnOtherShift(url: string, userToken: string, moderatorId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const responseJson = await apiRequest.json()
+        expect(responseJson).toContain(moderatorId)
+        console.log(`Moderators on "Other" Shift list is received`)
+    }
+
+    async moderatorOnSafeShiftNotDisplayedInOtherShiftList(url: string, userToken: string, moderatorId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const responseJson = await apiRequest.json()
+        expect(responseJson).not.toContain(moderatorId)
+        console.log(`Moderators on "Safe" Shift isn't present in "Other" shift list`)
+    }
+
+    async startSafeShiftForModerator(url: string, userToken: string, moderatorId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
             "moderatorId": `${moderatorId}`,
-            "isMpStreams": isMp
+            "isMpStreams": false
         }
         const headers = Headers.userHeader(userToken)
         const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const responseJson = await apiRequest.json()
         expect(responseJson).toContain(moderatorId)
-        console.log(`Moderators Shift has started`)
+        console.log(`Moderator Safe Shift has started`)
+    }
+
+    async endShiftForModerator(url: string, userToken: string, moderatorId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "moderatorId": `${moderatorId}`
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/end`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const responseJson = await apiRequest.json()
+        expect(responseJson).not.toContain(moderatorId)
+        console.log(`Moderator Safe Shift has started`)
+    }
+
+    async startOtherShiftForModerator(url: string, userToken: string, moderatorId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "moderatorId": `${moderatorId}`,
+            "isMpStreams": true
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const responseJson = await apiRequest.json()
+        expect(responseJson).toContain(moderatorId)
+        console.log(`Moderator Other Shift has started`)
     }
 
     
