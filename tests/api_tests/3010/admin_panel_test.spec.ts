@@ -21,7 +21,7 @@ test.describe('Admin Panel API test',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
     })
 
-    test.only('Shift page', async () => {
+    test('Shift page', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.adminPanelPage.getModerators(apiUrl.qaEnvUrl, admin.adminToken)
