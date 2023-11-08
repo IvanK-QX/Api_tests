@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
   reportSlowTests: { max: 0, threshold: 60001 },
   forbidOnly: !!process.env.CI,
-  retries: 2,
+  retries: 0,
   workers: process.env.CI ? 6: undefined,
   reporter: [
     ['line'],
