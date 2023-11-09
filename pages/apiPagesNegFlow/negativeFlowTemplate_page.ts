@@ -9,10 +9,11 @@ export class ApiNegativeFlowTemplate {
         this.apiContext = apiContext
     }
 
-    async negativeFlowTemplate(url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string) {
+    async negativeFlowTemplate({url, payload, ExpectedStatusCode, ExpectedErrorMessage, testSuiteName, testName, token = ""}: {
+            url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string, token?: string,}){
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = payload
-        const headers = Headers.guestHeader()
+        const headers = { ...Headers.guestHeader(), ...(token && { authorization: `Bearer ${token}` }) } //Add Token if it's available 
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.text()
         const actualStatusCode = apiRequest.status()

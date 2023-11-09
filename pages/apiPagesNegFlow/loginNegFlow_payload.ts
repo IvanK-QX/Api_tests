@@ -1,7 +1,12 @@
+import { apiUrl } from "../../utils/apiUrl"
 import { apiDataSet } from "../../utils/dataSet"
+
+const loginUrl = `${apiUrl.qaEnvUrl}:3000/login`
 
 export const loginGuestTestCases = [
     { 
+        url: loginUrl,
+        token: null,
         payload: {
             "deviceId": apiDataSet.deviceUUID,
             "language": "UK"
@@ -12,6 +17,7 @@ export const loginGuestTestCases = [
         case: "missedAuthProvider" 
     },
     { 
+        url: loginUrl,
         payload: {
             "deviceId": "123458077",
             "language": "UK"
@@ -22,6 +28,7 @@ export const loginGuestTestCases = [
         case: "missedDeviceId"
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider":"ownDeviceId",
             "deviceId": apiDataSet.deviceUUID
@@ -32,6 +39,7 @@ export const loginGuestTestCases = [
         case: "missedLanguage" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider":"ownDeviceId",
             "deviceId": "12345", //less than 6 characters
@@ -43,6 +51,7 @@ export const loginGuestTestCases = [
         case: "deviceIdToShirt" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider":"ownDeviceId",
             "deviceId": "123456789012345678901234567890123456789012345678901", //more than 50 characters
@@ -54,6 +63,7 @@ export const loginGuestTestCases = [
         case: "deviceIdToLong" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider":"test",  // shoud be ownDeviceId
             "deviceId": "123456", 
@@ -68,6 +78,7 @@ export const loginGuestTestCases = [
 
 export const loginUserTestCases = [
     { 
+        url: loginUrl,
         payload: {
             "email": apiDataSet.randomEmail,
             "password": apiDataSet.password,
@@ -81,6 +92,7 @@ export const loginUserTestCases = [
         case: "missedAuthProvider" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "password": apiDataSet.password,
@@ -94,6 +106,7 @@ export const loginUserTestCases = [
         case: "missedEmail" 
     }, 
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -107,6 +120,7 @@ export const loginUserTestCases = [
         case: "missedPassword" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -120,6 +134,7 @@ export const loginUserTestCases = [
         case: "missedDeviceId" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -133,6 +148,7 @@ export const loginUserTestCases = [
         case: "missedLanguage" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -145,6 +161,7 @@ export const loginUserTestCases = [
         case: "missedGuestToken" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -159,6 +176,7 @@ export const loginUserTestCases = [
         case: "guestTokenToLong" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.randomEmail,
@@ -173,6 +191,7 @@ export const loginUserTestCases = [
         case: "guestTokenIncorrect" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "phone",
             "email": apiDataSet.randomEmail,
@@ -189,6 +208,7 @@ export const loginUserTestCases = [
 
 export const loginAdminTestCases = [
     { 
+        url: loginUrl,
         payload: {
             "email": apiDataSet.email + "@gmail.com",
             "password": apiDataSet.password,
@@ -201,6 +221,7 @@ export const loginAdminTestCases = [
         case: "missedAuthProvider" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "password": apiDataSet.password,
@@ -213,6 +234,7 @@ export const loginAdminTestCases = [
         case: "missedEmail" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.email + "@gmail.com",
@@ -225,6 +247,7 @@ export const loginAdminTestCases = [
         case: "missedPassword" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.email + "@gmail.com",
@@ -237,6 +260,7 @@ export const loginAdminTestCases = [
         case: "missedDeviceId" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "ownEmail",
             "email": apiDataSet.email + "@gmail.com",
@@ -248,6 +272,7 @@ export const loginAdminTestCases = [
         case: "missedLanguage" 
     },
     { 
+        url: loginUrl,
         payload: {
             "authProvider": "phone",
             "email": apiDataSet.email + "@gmail.com",
