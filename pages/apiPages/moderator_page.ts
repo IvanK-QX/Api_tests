@@ -40,7 +40,7 @@ export class ApiModeratorPage {
         const newAdminToken = response.token
         expect(rolesGroup).toEqual('admin')
         console.log(`Admin with: ${id}, ${email} and "password" is Logged In`)
-        return { newAdminToken }
+        return { newAdminToken, id }
     }
 
     async getAdminReferralEarnings(url: string, userToken: string, userId: string, startDate: string, endDate: string) {
