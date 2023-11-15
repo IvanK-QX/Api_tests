@@ -10,12 +10,7 @@ test.describe('Admin Panel API test',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
-        
 
-    // test.afterEach(async () => {
-    //     const apiContext = await request.newContext()
-    //     const api = new Api(apiContext)
-    //     await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, newAdmin.newAdminToken)
     })
 
     test('Shift page', async () => {
