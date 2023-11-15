@@ -20,7 +20,7 @@ import { ApiOtherPage } from "./apiPages/other_functionality_page"
 import { Api3002Page } from "./apiPages/3002_page"
 import { ApiNegativeFlowTemplate } from "./apiPagesNegFlow/negativeFlowTemplate_page"
 import { ApiMessage3003Page } from "./apiPages/message_page"
-import { AdminPanelPage } from "./apiPages/admin_panel_page"
+import { Api3011ShiftsPage } from "./apiPages/adminPanel3011Shifts_page"
 
 export class Api {
     apiContext: APIRequestContext
@@ -43,7 +43,7 @@ export class Api {
     internalPage: ApiInternalPage
     otherTestsPage: ApiOtherPage
     agora3002Page: Api3002Page
-    adminPanelPage: AdminPanelPage
+    api3011ShiftsPage: Api3011ShiftsPage
     negativeFlowTemplate: ApiNegativeFlowTemplate
     messagePage: ApiMessage3003Page
 
@@ -68,7 +68,7 @@ export class Api {
         this.internalPage = new ApiInternalPage(apiContext)
         this.otherTestsPage = new ApiOtherPage(apiContext)
         this.agora3002Page = new Api3002Page(apiContext)
-        this.adminPanelPage = new AdminPanelPage(apiContext)
+        this.api3011ShiftsPage = new Api3011ShiftsPage(apiContext)
         this.negativeFlowTemplate = new ApiNegativeFlowTemplate(apiContext)
         this.messagePage = new ApiMessage3003Page(apiContext)
     }
