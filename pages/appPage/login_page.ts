@@ -1,7 +1,6 @@
 import { APIRequestContext, request, Page } from "@playwright/test"
 import { Api } from "../Api";
 import { apiDataSet } from "../../utils/dataSet";
-import { apiUrl } from "../../utils/apiUrl";
 
 export class AppLoginPage {
     apiContext: APIRequestContext
@@ -34,8 +33,8 @@ export class AppLoginPage {
         const userToken = user.userToken
         const id = user.id,
         name = user.name
-        await this.page.reload()
-        await this.page.waitForLoadState('networkidle')
+        await this.page.goto('https://webclient.streamsqa.com/edit')
+        await this.page.waitForTimeout(500)
         return { userToken , id , name}
     }
        

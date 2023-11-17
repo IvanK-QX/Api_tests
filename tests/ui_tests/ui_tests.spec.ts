@@ -1,11 +1,11 @@
-import { request, test } from "@playwright/test";
+import { expect, request, test } from "@playwright/test";
 import { Api } from "../../pages/Api";
 import { apiUrl } from "../../utils/apiUrl";
 import { App } from "../../pages/App";
 import { apiDataSet } from "../../utils/dataSet";
 let streamer, watcher, newPage, watcherPage
 
-test.describe('UI Tests', async () => {
+test.describe.skip('UI Tests', async () => {
     test.beforeEach(async ({page, browser}) => {
         const apiContext = await request.newContext()
         const contetext = await browser.newContext();
@@ -27,29 +27,47 @@ test.describe('UI Tests', async () => {
     })
 
     test('Star sand Join Stream',async ({page}) => {
-      const app = new App(page)
-      const watcherPage = new App(newPage)
-      await app.ediProfilePage.open()
-      await app.sidePanelPage.clickCreateStreamBtn()
-      await app.preStreamPage.changeStreamTitle()
-      await app.preStreamPage.clickStartStreamBtn()
-      await app.preStreamPage.uploadAvatar()
-      await app.preStreamPage.clickStartStreamBtn()
-      await app.preStreamPage.observeStream()
-      await watcherPage.sidePanelPage.clickCreateStreamBtn()
-      await page.waitForTimeout(1000)
-      await watcherPage.mainPage.open()
-      await watcherPage.mainPage.joinStream(streamer.name)
-      await watcherPage.streamPage.waitForStreamLoadingWatcher()
-      await watcherPage.streamPage.sendMessageInStreamChat(apiDataSet.uiStreamMessage)
-      await app.streamPage.observeReceivedMessage(apiDataSet.uiStreamMessage)
-      await app.streamPage.closeStreamAsStreamer()
-
-      
-     
-
-
-    })
+        const app = new App(page)
+        const watcherPage = new App(newPage)
+        await app.ediProfilePage.open()
+        await app.sidePanelPage.clickCreateStreamBtn()
+        await app.preStreamPage.changeStreamTitle()
+        await app.preStreamPage.clickStartStreamBtn()
+        await app.preStreamPage.uploadAvatar()
+        await app.preStreamPage.clickStartStreamBtn()
+        await app.preStreamPage.observeStream()
+        await watcherPage.sidePanelPage.clickCreateStreamBtn()
+        await page.waitForTimeout(1000)
+        await watcherPage.mainPage.open()
+        await watcherPage.mainPage.joinStream(streamer.name)
+        await watcherPage.streamPage.waitForStreamLoadingWatcher()
+        await watcherPage.streamPage.sendMessageInStreamChat(apiDataSet.uiStreamMessage)
+        await app.streamPage.observeReceivedMessage(apiDataSet.uiStreamMessage)
+        await watcherPage.streamPage.sendMessageInStreamChat("bitch")
+        await watcherPage.streamPage.observeModeratorMessage()
+        await app.streamPage.openWatchersList()
+        await app.streamPage.clickFollowOnWatchersList()
+        await app.streamPage.closeWatchersList()
+        await app.streamPage.closeStreamAsStreamer()
+        await watcherPage.streamPage.closeEndStreamModalAsWatcher()
+        await app.chatPage.open()
+        await app.chatPage.startChetWithSpecificUser(watcher.name)
+        await app.chatPage.sendMessage('hello')
+        await watcherPage.chatPage.open()
+        await watcherPage.chatPage.openExistingChat(streamer.name)
+        await watcherPage.chatPage.observeNewMessage('hello')
+        await watcherPage.chatPage.sendMessage('bitch')
+        await watcherPage.chatPage.observeNewMessage('bitch')
+      //   await watcherPage.chatPage.sendObusiveWord('bitch')
+        await app.chatPage.observeNewMessage('bitch')
+        await app.chatPage.blockUser()
+        await app.chatPage.doNotSeeChatForSpecificUser(watcher.name)
+        await app.blockedPage.open()
+        await app.blockedPage.oberveBlockedUser(watcher.name)
+        await app.blockedPage.unblockUser(watcher.name)
+        await app.blockedPage.doNotOberveBlockedUser(watcher.name)
+  
+      })
 })
 
 

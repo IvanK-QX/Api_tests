@@ -5,6 +5,9 @@ import { AppPreStreamPage } from "./appPage/preStream_page"
 import { AppMainPage } from "./appPage/main_page"
 import { AppStreamPage } from "./appPage/stream_page"
 import { AppEditProfilePage } from "./appPage/editProfile_page"
+import { AppChatPage } from "./appPage/chat_page"
+import { AppBlockedPage } from "./appPage/blocked_page"
+import { AppProfilePage } from "./appPage/profile_page"
 export class App {
     page: Page
     loginPage: AppLoginPage
@@ -13,6 +16,9 @@ export class App {
     mainPage: AppMainPage
     streamPage: AppStreamPage
     ediProfilePage: AppEditProfilePage
+    chatPage: AppChatPage
+    blockedPage: AppBlockedPage
+    profilePage: AppProfilePage
 
     constructor(page: Page) {
         this.page = page
@@ -22,5 +28,8 @@ export class App {
         this.mainPage = new AppMainPage(this.page)
         this.streamPage = new AppStreamPage(this.page)
         this.ediProfilePage = new AppEditProfilePage(this.page)
+        this.chatPage = new AppChatPage(this.page)
+        this.blockedPage = new AppBlockedPage(this.page)
+        this.profilePage = new AppProfilePage(this.page)
     }
 }

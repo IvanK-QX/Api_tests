@@ -20,8 +20,8 @@ export class AppMainPage {
 
     async joinStream(streamerName: string) {
         await this.page.waitForTimeout(1500)
-        await this.page.reload()
-        await this.page.reload()
+        await this.page.reload({waitUntil: 'domcontentloaded'})
+        await this.page.reload({waitUntil: 'domcontentloaded'})
         this.clickOnStream(streamerName)
     }
 

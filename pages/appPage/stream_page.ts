@@ -19,6 +19,10 @@ export class AppStreamPage {
         await this.page.keyboard.press('Enter')
     }
 
+    async observeModeratorMessage() {
+        await this.page.locator('div.chat-system-moderator-message').waitFor()
+    }
+
     async observeReceivedMessage(message: string) {
         await expect(this.page.getByText(message)).toBeVisible()
     }
@@ -29,6 +33,26 @@ export class AppStreamPage {
         await this.page.locator('.modal-close').click()
         await this.page.waitForURL(`${apiUrl.qaUiUrl}`)
     }
+
+    async openWatchersList() {
+        await this.page.locator('span.stream-users-watch__pin').waitFor()
+        await this.page.locator('span.stream-users-watch__pin').click()
+        await this.page.locator('h3.user-info-list-modal__title').waitFor()
+    }
+
+    async closeWatchersList() {
+        await this.page.locator('.modal-close').click() 
+    }
+
+    async clickFollowOnWatchersList() {
+        await this.page.getByRole('button', { name: 'Follow' }).click()
+    }
+
+    async closeEndStreamModalAsWatcher() {
+        await expect(this.page.getByText('This stream ended')).toBeVisible()
+        await this.page.locator('[aria-label="Close"]').click()
+    }
+   
 
 
 }
