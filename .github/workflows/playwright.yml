@@ -33,8 +33,11 @@ jobs:
           npx playwright install 
 
       - name: Run Playwright Tests 
+        env:
+          SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
+          SLACK_COOKIE: ${{secrets.SLACK_COOKIE}}
         run: |
-          xvfb-run npx playwright test
+          npx playwright test
 
       - uses: actions/upload-artifact@v3
         with:
