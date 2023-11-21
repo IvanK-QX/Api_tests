@@ -3,11 +3,12 @@ import { apiDataSet } from "../../utils/dataSet"
 
 const adminProfileCreateUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/create`
 const adminReferralEarningsUrl = `${apiUrl.qaEnvUrl}:3000/admin/agent/referalEarnings`
+const adminProfileStatusUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/status`
 
 export const moderatorProfileCreateTestCases = [
     { 
         url: adminProfileCreateUrl,
-        token: null,
+        token: "token",
         payload: {
             "authProvider": "phone",
             "role": "admin",
@@ -21,7 +22,7 @@ export const moderatorProfileCreateTestCases = [
     },
     { 
         url: adminProfileCreateUrl,
-        token: null,
+        token: "token",
         payload: {
             "authProvider": "ownEmail",
             "role": "user",
@@ -35,7 +36,7 @@ export const moderatorProfileCreateTestCases = [
     },
     { 
         url: adminProfileCreateUrl,
-        token: null,
+        token: "token",
         payload: {
             "authProvider": "ownEmail",
             "role": "admin",
@@ -48,7 +49,7 @@ export const moderatorProfileCreateTestCases = [
     },
     { 
         url: adminProfileCreateUrl,
-        token: null,
+        token: "token",
         payload: {
             "authProvider": "ownEmail",
             "role": "admin",
@@ -64,9 +65,9 @@ export const moderatorProfileCreateTestCases = [
 export const moderatorRefferalEarningsTestCases = [
     { 
         url: adminReferralEarningsUrl,
-        token: null,
+        token: "token",
         payload: {
-            "userId": null,
+            "userId": "defaultUserId",
             "endDate": apiDataSet.isoDate
         }, 
         expectedStatus: 500, 
@@ -76,9 +77,9 @@ export const moderatorRefferalEarningsTestCases = [
     },
     { 
         url: adminReferralEarningsUrl,
-        token: null,
+        token: "token",
         payload: {
-            "userId": null,
+            "userId": "defaultUserId",
             "startDate": apiDataSet.isoDate    
         }, 
         expectedStatus: 500, 
@@ -88,7 +89,7 @@ export const moderatorRefferalEarningsTestCases = [
     },
     { 
         url: adminReferralEarningsUrl,
-        token: null,
+        token: "token",
         payload: {
             "startDate": apiDataSet.isoDate,
             "endDate": apiDataSet.isoDate   
@@ -100,7 +101,7 @@ export const moderatorRefferalEarningsTestCases = [
     },
     { 
         url: adminReferralEarningsUrl,
-        token: null,
+        token: "token",
         payload: {
             "userId": "_",
             "startDate": apiDataSet.isoDate,
@@ -110,5 +111,60 @@ export const moderatorRefferalEarningsTestCases = [
         errorMessage: 'Error while validating request', 
         testSuite: "Admin Referal Earnings",
         case: "wrongUserId" 
+    }
+]
+
+export const adminProfileStatusTestCases = [
+    { 
+        url: adminProfileStatusUrl,
+        token: "token",
+        payload: {
+            "userIds": [
+               "referralUserId"
+            ]
+          },
+        expectedStatus: 400, 
+        errorMessage: 'Error while validating request', 
+        testSuite: "Admin Profile Status",
+        case: "missedStatus"
+    },
+    { 
+        url: adminProfileStatusUrl,
+        token: "token",
+        payload: {
+            "status": "_",
+            "userIds": [
+               "referralUserId"
+            ]
+          },
+        expectedStatus: 400, 
+        errorMessage: 'Error while validating request', 
+        testSuite: "Admin Profile Status",
+        case: "wrongStatus"
+    }, 
+    { 
+        url: adminProfileStatusUrl,
+        token: "token",
+        payload: {
+            "status": "Active",
+            "userIds": [
+               "wrongUserId"
+            ]
+          },
+        expectedStatus: 400, 
+        errorMessage: 'Error while validating request', 
+        testSuite: "Admin Profile Status",
+        case: "wrongUserId"
+    }, 
+    { 
+        url: adminProfileStatusUrl,
+        token: "token",
+        payload: {
+            "status": "Active"
+          },
+        expectedStatus: 400, 
+        errorMessage: 'Error while validating request', 
+        testSuite: "Admin Profile Status",
+        case: "missedUserIds"
     }
 ]

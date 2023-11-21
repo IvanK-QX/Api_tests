@@ -10,12 +10,15 @@ export class ApiNegativeFlowTemplate {
     }
 
     async negativeFlowTemplate({url, payload, ExpectedStatusCode, ExpectedErrorMessage, testSuiteName, testName, token = ""}: {
-            url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string, token?: string,}){
+            url: string, payload: object, ExpectedStatusCode: number, ExpectedErrorMessage: string, testSuiteName: string, testName: string, token?: string}){
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = payload
+        //console.log(data)     //Need for debug
         const headers = { ...Headers.guestHeader(), ...(token && { authorization: `Bearer ${token}` }) } //Add Token if it's available 
+        //console.log(headers)     //Need for debug   
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.text()
+        console.log(response)
         const actualStatusCode = apiRequest.status()
         const testStatus = actualStatusCode === ExpectedStatusCode
         console.log(`The test ${testSuiteName} -> ${testName} ${testStatus ? 'passed' : 'failed'}`);  //display the Test Suite and Case Name of the Passed/Failed Test
@@ -23,4 +26,44 @@ export class ApiNegativeFlowTemplate {
         expect(response).toContain(ExpectedErrorMessage);  //Check the Returned Error Message 
     }
 
+}
+
+//Update Value in the Test Case 
+export function updateValueInTestCase(testCases: any[], key: any, value: any, updateToValue: string): void {
+    testCases.forEach(testCase => {
+        if (key in testCase && testCase[key] === value) {
+            testCase[key] = updateToValue;
+        }
+    });
+}
+
+//Update Value in the Payload 
+export function updateValueInPayload(testCases: any[], key: string, value: string | number, updateToValue: string | number): void {
+    testCases.forEach(testCase => {
+        if (key in testCase.payload && testCase.payload[key] === value) {
+            testCase.payload[key] = updateToValue;
+        }
+    });
+}
+
+//Update Value in the Array  
+export function updateValueInArray(testCases: any[], arrayName: string, value: string | number, updateToValue: string | number): void {
+    testCases.forEach(testCase => {
+        if ('payload' in testCase && arrayName in testCase.payload && Array.isArray(testCase.payload[arrayName])) {
+            const index = testCase.payload[arrayName].indexOf(value);
+            if (index !== -1) {
+                testCase.payload[arrayName][index] = updateToValue;
+            }
+        }
+    });
+}
+
+//Update Value in the Object   
+export function updateValueInObject(testCases: any[], objectName: string, key: string, value: string | number, updateToValue: string | number): void {
+    testCases.forEach(testCase => {
+        const object = testCase.payload[objectName]
+        if (key in object && object[key] === value) {
+            object[key] = updateToValue;
+        }
+    });
 }
