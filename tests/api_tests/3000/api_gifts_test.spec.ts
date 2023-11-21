@@ -11,6 +11,7 @@ test.describe('API Gift Tests with Two user', async () => {
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        await api.slackPage.addCoins(user.humanReadableId)
     })
 
     test.afterEach(async () => {
@@ -27,7 +28,7 @@ test.describe('API Gift Tests with Two user', async () => {
         await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
     })
     
-    test.skip('Sent Gift', async () => {
+    test('Sent Gift', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
