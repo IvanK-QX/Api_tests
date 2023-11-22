@@ -1,5 +1,5 @@
-import { APIRequestContext, expect, request } from "@playwright/test"
-import { Headers } from "../../utils/headers"
+import { APIRequestContext, expect, request } from '@playwright/test'
+import { Headers } from '../../utils/headers'
 
 export class Api3011ShiftsPage {
     apiContext: APIRequestContext
@@ -9,13 +9,13 @@ export class Api3011ShiftsPage {
     }
 
     async getModerators(url: string, userToken: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            "skip": 0,
-            "itemsPerPage": 20
+            skip: 0,
+            itemsPerPage: 20,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const role = response.documents[3].rolesGroup
@@ -26,9 +26,9 @@ export class Api3011ShiftsPage {
     }
 
     async getModeratorsOnShift(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/shift/ids`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/shift/ids`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).toContain(moderatorId)
@@ -36,9 +36,9 @@ export class Api3011ShiftsPage {
     }
 
     async getModeratorsOnOtherShift(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).toContain(moderatorId)
@@ -46,9 +46,9 @@ export class Api3011ShiftsPage {
     }
 
     async moderatorOnSafeShiftNotDisplayedInOtherShiftList(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}:3011/admin/moderators/mp/shift/ids`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).not.toContain(moderatorId)
@@ -56,13 +56,13 @@ export class Api3011ShiftsPage {
     }
 
     async startSafeShiftForModerator(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            "moderatorId": `${moderatorId}`,
-            "isMpStreams": false
+            moderatorId: `${moderatorId}`,
+            isMpStreams: false,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).toContain(moderatorId)
@@ -70,12 +70,12 @@ export class Api3011ShiftsPage {
     }
 
     async endShiftForModerator(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            "moderatorId": `${moderatorId}`
+            moderatorId: `${moderatorId}`,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/end`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/end`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).not.toContain(moderatorId)
@@ -83,13 +83,13 @@ export class Api3011ShiftsPage {
     }
 
     async startOtherShiftForModerator(url: string, userToken: string, moderatorId: string) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            "moderatorId": `${moderatorId}`,
-            "isMpStreams": true
+            moderatorId: `${moderatorId}`,
+            isMpStreams: true,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}:3011/admin/moderators/shift/start`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response).toContain(moderatorId)

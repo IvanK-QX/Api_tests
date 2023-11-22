@@ -1,42 +1,56 @@
 {
-  "name": "api_tests",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "allure:generate": "npx allure generate ./allure-results --clean",
-    "allure:open": "npx allure open ./allure-report",
-    "allure:generate-open": "npx allure generate ./allure-results --clean && allure open",
-    "test": "npx playwright test || :",
-    "test:analytics": "npx playwright test /analytics_tests/* || :",
-    "posttest": "npm run allure:generate",
-    "test:api": "npx playwright test /api_tests/* || :",
-    "test:ui": "npx playwright test ./ui_tests/* || :"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IvanK-QX/Api_tests.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/IvanK-QX/Api_tests/issues"
-  },
-  "homepage": "https://github.com/IvanK-QX/Api_tests#readme",
-  "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
-    "@playwright/test": "^1.39.0",
-    "@types/node": "^20.9.3",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "allure-commandline": "^2.22.1",
-    "allure-playwright": "^2.9.2",
-    "eslint": "^8.44.0",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "dotenv": "^16.3.1",
-    "eslint-plugin-playwright": "^0.15.3"
-  }
+    "name": "api_tests",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "allure:generate": "npx allure generate ./allure-results --clean",
+        "allure:open": "npx allure open ./allure-report",
+        "allure:generate-open": "npx allure generate ./allure-results --clean && allure open",
+        "test": "npx playwright test || :",
+        "test:analytics": "npx playwright test /analytics_tests/* || :",
+        "posttest": "npm run allure:generate",
+        "test:api": "npx playwright test /api_tests/* || :",
+        "test:ui": "npx playwright test ./ui_tests/* || :",
+        "lint": "eslint . --ext .ts",
+        "lint-and-fix": "eslint . --ext .ts --fix",
+        "prettier-format": "npx prettier . --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IvanK-QX/Api_tests.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/IvanK-QX/Api_tests/issues"
+    },
+    "homepage": "https://github.com/IvanK-QX/Api_tests#readme",
+    "devDependencies": {
+        "@faker-js/faker": "^8.0.2",
+        "@playwright/test": "^1.39.0",
+        "@types/node": "^20.9.3",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "@typescript-eslint/parser": "^5.62.0",
+        "allure-commandline": "^2.22.1",
+        "allure-playwright": "^2.9.2",
+        "eslint": "^8.54.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-config-prettier-standard": "^4.0.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.29.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^5.0.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "prettier": "3.1.0",
+        "prettier-config-standard": "^7.0.0",
+        "prettier-eslint": "^16.1.2",
+        "prettier-eslint-cli": "^8.0.1",
+        "typescript": "^5.1.6"
+    },
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "eslint-plugin-playwright": "^0.15.3"
+    }
 }

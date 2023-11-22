@@ -1,7 +1,7 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
+import { apiDataSet } from '../../../utils/dataSet'
 
 let user, admin
 
@@ -36,10 +36,10 @@ test.describe('Profile API test', async () => {
         const api = new Api(apiContext)
         await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'week')
         await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'day')
-        await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, "month")
+        await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'month')
     })
 
-    test('Search and Preview Other Profile',async () => {
+    test('Search and Preview Other Profile', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const otherUser = await api.profilePage.search(apiUrl.qaEnvUrl, user.userToken, apiDataSet.searchText)
@@ -49,7 +49,7 @@ test.describe('Profile API test', async () => {
     test('Upload File and Change Avatar ', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const createFileUpload = await api.profilePage.createFileuplaod(apiUrl.qaEnvUrl, user.userToken)
+        await api.profilePage.createFileuplaod(apiUrl.qaEnvUrl, user.userToken)
         // api.profilePage.uploadToS3(createFileUpload.uploadUrl, user.userToken, createFileUpload.uploadKey, createFileUpload.xAmzTagging, createFileUpload.bucket, createFileUpload.xAmzAlgorithm, createFileUpload.xAmzCredential, createFileUpload.xAmzDate, createFileUpload.policy, createFileUpload.xAmzSignature)
         // api.profilePage.updateProfileCover(apiUrl.qaEnvUrl, user.userToken, createFileUpload.uploadID)
     })
@@ -58,7 +58,7 @@ test.describe('Profile API test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.profilePage.inviteToSteram(apiUrl.qaEnvUrl, user.userToken, true)
-        await api.profilePage.inviteToSteram(apiUrl.qaEnvUrl, user.userToken, false)   
+        await api.profilePage.inviteToSteram(apiUrl.qaEnvUrl, user.userToken, false)
     })
 
     test('Allow to start premium CRUD', async () => {
@@ -66,22 +66,13 @@ test.describe('Profile API test', async () => {
         const api = new Api(apiContext)
         console.log(admin.adminToken)
         await api.profilePage.allowedToStartPremium(apiUrl.qaEnvUrl, admin.adminToken, user.id, true)
-        await api.profilePage.allowedToStartPremium(apiUrl.qaEnvUrl, admin.adminToken, user.id ,false)   
+        await api.profilePage.allowedToStartPremium(apiUrl.qaEnvUrl, admin.adminToken, user.id, false)
     })
 
     test('Add Diamonds', async () => {
         const apiContext = await request.newContext()
-        const api = new Api(apiContext) 
-        await api.profilePage.addDiamonds(apiUrl.qaEnvUrl, admin.adminToken, user.id)
-    })
-
-    test.skip('Profile > KYC', async () => {
-        const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        //const idvId1 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
-        //TODO waiting until idv will be uniq
-        // const idvId2 = await api.profilePage.kyc(apiUrl.qaEnvUrl, user.userToken)
-        // expect(idvId1.idvId).toEqual(idvId2.idvId)
+        await api.profilePage.addDiamonds(apiUrl.qaEnvUrl, admin.adminToken, user.id)
     })
 
 })

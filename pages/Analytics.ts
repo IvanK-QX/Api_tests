@@ -1,6 +1,6 @@
-import { APIRequestContext } from "@playwright/test"
-import { AnalyticsDeviceActivityPage } from "./analyticsPage/da_page"
-import { AnalyticsUserActivityPage } from "./analyticsPage/ua_page"
+import { APIRequestContext } from '@playwright/test'
+import { AnalyticsDeviceActivityPage } from './analyticsPage/da_page'
+import { AnalyticsUserActivityPage } from './analyticsPage/ua_page'
 
 export class Analytics {
     apiContext: APIRequestContext

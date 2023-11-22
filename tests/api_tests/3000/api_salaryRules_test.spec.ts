@@ -1,10 +1,10 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
 
 let user, admin
 
-test.describe('Sallary Rules API Test ',async () => {
+test.describe('Sallary Rules API Test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -18,7 +18,7 @@ test.describe('Sallary Rules API Test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Sallary Rules CRUD',async () => {
+    test('Sallary Rules CRUD', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const rule = await api.selaryRulesPage.createRule(apiUrl.qaEnvUrl, admin.adminToken, user.id)
@@ -29,9 +29,4 @@ test.describe('Sallary Rules API Test ',async () => {
         await api.selaryRulesPage.getBoteRulesList(apiUrl.qaEnvUrl, admin.adminToken, botRule.secondBotRuleId)
         await api.selaryRulesPage.getRulesByUser(apiUrl.qaEnvUrl, user.userToken)
     })
-
-    
-
-
 })
-
