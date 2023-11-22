@@ -87,4 +87,23 @@ export class ApiMessage3003Page {
         expect(type).toEqual('private')
         return { chatId , type }
     }    
+
+    async chatUsersList (url: string, userToken: string, user2: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors:true})
+        const data = {
+            "itemsPerPage" : 20
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const responsetext = await apiRequest.text()
+        const status = response.documents[0].status
+        const user2name = response.documents[0].name
+        expect(status).toEqual('Active')
+        expect(user2name).toEqual(user2name)
+        expect(responsetext).toContain(user2)
+        console.log(`User with id: ${user2} and name : ${user2name} finded in list with status : ${status} `)
+        return { user2name, status }
+    }
 }
