@@ -1,11 +1,11 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
+import { apiDataSet } from '../../../utils/dataSet'
 
 let user, user2, stream
 
-test.describe('Stream API test',async () => {
+test.describe('Stream API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -20,7 +20,7 @@ test.describe('Stream API test',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
-    test('Stream List',async () => {
+    test('Stream List', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.streamsPage.streamList(apiUrl.qaEnvUrl, user.userToken, 'near')
@@ -28,68 +28,66 @@ test.describe('Stream API test',async () => {
         await api.streamsPage.streamList(apiUrl.qaEnvUrl, user.userToken, 'streamersIfollow')
     })
 
-    test('Get Internal List',async () => {
+    test('Get Internal List', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.streamsPage.getIntrenalList(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Create Stream',async () => {
+    test('Create Stream', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
     })
 
-    test('Get Stream',async () => {
+    test('Get Stream', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.getStream(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    test('Send Invite To Stream',async () => {
+    test('Send Invite To Stream', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.sendInvite(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    test('Update Stream',async () => {
+    test('Update Stream', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.updateStream(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId, apiDataSet.updatedStreamTitle)
     })
 
-    test('End Stream',async () => {
+    test('End Stream', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.stopStream(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    test('Get list of my Streams',async () => {
+    test('Get list of my Streams', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.getMyStream(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Stream Rank',async () => {
+    test('Stream Rank', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.streamsPage.streamRank(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
 
-    test.skip('Stream Gifts CRUD',async () => {
+    test.skip('Stream Gifts CRUD', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         const gift = await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
-        await api.streamsPage.addDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId, gift.giftIdOne)
-        await api.streamsPage.removeDesireGift(apiUrl.qaEnvUrl, user.userToken,  stream.myStreamId)
+        await api.streamsPage.addDesireGift(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId, gift.giftIdOne)
+        await api.streamsPage.removeDesireGift(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
-
 })
-

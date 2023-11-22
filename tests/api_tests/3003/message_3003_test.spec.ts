@@ -1,11 +1,11 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
+import { apiDataSet } from '../../../utils/dataSet'
 
 let user, user2
 
-test.describe('3003 API test ',async () => {
+test.describe('3003 API test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -26,7 +26,6 @@ test.describe('3003 API test ',async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
-
     })
 
     test('MessageList Api Test', async () => {
@@ -37,10 +36,10 @@ test.describe('3003 API test ',async () => {
         console.log(chat)
     })
 
-    test('DoICanChatting Api Test', async () => { 
+    test('DoICanChatting Api Test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.messagePage.doIcanChatting(apiUrl.qaEnvUrl, user.userToken, user2.id )
+        await api.messagePage.doIcanChatting(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
 
     test('Chat Unblock Api Test', async () => {
@@ -52,8 +51,6 @@ test.describe('3003 API test ',async () => {
     test('Chat Users List', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        await api.messagePage.chatUsersList(apiUrl.qaEnvUrl, user.userToken, user2.id )
+        await api.messagePage.chatUsersList(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
-    
-
 })
