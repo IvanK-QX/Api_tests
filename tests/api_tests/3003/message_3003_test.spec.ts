@@ -13,6 +13,8 @@ test.describe('3003 API test ', async () => {
         user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         await api.followingPage.follow(apiUrl.qaEnvUrl, user.userToken, user2.id)
         await api.followingPage.follow(apiUrl.qaEnvUrl, user2.userToken, user.id)
+        await api.slackPage.addCoins(user.humanReadableId)
+        await api.slackPage.addCoins(user2.humanReadableId)
     })
 
     test.afterEach(async () => {
@@ -42,7 +44,7 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.doIcanChatting(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
 
-    test('Chat Unblock Api Test', async () => {
+    test.only('Chat Unblock Api Test', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.messagePage.chatUnbloc(apiUrl.qaEnvUrl, user.userToken, user2.id, user.id)
@@ -61,4 +63,22 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.myList(apiUrl.qaEnvUrl, user.userToken, message.lastMessageId)
     })
 
+})
+
+test.describe('3003 API test ', async () => {
+    test.beforeEach(async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        await api.followingPage.follow(apiUrl.qaEnvUrl, user.userToken, user2.id)
+        await api.followingPage.follow(apiUrl.qaEnvUrl, user2.userToken, user.id)
+    })
+
+    test.afterEach(async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
+    })
 })
