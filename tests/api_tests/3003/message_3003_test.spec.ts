@@ -71,8 +71,8 @@ test.describe('3003 API test ', async () => {
         const api = new Api(apiContext)
         user = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
         user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
-        await api.followingPage.follow(apiUrl.qaEnvUrl, user.userToken, user2.id)
-        await api.followingPage.follow(apiUrl.qaEnvUrl, user2.userToken, user.id)
+        await api.slackPage.addCoins(user.humanReadableId)
+        await api.slackPage.addCoins(user2.humanReadableId)
     })
 
     test.afterEach(async () => {
@@ -82,6 +82,12 @@ test.describe('3003 API test ', async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
+    test('Chat Users List Empty', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const leaderboardMonth = await api.leadersPage.getMonthLeders(apiUrl.qaEnvUrl, user.userToken )
+        await api.messagePage.chatUsersListEmpty(apiUrl.qaEnvUrl, user.userToken, leaderboardMonth.monthTop1User)
+    })
 
 
 })

@@ -39,6 +39,12 @@ test.describe('Profile API test', async () => {
         await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'month')
     })
 
+    test('Show Month Leader Name', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.leadersPage.getMonthLeders(apiUrl.qaEnvUrl, user.userToken )
+    })
+
     test('Search and Preview Other Profile', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)

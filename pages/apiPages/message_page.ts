@@ -123,6 +123,24 @@ export class ApiMessage3003Page {
         return { user2name, status }
     }
 
+    async chatUsersListEmpty(url: string, userToken: string, monthTop1User : string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = {
+            itemsPerPage: 20,
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, {
+            data,
+            headers: headers,
+        })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        expect(response).toEqual(response)
+        const top1ChatUser = response.documents[0]._id
+        expect(top1ChatUser).toContain(monthTop1User)
+        console.log(`Users from leaderboard shows into ChatList, top1 User : ${monthTop1User}`)
+    }
+
     async myList ( url: string, userToken: string, lastMessageId: string ) {
         const apiContext = await request.newContext({ignoreHTTPSErrors:true})
         const data = {
