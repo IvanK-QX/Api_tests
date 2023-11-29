@@ -23,13 +23,15 @@ export class ApiMessage3003Page {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const text = response.text
+        const lastMessageId = response._id
         const chatId = response.chatId
         const toUserId = response.toUserId
         const status = response.status
         expect(text).toEqual(messageText)
         expect(toUserId).toEqual(userId)
         expect(status).toEqual('Sent')
-        return { chatId, text }
+        expect(lastMessageId).toEqual(lastMessageId)
+        return { chatId, text, lastMessageId }
     }
 
     async messageList(url: string, userToken: string, chatId: string, messageText: string) {
@@ -118,5 +120,22 @@ export class ApiMessage3003Page {
         expect(responsetext).toContain(user2)
         console.log(`User with id: ${user2} and name : ${user2name} finded in list with status : ${status} `)
         return { user2name, status }
+    }
+
+    async myList ( url: string, userToken: string, lastMessageId: string ) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors:true})
+        const data = {
+            "limit" : 10
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/my/list`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const privateType = response.documents[0].type
+        const systemType = response.documents[1].type
+        const privateMessageId = response.documents[0].lastMessageId
+        expect(privateType).toEqual('private')
+        expect(systemType).toEqual('system')
+        expect(privateMessageId).toEqual(lastMessageId)
     }
 }

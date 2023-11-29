@@ -53,4 +53,12 @@ test.describe('3003 API test ', async () => {
         const api = new Api(apiContext)
         await api.messagePage.chatUsersList(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
+
+    test('My List', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const message = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.myList(apiUrl.qaEnvUrl, user.userToken, message.lastMessageId)
+    })
+
 })
