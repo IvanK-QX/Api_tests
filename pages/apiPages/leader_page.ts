@@ -34,7 +34,7 @@ export class ApiLeadersPage {
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const monthTop1User = response[0].user._id
-        console.log(`Leader by month is dispalyed`)
+        console.log(`Leader by month is dispalyed : id = ${monthTop1User}`)
         return {monthTop1User}
 
         

@@ -135,10 +135,9 @@ export class ApiMessage3003Page {
         })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        expect(response).toEqual(response)
         const top1ChatUser = response.documents[0]._id
         expect(top1ChatUser).toContain(monthTop1User)
-        console.log(`Users from leaderboard shows into ChatList, top1 User : ${monthTop1User}`)
+        console.log(`Users from leaderboard shows into ChatList, top1 User : ${top1ChatUser}`)
     }
 
     async myList ( url: string, userToken: string, lastMessageId: string ) {
