@@ -33,3 +33,9 @@ api:
 ##############################
 report:
 	npm run allure:generate-open
+
+##############################
+# Run Prettier 
+##############################
+prettier:
+	npx prettier . --write

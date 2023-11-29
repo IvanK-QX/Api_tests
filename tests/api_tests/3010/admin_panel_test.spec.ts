@@ -1,16 +1,14 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
 
 let admin
 
-test.describe('Admin Panel API test',async () => {
+test.describe('Admin Panel API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
-
     })
 
     test('Shift page', async () => {
@@ -24,5 +22,4 @@ test.describe('Admin Panel API test',async () => {
         await api.api3011ShiftsPage.getModeratorsOnOtherShift(apiUrl.qaEnvUrl, admin.adminToken, admin.id)
         await api.api3011ShiftsPage.endShiftForModerator(apiUrl.qaEnvUrl, admin.adminToken, admin.id)
     })
-
 })

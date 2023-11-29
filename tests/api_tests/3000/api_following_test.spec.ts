@@ -1,10 +1,10 @@
-import { request, test } from "@playwright/test";
-import { Api } from "../../../pages/Api";
-import { apiUrl } from "../../../utils/apiUrl";
+import { request, test } from '@playwright/test'
+import { Api } from '../../../pages/Api'
+import { apiUrl } from '../../../utils/apiUrl'
 
 let user, following
 
-test.describe('API following tests',async () => {
+test.describe('API following tests', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -18,7 +18,7 @@ test.describe('API following tests',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
-    test('Following CRUD',async () => {
+    test('Following CRUD', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.followingPage.follow(apiUrl.qaEnvUrl, user.userToken, following.followUserIdOne)
@@ -27,20 +27,20 @@ test.describe('API following tests',async () => {
         await api.followingPage.doIFollow(apiUrl.qaEnvUrl, user.userToken, following.followUserIdOne, false)
     })
 
-    test('Follow Multiple',async () => {
+    test('Follow Multiple', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.followingPage.followMultiple(apiUrl.qaEnvUrl, user.userToken, following.followUserIdOne, following.followUserIdTwo)
         await api.followingPage.getFollowingIds(apiUrl.qaEnvUrl, user.userToken, following.followUserIdOne, following.followUserIdTwo)
     })
 
-    test('Get list of Following',async () => {
+    test('Get list of Following', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.followingPage.getFollowingList(apiUrl.qaEnvUrl, user.userToken, following.followUserIdOne)
     })
 
-    test('Mutual Folow',async () => {
+    test('Mutual Folow', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
@@ -50,11 +50,9 @@ test.describe('API following tests',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
-    test('Following Counter',async () => {
+    test('Following Counter', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.followingPage.followCounters(apiUrl.qaEnvUrl, user.userToken, user.id)
     })
-    
 })
-

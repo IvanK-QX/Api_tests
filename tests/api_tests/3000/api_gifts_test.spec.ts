@@ -1,7 +1,7 @@
-import { request, test } from "@playwright/test";
-import { Api } from "../../../pages/Api";
-import { apiUrl } from "../../../utils/apiUrl";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { Api } from '../../../pages/Api'
+import { apiUrl } from '../../../utils/apiUrl'
+import { apiDataSet } from '../../../utils/dataSet'
 
 let user, user2, gift
 
@@ -27,7 +27,7 @@ test.describe('API Gift Tests with Two user', async () => {
         await api.giftsPage.getGiftsAll(apiUrl.qaEnvUrl, user.userToken)
         await api.giftsPage.getGifts(apiUrl.qaEnvUrl, user.userToken)
     })
-    
+
     test('Sent Gift', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -52,6 +52,4 @@ test.describe('API Gift Tests with Two user', async () => {
         await api.giftsPage.myTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamerId)
         await api.giftsPage.stremTopGifters(apiUrl.qaEnvUrl, user.userToken, stream.myStreamId)
     })
-
 })
-

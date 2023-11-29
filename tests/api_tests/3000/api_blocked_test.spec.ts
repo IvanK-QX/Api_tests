@@ -1,10 +1,10 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
 
 let user, user2
 
-test.describe('Blocked API test ',async () => {
+test.describe('Blocked API test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -19,13 +19,11 @@ test.describe('Blocked API test ',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
 
-    test('block user CRUD',async () => {
+    test('block user CRUD', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         await api.blockedPage.blockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
         await api.blockedPage.getBlockedUsers(apiUrl.qaEnvUrl, user.userToken, user2.id)
         await api.blockedPage.unblockUser(apiUrl.qaEnvUrl, user.userToken, user2.id)
     })
-
 })
-

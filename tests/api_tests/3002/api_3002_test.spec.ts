@@ -1,11 +1,11 @@
-import { request, test } from "@playwright/test";
-import { apiUrl } from "../../../utils/apiUrl";
-import { Api } from "../../../pages/Api";
-import { apiDataSet } from "../../../utils/dataSet";
+import { request, test } from '@playwright/test'
+import { apiUrl } from '../../../utils/apiUrl'
+import { Api } from '../../../pages/Api'
+import { apiDataSet } from '../../../utils/dataSet'
 
 let user, admin, stream
 
-test.describe('Agora 3002 API test',async () => {
+test.describe('Agora 3002 API test', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -40,5 +40,4 @@ test.describe('Agora 3002 API test',async () => {
         await api.agora3002Page.getAgoraListofTokenForModerator(apiUrl.qaEnvUrl, admin.adminToken, stream.myStreamId, stream2.myStreamId)
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
     })
-
 })

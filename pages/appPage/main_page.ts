@@ -1,11 +1,11 @@
-import { Page } from "@playwright/test"
-import { apiUrl } from "../../utils/apiUrl"
+import { Page } from '@playwright/test'
+import { apiUrl } from '../../utils/apiUrl'
 
 export class AppMainPage {
     page: Page
 
     constructor(page: Page) {
-        this.page = page 
+        this.page = page
     }
 
     async open() {
@@ -20,10 +20,8 @@ export class AppMainPage {
 
     async joinStream(streamerName: string) {
         await this.page.waitForTimeout(1500)
-        await this.page.reload({waitUntil: 'domcontentloaded'})
-        await this.page.reload({waitUntil: 'domcontentloaded'})
+        await this.page.reload({ waitUntil: 'domcontentloaded' })
+        await this.page.reload({ waitUntil: 'domcontentloaded' })
         this.clickOnStream(streamerName)
     }
-
-
 }
