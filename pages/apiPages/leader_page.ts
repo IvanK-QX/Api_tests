@@ -18,6 +18,10 @@ export class ApiLeadersPage {
 
         const apiRequest = await apiContext.post(`${url}:3000/streams/leaderboard`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
-        console.log(`Leaders for period: ${period} is dispalyed`)
+        const response = await apiRequest.json()
+        const Top1User = response[0].user._id
+        console.log(`Leaders for period: ${period} is dispalyed, top1user : ${Top1User}`)
+        return {Top1User}
     }
+
 }
