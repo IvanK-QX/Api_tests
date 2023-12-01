@@ -35,7 +35,6 @@ test.describe('3003 API test ', async () => {
         const api = new Api(apiContext)
         const chat = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
         await api.messagePage.messageList(apiUrl.qaEnvUrl, user.userToken, chat.chatId, chat.text)
-        console.log(chat)
     })
 
     test('DoICanChatting Api Test', async () => {
@@ -63,6 +62,29 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.myList(apiUrl.qaEnvUrl, user.userToken, message.lastMessageId)
     })
 
+    test('My Get', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const chatInfo = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.myGet(apiUrl.qaEnvUrl, user.userToken, chatInfo.chatId)
+
+    })
+
+    test('Message Delete', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const chatInfo = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.messageDelete(apiUrl.qaEnvUrl, user.userToken, chatInfo.lastMessageId, chatInfo.toId, chatInfo.fromId)
+    })
+
+    test('Mark Read', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const chatInfo = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.markRead(apiUrl.qaEnvUrl, user2.userToken, chatInfo.chatId)
+    })
+    
+
 })
 
 test.describe('3003 API test ', async () => {
@@ -85,9 +107,8 @@ test.describe('3003 API test ', async () => {
     test('Chat Users List Empty', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const leaderboardMonth = await api.leadersPage.getMonthLeders(apiUrl.qaEnvUrl, user.userToken )
-        await api.messagePage.chatUsersListEmpty(apiUrl.qaEnvUrl, user.userToken, leaderboardMonth.monthTop1User)
+        const leaderboardMonth = await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'month')
+        await api.messagePage.chatUsersListEmpty(apiUrl.qaEnvUrl, user.userToken, leaderboardMonth.Top1User)
     })
-
 
 })
