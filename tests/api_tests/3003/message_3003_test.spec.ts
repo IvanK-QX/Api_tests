@@ -83,6 +83,34 @@ test.describe('3003 API test ', async () => {
         const chatInfo = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
         await api.messagePage.markRead(apiUrl.qaEnvUrl, user2.userToken, chatInfo.chatId)
     })
+
+    test('Message Count', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.messageCount( apiUrl.qaEnvUrl, user2.userToken )
+    })
+
+    test('Chat Users Online', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        await api.messagePage.chatUsersOnline( apiUrl.qaEnvUrl, user.userToken, user2.id )
+    })
+
+    test('Subscribe Stream Chat',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        await api.messagePage.subscribeStreamChat( apiUrl.qaEnvUrl, user2.userToken, stream.myChatId)
+    })
+
+    test('Leave Stream Chat',async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
+        await api.messagePage.leaveStreamChat( apiUrl.qaEnvUrl, user2.userToken, stream.myChatId)
+    })
     
 
 })
