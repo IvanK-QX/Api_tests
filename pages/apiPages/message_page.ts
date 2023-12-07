@@ -1,7 +1,5 @@
 import { APIRequestContext, expect, request } from '@playwright/test'
 import { Headers } from '../../utils/headers'
-import { ur } from '@faker-js/faker'
-import { stat } from 'fs'
 
 export class ApiMessage3003Page {
     apiContext: APIRequestContext
@@ -106,13 +104,10 @@ export class ApiMessage3003Page {
     async chatUsersList(url: string, userToken: string, user2: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            itemsPerPage: 20,
+            itemsPerPage: 20
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, {
-            data,
-            headers: headers,
-        })
+        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const responsetext = await apiRequest.text()
@@ -180,7 +175,7 @@ export class ApiMessage3003Page {
             "messageId" : `${messageId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/message/delete`, {data, headers})
+        const apiRequest = await apiContext.post(`${url}:3003/message/delete`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
@@ -198,13 +193,61 @@ export class ApiMessage3003Page {
             "chatId" : `${chatId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/mark-read`, {data, headers})
+        const apiRequest = await apiContext.post(`${url}:3003/mark-read`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
         expect(status).toEqual(true)
 
     }
+
+    async messageCount ( url: string, userToken: string ) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.get(`${url}:3003/message/count`, {headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const counter = response.count
+        expect(counter).toEqual(2)
+        console.log(`Message counter received successufully its equal : ${counter}`)
+    }
+
+    async chatUsersOnline ( url:string, userToken:string, userId: string ) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors : true })
+        const data = {
+            "userIds" : [`${userId}`]
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/chat/users/online`, { data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+    }
+
+    async subscribeStreamChat (url : string, userToken:string, myChatId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "chatId" : `${myChatId}`
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/subscribe`, { data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const status = response.success
+        expect(status).toEqual(true)
+    }
+
+    async leaveStreamChat (url : string, userToken: string, myChatId: string ) { 
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {
+            "chatId" : `${myChatId}`
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3003/leave`, { data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const status = response.success
+        expect(status).toEqual(true)
+    }
+    
 
 
 
