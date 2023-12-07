@@ -18,7 +18,7 @@ export class ApiNegativeFlowTemplate {
         //console.log(headers)     //Need for debug   
         const apiRequest = await apiContext.post(url, {data, headers: headers})
         const response = await apiRequest.text()
-        console.log(response)
+        //console.log(response)     //Need for debug 
         const actualStatusCode = apiRequest.status()
         const testStatus = actualStatusCode === ExpectedStatusCode
         console.log(`The test ${testSuiteName} -> ${testName} ${testStatus ? 'passed' : 'failed'}`);  //display the Test Suite and Case Name of the Passed/Failed Test
@@ -29,7 +29,7 @@ export class ApiNegativeFlowTemplate {
 }
 
 //Update Value in the Test Case 
-export function updateValueInTestCase(testCases: any[], key: any, value: any, updateToValue: string): void {
+export function updateValueInTestCase(testCases: object[], key: string, value: string | number, updateToValue: string): void {
     testCases.forEach(testCase => {
         if (key in testCase && testCase[key] === value) {
             testCase[key] = updateToValue;
