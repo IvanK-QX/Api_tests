@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test"
-import { apiUrl } from "../../utils/apiUrl"
+import { Locator, Page } from '@playwright/test'
+import { apiUrl } from '../../utils/apiUrl'
 
 export class AppEditProfilePage {
     page: Page
@@ -10,7 +10,7 @@ export class AppEditProfilePage {
     successPoup: Locator
 
     constructor(page: Page) {
-        this.page = page 
+        this.page = page
         this.nameField = page.locator('[placeholder="Name"]')
         this.bioField = page.locator('[placeholder="I am a singer"]')
         this.dateField = page.locator('input.ui-datepicker__input')
@@ -23,26 +23,21 @@ export class AppEditProfilePage {
         await this.page.waitForLoadState('networkidle')
     }
 
-    async chageName(name: string){ 
+    async chageName(name: string) {
         await this.nameField.fill(name)
     }
 
-    async chageBio(bio: string){ 
+    async chageBio(bio: string) {
         await this.bioField.fill(bio)
     }
 
     async selectDate() {
         await this.dateField.hover()
-        await this.page.getByRole('button', { name: 'Saturday, Oct 1, 2005' }).click();
+        await this.page.getByRole('button', { name: 'Saturday, Oct 1, 2005' }).click()
     }
 
     async clickSaveBtn() {
-        await this.saveBtn.click();
+        await this.saveBtn.click()
         await this.successPoup.waitFor()
     }
-
-
-    
-
-
 }

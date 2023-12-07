@@ -7,7 +7,7 @@ import { updateValueInArray, updateValueInPayload, updateValueInTestCase } from 
 
 let admin, user, referralUser, newStream
 
-test.describe('Moderator Negative Flow',async () => {
+test.describe('Moderator Negative Flow', async () => {
     test.beforeAll(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -50,38 +50,56 @@ test.describe('Moderator Negative Flow',async () => {
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, referralUser.userToken)
     })
 
-    //Admin Profile Create Negative Flow 
+    //Admin Profile Create Negative Flow
     for (const testCase of moderatorProfileCreateTestCases) {
         const testSuite = testCase.testSuite
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
             await api.negativeFlowTemplate.negativeFlowTemplate({
-                url: testCase.url, payload: testCase.payload, ExpectedStatusCode: testCase.expectedStatus, ExpectedErrorMessage: testCase.errorMessage, testSuiteName: testCase.testSuite, testName: testCase.case, token: testCase.token
+                url: testCase.url,
+                payload: testCase.payload,
+                ExpectedStatusCode: testCase.expectedStatus,
+                ExpectedErrorMessage: testCase.errorMessage,
+                testSuiteName: testCase.testSuite,
+                testName: testCase.case,
+                token: testCase.token,
             })
         })
     }
-    //Admin Referral Program Negative Flow 
+    //Admin Referral Program Negative Flow
     for (const testCase of moderatorRefferalEarningsTestCases) {
         const testSuite = testCase.testSuite
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
             await api.negativeFlowTemplate.negativeFlowTemplate({
-                url: testCase.url, payload: testCase.payload, ExpectedStatusCode: testCase.expectedStatus, ExpectedErrorMessage: testCase.errorMessage, testSuiteName: testCase.testSuite, testName: testCase.case, token: testCase.token
-            })    
+                url: testCase.url,
+                payload: testCase.payload,
+                ExpectedStatusCode: testCase.expectedStatus,
+                ExpectedErrorMessage: testCase.errorMessage,
+                testSuiteName: testCase.testSuite,
+                testName: testCase.case,
+                token: testCase.token,
+            })
         })
     }
 
-    //Admin Profile Status Flow 
+    //Admin Profile Status Flow
     for (const testCase of adminProfileStatusTestCases) {
         const testSuite = testCase.testSuite
         test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
             const apiContext = await request.newContext()
             const api = new Api(apiContext)
             await api.negativeFlowTemplate.negativeFlowTemplate({
-                url: testCase.url, payload: testCase.payload, ExpectedStatusCode: testCase.expectedStatus, ExpectedErrorMessage: testCase.errorMessage, testSuiteName: testCase.testSuite, testName: testCase.case, token: testCase.token
-            })  
+                url: testCase.url,
+                payload: testCase.payload,
+                ExpectedStatusCode: testCase.expectedStatus,
+                ExpectedErrorMessage: testCase.errorMessage,
+                testSuiteName: testCase.testSuite,
+                testName: testCase.case,
+                token: testCase.token,
+            })
         })
     }
 
@@ -194,4 +212,3 @@ test.describe('Moderator Negative Flow',async () => {
     }
     
 })
-

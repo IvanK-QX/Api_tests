@@ -1,5 +1,5 @@
-import { apiUrl } from "../../utils/apiUrl"
-import { apiDataSet } from "../../utils/dataSet"
+import { apiUrl } from '../../utils/apiUrl'
+import { apiDataSet } from '../../utils/dataSet'
 
 const adminProfileCreateUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/create`
 const adminReferralEarningsUrl = `${apiUrl.qaEnvUrl}:3000/admin/agent/referalEarnings`
@@ -16,167 +16,161 @@ const adminModeratorActionTimerStoplUrl = `${apiUrl.qaEnvUrl}:3000/admin/timer/s
 
 
 export const moderatorProfileCreateTestCases = [
-    { 
+    {
         url: adminProfileCreateUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "authProvider": "phone",
-            "role": "admin",
-            "email": apiDataSet.randomEmail,
-            "password": apiDataSet.password
-        }, 
+            authProvider: 'phone',
+            role: 'admin',
+            email: apiDataSet.randomEmail,
+            password: apiDataSet.password,
+        },
         expectedStatus: 400,
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Create",
-        case: "wrongAuthProvider" 
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Create',
+        case: 'wrongAuthProvider',
     },
-    { 
+    {
         url: adminProfileCreateUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "authProvider": "ownEmail",
-            "role": "user",
-            "email": apiDataSet.randomEmail,
-            "password": apiDataSet.password
-        }, 
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Create",
-        case: "wrongRole" 
+            authProvider: 'ownEmail',
+            role: 'user',
+            email: apiDataSet.randomEmail,
+            password: apiDataSet.password,
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Create',
+        case: 'wrongRole',
     },
-    { 
+    {
         url: adminProfileCreateUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "authProvider": "ownEmail",
-            "role": "admin",
-            "password": apiDataSet.password
-        }, 
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Create",
-        case: "missedEmail" 
+            authProvider: 'ownEmail',
+            role: 'admin',
+            password: apiDataSet.password,
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Create',
+        case: 'missedEmail',
     },
-    { 
+    {
         url: adminProfileCreateUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "authProvider": "ownEmail",
-            "role": "admin",
-            "email": apiDataSet.randomEmail
-        }, 
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Create",
-        case: "missedPassword" 
-    }
+            authProvider: 'ownEmail',
+            role: 'admin',
+            email: apiDataSet.randomEmail,
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Create',
+        case: 'missedPassword',
+    },
 ]
 
 export const moderatorRefferalEarningsTestCases = [
-    { 
+    {
         url: adminReferralEarningsUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "userId": "defaultUserId",
-            "endDate": apiDataSet.isoDate
-        }, 
-        expectedStatus: 500, 
-        errorMessage: 'Cannot read properties of undefined', 
-        testSuite: "Admin Referal Earnings",
-        case: "missedStartDate" 
+            userId: 'defaultUserId',
+            endDate: apiDataSet.isoDate,
+        },
+        expectedStatus: 500,
+        errorMessage: 'Cannot read properties of undefined',
+        testSuite: 'Admin Referal Earnings',
+        case: 'missedStartDate',
     },
-    { 
+    {
         url: adminReferralEarningsUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "userId": "defaultUserId",
-            "startDate": apiDataSet.isoDate    
-        }, 
-        expectedStatus: 500, 
-        errorMessage: 'Cannot read properties of undefined', 
-        testSuite: "Admin Referal Earnings",
-        case: "missedEndtDate" 
+            userId: 'defaultUserId',
+            startDate: apiDataSet.isoDate,
+        },
+        expectedStatus: 500,
+        errorMessage: 'Cannot read properties of undefined',
+        testSuite: 'Admin Referal Earnings',
+        case: 'missedEndtDate',
     },
-    { 
+    {
         url: adminReferralEarningsUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "startDate": apiDataSet.isoDate,
-            "endDate": apiDataSet.isoDate   
-        }, 
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Referal Earnings",
-        case: "missedUserId" 
+            startDate: apiDataSet.isoDate,
+            endDate: apiDataSet.isoDate,
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Referal Earnings',
+        case: 'missedUserId',
     },
-    { 
+    {
         url: adminReferralEarningsUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "userId": "_",
-            "startDate": apiDataSet.isoDate,
-            "endDate": apiDataSet.isoDate   
-        }, 
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Referal Earnings",
-        case: "wrongUserId" 
-    }
+            userId: '_',
+            startDate: apiDataSet.isoDate,
+            endDate: apiDataSet.isoDate,
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Referal Earnings',
+        case: 'wrongUserId',
+    },
 ]
 
 export const adminProfileStatusTestCases = [
-    { 
+    {
         url: adminProfileStatusUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "userIds": [
-               "referralUserId"
-            ]
-          },
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Profile Status",
-        case: "missedStatus"
+            userIds: ['referralUserId'],
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Profile Status',
+        case: 'missedStatus',
     },
-    { 
+    {
         url: adminProfileStatusUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "status": "_",
-            "userIds": [
-               "referralUserId"
-            ]
-          },
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Profile Status",
-        case: "wrongStatus"
-    }, 
-    { 
+            status: '_',
+            userIds: ['referralUserId'],
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Profile Status',
+        case: 'wrongStatus',
+    },
+    {
         url: adminProfileStatusUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "status": "Active",
-            "userIds": [
-               "wrongUserId"
-            ]
-          },
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Profile Status",
-        case: "wrongUserId"
-    }, 
-    { 
+            status: 'Active',
+            userIds: ['wrongUserId'],
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Profile Status',
+        case: 'wrongUserId',
+    },
+    {
         url: adminProfileStatusUrl,
-        token: "token",
+        token: 'token',
         payload: {
-            "status": "Active"
-          },
-        expectedStatus: 400, 
-        errorMessage: 'Error while validating request', 
-        testSuite: "Admin Profile Status",
-        case: "missedUserIds"
-    }
+            status: 'Active',
+        },
+        expectedStatus: 400,
+        errorMessage: 'Error while validating request',
+        testSuite: 'Admin Profile Status',
+        case: 'missedUserIds',
+    },
 ]
 
 export const adminProfileAgentTestCases = [
