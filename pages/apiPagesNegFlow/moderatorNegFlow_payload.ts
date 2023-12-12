@@ -28,7 +28,7 @@ export const moderatorProfileCreateTestCases = [
         expectedStatus: 400,
         errorMessage: 'Error while validating request',
         testSuite: 'Admin Create',
-        case: 'wrongAuthProvider',
+        case: 'wrongAuthProvider'
     },
     {
         url: adminProfileCreateUrl,

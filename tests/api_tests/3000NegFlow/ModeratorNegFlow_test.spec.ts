@@ -30,8 +30,6 @@ test.describe('Moderator Negative Flow', async () => {
         updateValueInTestCase(adminModeratorActionListTestCases, 'token', 'token', admin.adminToken);
         updateValueInTestCase(adminModeratorActionTimerStopTestCases, 'token', 'token', admin.adminToken);
         
-
-
         //Update value in the Payloads
         updateValueInPayload(moderatorRefferalEarningsTestCases, 'userId', 'defaultUserId', user.id);
         updateValueInArray(adminProfileStatusTestCases, 'userIds', 'referralUserId', referralUser.id);
