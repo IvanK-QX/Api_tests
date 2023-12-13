@@ -10,7 +10,7 @@ test.describe('3003 API test ', async () => {
         test(`Test Cases -> Chat Only En with the word: ${word}`, async () => {
             const apiContext = await request.newContext();
             const api = new Api(apiContext);
-            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsUrl, 'chat_only', word)
+            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsQAUrl, 'chat_only', word)
         });
     }
 
@@ -19,7 +19,7 @@ test.describe('3003 API test ', async () => {
         test(`Test Cases -> Chat Only Es with the word: ${word}`, async () => {
             const apiContext = await request.newContext();
             const api = new Api(apiContext);
-            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsUrl, 'chat_only', word)
+            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsQAUrl, 'chat_only', word)
         });
     }
 
@@ -28,7 +28,7 @@ test.describe('3003 API test ', async () => {
         test(`Test Cases -> Chat Only Ru with the word: ${word}`, async () => {
             const apiContext = await request.newContext();
             const api = new Api(apiContext);
-            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsUrl, 'chat_only', word)
+            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsQAUrl, 'chat_only', word)
         });
     }
 
@@ -37,7 +37,7 @@ test.describe('3003 API test ', async () => {
         test(`Test Cases -> Private Chat with the word: ${word}`, async () => {
             const apiContext = await request.newContext();
             const api = new Api(apiContext);
-            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsUrl, 'private_chat', word)
+            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsQAUrl, 'private_chat', word)
         });
     }
 
@@ -46,7 +46,7 @@ test.describe('3003 API test ', async () => {
         test(`Test Cases -> Name and Statuses with the word: ${word}`, async () => {
             const apiContext = await request.newContext();
             const api = new Api(apiContext);
-            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsUrl, 'name_and_status', word)
+            await api.lambdaStoplists.lambdaStoplists(apiDataSet.lambdaStoplistsQAUrl, 'name_and_status', word)
         });
     }
 })
