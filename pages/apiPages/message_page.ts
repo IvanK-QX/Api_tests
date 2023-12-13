@@ -246,10 +246,5 @@ export class ApiMessage3003Page {
         const response = await apiRequest.json()
         const status = response.success
         expect(status).toEqual(true)
-    }
-    
-
-
-
-    
+    }  
 }
