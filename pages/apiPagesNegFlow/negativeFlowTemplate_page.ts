@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { APIRequestContext, expect, request } from '@playwright/test'
 import { Headers } from '../../utils/headers'
+import { PrintedData } from '../../utils/loops'
 
 export class ApiNegativeFlowTemplate {
     apiContext: APIRequestContext
@@ -40,6 +41,7 @@ export class ApiNegativeFlowTemplate {
         const actualStatusCode = apiRequest.status()
         const testStatus = actualStatusCode === ExpectedStatusCode
         console.log(`The test ${testSuiteName} -> ${testName} ${testStatus ? 'passed' : 'failed'}`) //display the Test Suite and Case Name of the Passed/Failed Test
+        PrintedData.negativeFlowLoop(actualStatusCode, ExpectedStatusCode, url, data, response)
         expect(actualStatusCode).toBe(ExpectedStatusCode) //Check the Status Code
         expect(response).toContain(ExpectedErrorMessage) //Check the Returned Error Message
     }

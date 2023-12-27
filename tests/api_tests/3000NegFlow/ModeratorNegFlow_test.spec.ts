@@ -191,7 +191,7 @@ test.describe('Moderator Negative Flow', async () => {
             const api = new Api(apiContext)
             await api.negativeFlowTemplate.negativeFlowTemplate({
                 url: testCase.url, payload: testCase.payload, ExpectedStatusCode: testCase.expectedStatus, ExpectedErrorMessage: testCase.errorMessage, testSuiteName: testCase.testSuite, testName: testCase.case, token: testCase.token
-            })  
+            })   
         })
     }
 
