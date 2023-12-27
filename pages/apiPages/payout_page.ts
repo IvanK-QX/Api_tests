@@ -9,13 +9,26 @@ export class ApiPayoutPage {
         this.apiContext = apiContext
     }
 
-    async payoutRequest(url: string, userToken: string) {
+    async addWalletToProfile(url: string, userToken: string, wallet: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-        const randomPayoneerEmail = apiDataSet.randomEmail
+        const data = {
+            cryptoWallet: `${wallet}`,
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3000/profile`, {
+            data,
+            headers: headers,
+        })
+        expect(apiRequest.ok()).toBeTruthy()
+        console.log(`Wallet was added to Profile`)
+    }
+
+    async payoutRequest(url: string, userToken: string, payoutType: string, value1) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
             usdAmount: 50,
-            payoneerEmail: randomPayoneerEmail,
         }
+        data[payoutType] = value1;
         const headers = Headers.userHeader(userToken)
 
         const apiRequest = await apiContext.post(`${url}:3000/payouts/request`, {
@@ -23,8 +36,8 @@ export class ApiPayoutPage {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
-        console.log(`The Request with ${randomPayoneerEmail} Payoneer Email is sent`)
-        return { randomPayoneerEmail }
+        console.log(`The Request with ${value1} Payoneer Email is sent`)
+        return { value1 }
     }
 
     async getPayoutsHistory(url: string, userToken: string, requestFromUserId: string, payoneerEmail: string) {
@@ -79,7 +92,7 @@ export class ApiPayoutPage {
         const payoutRequestId = response.documents[0]._id
         expect(payoneerEmail).toEqual(returnedPayoneerEmail)
         expect(requestFromUserId).toEqual(returnedUserId)
-        console.log(`The Request with ${payoneerEmail} Payoneer Email from ${humanReadableId} is present`)
+        console.log(`The Request with ${payoneerEmail} Pauout type from ${humanReadableId} is present`)
         return { payoutRequestId }
     }
 
