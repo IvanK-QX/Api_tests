@@ -41,8 +41,12 @@ export class ApiProfilePage {
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const email = response.email
+        const humanReadableId = response.humanReadableId
+        const name = response.name
+        const _id = response._id
         expect(email).toEqual(userEmail)
         console.log(`Profile for user: ${userEmail} has been dispalyed`)
+        return { email, humanReadableId, name, _id }
     }
 
     async search(url: string, userToken: string, searchText: string) {
