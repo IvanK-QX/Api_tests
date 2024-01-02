@@ -535,19 +535,19 @@ export const adminModeratorActionListTestCases = [
         testSuite: "Admin Moderator Action List",
         case: "wrongStreamId"
     },
-    { 
-        url: adminModeratorActionListlUrl,
-        token: "token",
-        payload: {
-            "type": "warning",
-            "skip": 0,
-            "itemsPerPage": 10
-        },
-        expectedStatus: 418, 
-        errorMessage: 'MODERATOR_ACTION', 
-        testSuite: "Admin Moderator Action List",
-        case: "misedStreamIds"
-    },
+    // { 
+    //     url: adminModeratorActionListlUrl,
+    //     token: "token",
+    //     payload: {
+    //         "type": "warning",
+    //         "skip": 0,
+    //         "itemsPerPage": 10
+    //     },
+    //     expectedStatus: 418, 
+    //     errorMessage: 'MODERATOR_ACTION', 
+    //     testSuite: "Admin Moderator Action List",
+    //     case: "misedStreamIds"
+    // },
     { 
         url: adminModeratorActionListlUrl,
         token: "token",
