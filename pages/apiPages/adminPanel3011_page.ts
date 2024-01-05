@@ -78,5 +78,27 @@ export class Api3011Page {
         console.log(`Payout is found by filter ${searchBy1} = ${value1}`)
     }
 
+    async filterReportsList(url: string, userToken: string, searchBy1: string, value1, idVer: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = {
+            "skip":0,
+            "itemsPerPage":10,
+            "reason":"spam",
+            "reportType":"user",
+            "reportedUserStatus":"Active",
+            "sortDateDirection":1
+        }
+        data["startDate"] = apiDataSet.isoDate;
+        data["endDate"] = apiDataSet.isoDate;
+        data[searchBy1] = value1;
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3011/admin/reports`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const userId = response.documents[0].reportedUserId
+        expect(userId).toEqual(idVer)
+        console.log(`Report is found by reason, reportType, reportedUserStatus, start/end date and filter ${searchBy1} = ${value1}`)
+    }
+
     
 }

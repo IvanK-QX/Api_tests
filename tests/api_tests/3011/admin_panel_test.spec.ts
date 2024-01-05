@@ -67,4 +67,18 @@ test.describe('Admin Panel API test', async () => {
         // BUG await api.api3011Page.filterPayoutsList(apiUrl.qaEnvUrl, admin.adminToken, "payoneerEmail", payoutPayoneer.value1, profile._id)
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
+
+    test('Reports page', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const user1 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        const user2 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        const profile1 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user1.userToken, user1.email)
+        const profile2 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user2.userToken, user2.email)
+        await api.reportPage.reportUser(apiUrl.qaEnvUrl, user1.userToken, 'spam', user2.id)
+        await api.api3011Page.filterReportsList(apiUrl.qaEnvUrl, admin.adminToken, "reportedUserId", profile2.humanReadableId, profile2._id)
+        await api.api3011Page.filterReportsList(apiUrl.qaEnvUrl, admin.adminToken, "reportingUserId", profile1.humanReadableId, profile2._id)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
+    })
 })
