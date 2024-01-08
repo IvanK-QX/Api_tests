@@ -2,6 +2,7 @@ import { request, test } from '@playwright/test'
 import { apiUrl } from '../../../utils/apiUrl'
 import { Api } from '../../../pages/Api'
 import { apiDataSet } from '../../../utils/dataSet'
+import { TIMEOUT } from 'dns'
 
 let admin
 
@@ -80,5 +81,30 @@ test.describe('Admin Panel API test', async () => {
         await api.api3011Page.filterReportsList(apiUrl.qaEnvUrl, admin.adminToken, "reportingUserId", profile1.humanReadableId, profile2._id)
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user2.userToken)
+    })
+
+    test('Streamers page', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        // const user1 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        // const profile1 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user1.userToken, user1.email)
+        // const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user1.userToken, 'public', apiDataSet.streamTitle)
+        // await api.streamsPage.stopStream(apiUrl.qaEnvUrl, user1.userToken, stream.myStreamId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", "95639", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "name", "Oleh Apple API test", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "email", "oleh.b.test11@gmail.com", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
+        // await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
+    })
+
+    test('Agents page', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const user1 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
+        const profile1 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user1.userToken, user1.email)
+        await api.moderatorPage.setAdminProfileAgent(apiUrl.qaEnvUrl, admin.adminToken, user1.id)
+        await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", profile1.humanReadableId, "2023-01-01", "2030-12-01", user1.id)
+        await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "name", profile1.name, "2023-01-01", "2030-12-01", user1.id)
+        // BUG await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "email", profile1.email, "2023-01-01", "2030-12-01", user1.id)
+        await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
     })
 })

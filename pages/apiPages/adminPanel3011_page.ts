@@ -100,5 +100,49 @@ export class Api3011Page {
         console.log(`Report is found by reason, reportType, reportedUserStatus, start/end date and filter ${searchBy1} = ${value1}`)
     }
 
+    async filterStreamersList(url: string, userToken: string, searchBy1: string, value1, dateStart, dateEnd, idVer: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        // const currentDate = new Date()
+        // const isoFormattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+        const data = {
+            "filters":{
+            "streamerType":"Individual",
+            },
+            "pagination":{"itemsPerPage":40,"skip":0}}
+        data.filters["statsStartIncludingDate"] = dateStart
+        data.filters["statsEndIncludingDate"] = dateEnd
+        data.filters[searchBy1] = value1;
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3011/streamersStats`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const userId = response.documents[0]._id
+        expect(userId).toEqual(idVer)
+        console.log(`Streamer is found by streamerType, start/end date and filter ${searchBy1} = ${value1}`)
+    }
+
+    async filterAgentsList(url: string, userToken: string, searchBy1: string, value1, dateStart, dateEnd, idVer: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        // const currentDate = new Date()
+        // const isoFormattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+        const data = {"filters": {
+                },
+                    "pagination": {
+                        "itemsPerPage":10,
+                        "skip":0
+                    }}
+        data.filters["statsStartIncludingDate"] = dateStart
+        data.filters["statsEndIncludingDate"] = dateEnd
+        data.filters[searchBy1] = value1;
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}:3011/agentsStats`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const userId = response.documents[0]._id
+        expect(userId).toEqual(idVer)
+        console.log(`Officaial Agent is found by start/end date and filter ${searchBy1} = ${value1}`)
+    }
+
+
     
 }
