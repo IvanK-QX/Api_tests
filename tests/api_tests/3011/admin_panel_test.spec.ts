@@ -2,7 +2,6 @@ import { request, test } from '@playwright/test'
 import { apiUrl } from '../../../utils/apiUrl'
 import { Api } from '../../../pages/Api'
 import { apiDataSet } from '../../../utils/dataSet'
-import { TIMEOUT } from 'dns'
 
 let admin
 
@@ -90,9 +89,9 @@ test.describe('Admin Panel API test', async () => {
         // const profile1 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user1.userToken, user1.email)
         // const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user1.userToken, 'public', apiDataSet.streamTitle)
         // await api.streamsPage.stopStream(apiUrl.qaEnvUrl, user1.userToken, stream.myStreamId)
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", "95639", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "name", "Oleh Apple API test", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "email", "oleh.b.test11@gmail.com", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", apiDataSet.apiStreamerHumanId, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "name", apiDataSet.apiStreamerName, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "email", apiDataSet.apiStreamerEmail, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
         // await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
     })
 
