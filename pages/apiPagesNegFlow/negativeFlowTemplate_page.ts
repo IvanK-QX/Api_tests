@@ -2,6 +2,8 @@
 import { APIRequestContext, expect, request } from '@playwright/test'
 import { Headers } from '../../utils/headers'
 import { PrintedData } from '../../utils/loops'
+import { test } from "@playwright/test";
+import { Api } from '../Api';
 
 export class ApiNegativeFlowTemplate {
     apiContext: APIRequestContext
@@ -85,4 +87,16 @@ export function updateValueInObject(testCases: any[], objectName: string, key: s
             object[key] = updateToValue
         }
     })
+}
+
+export function runAllTestCases(testCases: any[]) {
+    for (const testCase of testCases) {
+        const testSuite = testCase.testSuite
+        test(`Test case with payload:` + testSuite + `${testCase.case}`, async () => {
+            const apiContext = await request.newContext()
+            const api = new Api(apiContext)
+            await api.negativeFlowTemplate.negativeFlowTemplate({url: testCase.url, payload: testCase.payload, ExpectedStatusCode: testCase.expectedStatus, ExpectedErrorMessage: testCase.errorMessage, testSuiteName: testCase.testSuite, testName: testCase.case, token: testCase.token,
+            })
+        })
+    }
 }
