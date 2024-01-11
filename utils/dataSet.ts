@@ -16,5 +16,9 @@ export const apiDataSet = {
     guestUserTokenNegativeFlow: '18be5c07fb38ddbb9515777a047273977da1e767f7d5d066917e4636f757462e7fe0e5c383df0a27c610f6283ef1a427cda15014f7f384e125b349f9b832c00a1234', //only for the Negative Flows
     messageText: `Message Text + ${Math.floor(Math.random() * (999999 - 100000) + 100000)}`,
     uiStreamMessage: 'hello this is playwright message for chat in real-time',
-    eWallet: `TCov4gfU2htDBmM1G6vscEHp${Math.floor(Math.random() * (999999 - 100000) + 100000)}7891`
+    eWallet: `TCov4gfU2htDBmM1G6vscEHp${Math.floor(Math.random() * (999999 - 100000) + 100000)}7891`,
+    apiStreamerName: 'Oleh Apple API test',
+    apiStreamerHumanId: '95639',
+    apiStreamerEmail: 'oleh.b.test11@gmail.com',
+    apiStreamerId: '6516dd395fc36151b18246af'
 }

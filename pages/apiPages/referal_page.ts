@@ -14,7 +14,6 @@ export class ApiReferalPage {
             referringUserId: `${userId}`,
         }
         const headers = Headers.userHeader(userToken)
-
         const apiRequest = await apiContext.post(`${url}:3000/referal/user/set`, {
             data,
             headers: headers,
