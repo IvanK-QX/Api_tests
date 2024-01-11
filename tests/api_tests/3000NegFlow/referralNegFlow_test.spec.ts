@@ -6,7 +6,7 @@ import { referralSetTestCases, referralStatisticsTestCases } from "../../../page
 
 let user, referralUser
 
-test.describe.only('Referral Negative Flow', async () => {
+test.describe('Referral Negative Flow', async () => {
     test.beforeAll(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
