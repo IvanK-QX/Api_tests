@@ -8,7 +8,7 @@ import { apiDataSet } from "../../../utils/dataSet";
 
 let user, stream, gift
 
-test.describe('Profile Negative Flow', async () => {
+test.describe('Streams Negative Flow', async () => {
     test.beforeAll(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
