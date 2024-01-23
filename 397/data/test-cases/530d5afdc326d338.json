@@ -1,0 +1,385 @@
+{
+  "uid" : "530d5afdc326d338",
+  "name" : "Streamers page",
+  "fullName" : "api_tests/3011/admin_panel_test.spec.ts#Admin Panel API test Streamers page",
+  "historyId" : "2204c69e23680d3f7ce5f797039f55d4:5bd835b0d6b1d4ada3b9f0db936e82c8",
+  "time" : {
+    "start" : 1706012867202,
+    "stop" : 1706012871356,
+    "duration" : 4154
+  },
+  "status" : "failed",
+  "statusMessage" : "TypeError: Cannot read properties of undefined (reading '_id')",
+  "statusTrace" : "TypeError: Cannot read properties of undefined (reading '_id')\n    at Api3011Page.filterStreamersList (/home/runner/work/Api_tests/Api_tests/pages/apiPages/adminPanel3011_page.ts:78:46)\n    at /home/runner/work/Api_tests/Api_tests/tests/api_tests/3011/admin_panel_test.spec.ts:92:9",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "TypeError: Cannot read properties of undefined (reading '_id')",
+    "statusTrace" : "TypeError: Cannot read properties of undefined (reading '_id')\n    at Api3011Page.filterStreamersList (/home/runner/work/Api_tests/Api_tests/pages/apiPages/adminPanel3011_page.ts:78:46)\n    at /home/runner/work/Api_tests/Api_tests/tests/api_tests/3011/admin_panel_test.spec.ts:92:9",
+    "steps" : [ {
+      "name" : "Before Hooks",
+      "time" : {
+        "start" : 1706012867203,
+        "stop" : 1706012867978,
+        "duration" : 775
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "beforeEach hook",
+        "time" : {
+          "start" : 1706012867203,
+          "stop" : 1706012867978,
+          "duration" : 775
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "apiRequest.newContext",
+          "time" : {
+            "start" : 1706012867598,
+            "stop" : 1706012867598,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiRequest.newContext",
+          "time" : {
+            "start" : 1706012867598,
+            "stop" : 1706012867598,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiRequestContext.post(https://streamsqa.com:3000/login)",
+          "time" : {
+            "start" : 1706012867598,
+            "stop" : 1706012867827,
+            "duration" : 229
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiResponse.json",
+          "time" : {
+            "start" : 1706012867828,
+            "stop" : 1706012867829,
+            "duration" : 1
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "expect.toBeTruthy",
+          "time" : {
+            "start" : 1706012867830,
+            "stop" : 1706012867830,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "expect.toEqual",
+          "time" : {
+            "start" : 1706012867831,
+            "stop" : 1706012867831,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiRequest.newContext",
+          "time" : {
+            "start" : 1706012867832,
+            "stop" : 1706012867833,
+            "duration" : 1
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiRequestContext.post(https://streamsqa.com:3000/admin/login)",
+          "time" : {
+            "start" : 1706012867839,
+            "stop" : 1706012867973,
+            "duration" : 134
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "expect.toBeTruthy",
+          "time" : {
+            "start" : 1706012867974,
+            "stop" : 1706012867974,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "apiResponse.json",
+          "time" : {
+            "start" : 1706012867975,
+            "stop" : 1706012867977,
+            "duration" : 2
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "expect.toEqual",
+          "time" : {
+            "start" : 1706012867977,
+            "stop" : 1706012867977,
+            "duration" : 0
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 11,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 12,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "apiRequest.newContext",
+      "time" : {
+        "start" : 1706012867978,
+        "stop" : 1706012867979,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "apiRequest.newContext",
+      "time" : {
+        "start" : 1706012867983,
+        "stop" : 1706012867983,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "apiRequestContext.post(https://streamsqa.com:3011/streamersStats)",
+      "time" : {
+        "start" : 1706012867987,
+        "stop" : 1706012868866,
+        "duration" : 879
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "expect.toBeTruthy",
+      "time" : {
+        "start" : 1706012868867,
+        "stop" : 1706012868867,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "apiResponse.json",
+      "time" : {
+        "start" : 1706012868867,
+        "stop" : 1706012868868,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "TypeError: Cannot read properties of undefined (reading '_id')",
+      "time" : {
+        "start" : 1706012868869,
+        "stop" : 1706012868870,
+        "duration" : 1
+      },
+      "status" : "failed",
+      "statusMessage" : "TypeError: Cannot read properties of undefined (reading '_id')",
+      "statusTrace" : "TypeError: Cannot read properties of undefined (reading '_id')\n    at Api3011Page.filterStreamersList (/home/runner/work/Api_tests/Api_tests/pages/apiPages/adminPanel3011_page.ts:78:46)\n    at /home/runner/work/Api_tests/Api_tests/tests/api_tests/3011/admin_panel_test.spec.ts:92:9",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    }, {
+      "name" : "After Hooks",
+      "time" : {
+        "start" : 1706012868870,
+        "stop" : 1706012871354,
+        "duration" : 2484
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "de46b6ea0386887d",
+      "name" : "trace",
+      "source" : "de46b6ea0386887d.zip",
+      "type" : "application/zip",
+      "size" : 666078
+    }, {
+      "uid" : "c81e34e603097964",
+      "name" : "stdout",
+      "source" : "c81e34e603097964.txt",
+      "type" : "text/plain",
+      "size" : 121
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 20,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "language",
+    "value" : "JavaScript"
+  }, {
+    "name" : "framework",
+    "value" : "Playwright"
+  }, {
+    "name" : "titlePath",
+    "value" : " > chromium > api_tests/3011/admin_panel_test.spec.ts > Admin Panel API test"
+  }, {
+    "name" : "host",
+    "value" : "fv-az661-991"
+  }, {
+    "name" : "thread",
+    "value" : "fv-az661-991-2345-playwright-worker-1"
+  }, {
+    "name" : "parentSuite",
+    "value" : "chromium"
+  }, {
+    "name" : "suite",
+    "value" : "api_tests/3011/admin_panel_test.spec.ts"
+  }, {
+    "name" : "subSuite",
+    "value" : "Admin Panel API test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "Project",
+    "value" : "chromium"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "530d5afdc326d338.json",
+  "parameterValues" : [ "chromium" ]
+}
