@@ -192,9 +192,10 @@ export class ApiModeratorPage {
         const response = await apiRequest.json()
         const returnedProfileUserId = response._id
         const userStatus = response.status
+        const streamerType = response.streamerType
         expect(returnedProfileUserId).toEqual(userId)
         console.log(`The Profile with id ${returnedProfileUserId} is displayed`)
-        return { returnedProfileUserId, userStatus }
+        return { returnedProfileUserId, userStatus, streamerType }
     }
 
     async getAgentProfile(url: string, adminToken: string, userId: string) {

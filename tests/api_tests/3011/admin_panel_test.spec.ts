@@ -85,14 +85,10 @@ test.describe('Admin Panel API test', async () => {
     test('Streamers page', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        // const user1 = await api.loginPage.createNewUser(apiUrl.qaEnvUrl)
-        // const profile1 = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user1.userToken, user1.email)
-        // const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user1.userToken, 'public', apiDataSet.streamTitle)
-        // await api.streamsPage.stopStream(apiUrl.qaEnvUrl, user1.userToken, stream.myStreamId)
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", apiDataSet.apiStreamerHumanId, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "name", apiDataSet.apiStreamerName, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
-        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "email", apiDataSet.apiStreamerEmail, "2023-01-01", "2030-12-01", apiDataSet.apiStreamerId)
-        // await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
+        const profile = await api.moderatorPage.getAdminProfile(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.apiStreamerId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", apiDataSet.apiStreamerHumanId, profile.streamerType, apiDataSet.apiStreamerId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "name", apiDataSet.apiStreamerName, profile.streamerType, apiDataSet.apiStreamerId)
+        await api.api3011Page.filterStreamersList(apiUrl.qaEnvUrl, admin.adminToken, "email", apiDataSet.apiStreamerEmail, profile.streamerType, apiDataSet.apiStreamerId)
     })
 
     test('Agents page', async () => {

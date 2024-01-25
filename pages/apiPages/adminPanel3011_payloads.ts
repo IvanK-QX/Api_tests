@@ -54,15 +54,15 @@ export class AdminPanelPayloads {
         return query
     }
 
-    static filterStreamersList(searchBy1: string, value1, dateStart, dateEnd,) {
+    static filterStreamersList(searchBy1: string, value1, streamerType) {
         const query = {
             "filters":{
-            "streamerType":"Individual",
+            "statsStartIncludingDate":"2023-01-01",
+            "statsEndIncludingDate":"2030-01-01",
             },
             "pagination":{"itemsPerPage":40,"skip":0}}
-            query.filters["statsStartIncludingDate"] = dateStart
-            query.filters["statsEndIncludingDate"] = dateEnd
             query.filters[searchBy1] = value1;
+            query.filters["streamerType"] = streamerType;
         return query
     }
 
