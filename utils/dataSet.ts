@@ -17,7 +17,7 @@ export const apiDataSet = {
     messageText: `Message Text + ${Math.floor(Math.random() * (999999 - 100000) + 100000)}`,
     uiStreamMessage: 'hello this is playwright message for chat in real-time',
     eWallet: `TCov4gfU2htDBmM1G6vscEHp${Math.floor(Math.random() * (999999 - 100000) + 100000)}7891`,
-    apiStreamerName: 'Oleh Apple API test',
+    apiStreamerName: "API TEST - DON'T USE!!! (apple 11 oleh)",
     apiStreamerHumanId: '95639',
     apiStreamerEmail: 'oleh.b.test11@gmail.com',
     apiStreamerId: '6516dd395fc36151b18246af'

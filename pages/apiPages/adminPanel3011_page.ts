@@ -68,9 +68,9 @@ export class Api3011Page {
         console.log(`Report is found by reason, reportType, reportedUserStatus, start/end date and filter ${searchBy1} = ${value1}`)
     }
 
-    async filterStreamersList(url: string, userToken: string, searchBy1: string, value1, dateStart, dateEnd, idVer: string) {
+    async filterStreamersList(url: string, userToken: string, searchBy1: string, value1, streamerType, idVer: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-        const data = AdminPanelPayloads.filterStreamersList(searchBy1, value1, dateStart, dateEnd)
+        const data = AdminPanelPayloads.filterStreamersList(searchBy1, value1, streamerType)
         const headers = Headers.userHeader(userToken)
         const apiRequest = await apiContext.post(`${url}:3011/streamersStats`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
