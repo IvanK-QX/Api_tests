@@ -111,6 +111,21 @@ test.describe('3003 API test ', async () => {
         const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.messagePage.leaveStreamChat( apiUrl.qaEnvUrl, user2.userToken, stream.myChatId)
     })
+
+    test.only('Message File', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const toUserId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        const chatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+        console.log(chatId.chatId, toUserId.chatId)
+        const uploadID_png = await api.messagePage.createFileuplaodPng(apiUrl.qaEnvUrl, user.userToken, chatId.chatId)
+        const uploadID = await api.profilePage.createFileuplaod(apiUrl.qaEnvUrl, user.userToken, chatId.chatId)
+        await api.messagePage.MessageFile(apiUrl.qaEnvUrl, user.userToken, toUserId.toId, chatId.chatId, uploadID_png.uploadID_png, uploadID.uploadID )
+
+
+
+    })
+
     
 
 })
@@ -139,4 +154,5 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.chatUsersListEmpty(apiUrl.qaEnvUrl, user.userToken, leaderboardMonth.Top1User)
     })
 
+    
 })
