@@ -151,7 +151,7 @@ export class ApiProfilePage {
             'X-Amz-Date': xAmzDate,
             Policy: policy,
             'X-Amz-Signature': xAmzSignature,
-            File: stream,
+            File: "KekPhoto",
         }
         const apiRequest = await apiContext.post(`${url}`, {
             multipart: multipart,
