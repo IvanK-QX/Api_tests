@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Error: apiRequestContext.post: Request timed out after 20000ms\nCall log:\n  - → POST https://streamsqa.com:3000/delete\n  -   user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.57 Safari/537.36\n  -   accept: */*\n  -   accept-encoding: gzip,deflate,br\n  -   authorization: Bearer 13fb6252887e5d25944a3bb9d0cc416f3691112b5d7528e8ccad8eab54eb04066cf24171ee498f01d11aa73b1e5dfa9c88f7d93a37aff25476b017dc937daf49\n  -   packagename: com.plamfy\n  -   content-type: application/json\n  -   appversion: 1\n  -   os: browser\n  -   content-length: 30\n",
+      "children" : [ {
+        "name" : "Test case with payload:Admin Moderator Action ListmissedItemsPerPage",
+        "uid" : "77c5794c15bd3b4b",
+        "parentUid" : "041d20afc1edd94b5968bffe654d0f37",
+        "status" : "failed",
+        "time" : {
+          "start" : 1708652727388,
+          "stop" : 1708652748063,
+          "duration" : 20675
+        },
+        "flaky" : false,
+        "newFailed" : true,
+        "parameters" : [ "chromium" ]
+      } ],
+      "uid" : "041d20afc1edd94b5968bffe654d0f37"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ],
+  "name" : "categories"
+}
