@@ -1,6 +1,5 @@
 import { APIRequestContext, expect, request } from '@playwright/test'
 import { Headers } from '../../utils/headers'
-import * as fs from 'fs'
 
 export class ApiMessage3003Page {
     apiContext: APIRequestContext
@@ -33,7 +32,6 @@ export class ApiMessage3003Page {
         expect(toId).toEqual(userId)
         expect(status).toEqual('Sent')
         expect(lastMessageId).toEqual(lastMessageId)
-        console.log(chatId)
         return { chatId, text, lastMessageId , toId, fromId }
         
     }
@@ -157,6 +155,7 @@ export class ApiMessage3003Page {
         expect(privateMessageId).toEqual(lastMessageId)
     }
 
+
     async myGet ( url: string, userToken: string, chatId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
@@ -264,13 +263,12 @@ export class ApiMessage3003Page {
             data,
             headers: Headers.userHeader(userToken),
         })
-        console.log(data)
      
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const uploadID_png = response.tempUploadId
         const uploadUrl = response.url
-        const uploadKey = Object.values(response.fields)[0]
+        const uploadKey = (response.fields)[0]
         const xAmzTagging = Object.values(response.fields)[1]
         const bucket = Object.values(response.fields)[2]
         const xAmzAlgorithm = Object.values(response.fields)[3]
@@ -281,6 +279,7 @@ export class ApiMessage3003Page {
         console.log(`URL for upload : ${uploadUrl} is generated`)
         console.log(response)
         return {
+            
             uploadID_png,
             uploadUrl,
             uploadKey,
@@ -294,72 +293,46 @@ export class ApiMessage3003Page {
         }
     }
 
-    async uploadToS3(
-        url: string,
-        userToken: string,
-        uploadKey: string,
-        xAmzTagging: string,
-        bucket: string,
-        xAmzAlgorithm: string,
-        xAmzCredential: string,
-        xAmzDate: string,
-        policy: string,
-        xAmzSignature: string
-    ) {
+    
+    async createFileuplaodJpg(url: string, userToken: string, chatId:string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-
-        const stream = fs.createReadStream('unnamed.png')
-        console.log('before request')
-        const multipart = {
-            key: uploadKey,
-            'x-amz-tagging': xAmzTagging,
-            bucket: bucket,
-            'X-Amz-Algorithm': xAmzAlgorithm,
-            'X-Amz-Credential': xAmzCredential,
-            'X-Amz-Date': xAmzDate,
-            Policy: policy,
-            'X-Amz-Signature': xAmzSignature,
-            File: stream,
-        }
-        const apiRequest = await apiContext.post(`${url}`, {
-            multipart: multipart,
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                authorization: `Bearer ${userToken}`,
-                packagename: 'com.plamfy',
-                appversion: '1',
-                os: 'ios',
-            },
-        })
-        console.log(apiRequest.status())
-        console.log('after request')
-        expect(apiRequest.ok()).toBeTruthy()
-        console.log(`file uploaded to s3 bucket`)
-    }
-
-    async MessageFile ( url : string, userToken: string, chatId: string , toId: string, uploadID_png: string, uploadID: string ) {
-        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const data = {
             "chatId" : `${chatId}`,
-            "toUserId" : `${toId}`,
-            "previewFileId" : `${uploadID_png}`,
-            "fileId" : `${uploadID}`
+            extension: 'jpg',
+            flow: 'editProfile',
+            purpose: 'avatar',
+            type: 'photo',
         }
-        const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/message/file`, { data, headers: headers})
-        // expect(apiRequest.ok()).toBeTruthy()
+        const apiRequest = await apiContext.post(`${url}:3000/createFileUpload`, {
+            data,
+            headers: Headers.userHeader(userToken),
+        })
+     
+        expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
-        console.log(response)
-
-
-
-
-
+        const uploadID_jpg = response.tempUploadId
+        const uploadUrl = response.url
+        const uploadKey = Object.values(response.fields)[0]
+        const xAmzTagging = Object.values(response.fields)[1]
+        const bucket = Object.values(response.fields)[2]
+        const xAmzAlgorithm = Object.values(response.fields)[3]
+        const xAmzCredential = Object.values(response.fields)[4]
+        const xAmzDate = Object.values(response.fields)[5]
+        const policy = Object.values(response.fields)[6]
+        const xAmzSignature = Object.values(response.fields)[7]
+        console.log(`URL for upload : ${uploadUrl} is generated`)
+        return {
+            uploadID_jpg,
+            uploadUrl,
+            uploadKey,
+            xAmzTagging,
+            bucket,
+            xAmzAlgorithm,
+            xAmzCredential,
+            xAmzDate,
+            policy,
+            xAmzSignature,
+        }
     }
-    
-    
-
-
-
-    
 }
+

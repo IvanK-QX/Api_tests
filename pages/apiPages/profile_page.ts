@@ -87,10 +87,9 @@ export class ApiProfilePage {
         console.log(`Profile with id: ${userID} is displayed`)
     }
 
-    async createFileuplaod(url: string, userToken: string, chatId: string) {
+    async createFileuplaod(url: string, userToken: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = {
-            "chatId" : `${chatId}`,
             extension: 'jpg',
             flow: 'editProfile',
             purpose: 'avatar',

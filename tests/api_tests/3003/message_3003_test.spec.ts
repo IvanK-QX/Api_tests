@@ -5,6 +5,7 @@ import { apiDataSet } from '../../../utils/dataSet'
 
 let user, user2
 
+
 test.describe('3003 API test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
@@ -62,6 +63,10 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.myList(apiUrl.qaEnvUrl, user.userToken, message.lastMessageId)
     })
 
+
+
+    
+
     test('My Get', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -111,24 +116,23 @@ test.describe('3003 API test ', async () => {
         const stream = await api.streamsPage.createStream(apiUrl.qaEnvUrl, user.userToken, 'public', apiDataSet.streamTitle)
         await api.messagePage.leaveStreamChat( apiUrl.qaEnvUrl, user2.userToken, stream.myChatId)
     })
+    
+    test('Uoload Png', async () => {
+    const apiContext = await request.newContext()
+    const api = new Api(apiContext)
+    const createdChatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+    await api.messagePage.createFileuplaodPng(apiUrl.qaEnvUrl, user.userToken, createdChatId.chatId)
+    }) 
 
-    test.only('Message File', async () => {
-        const apiContext = await request.newContext()
-        const api = new Api(apiContext)
-        const toUserId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
-        const chatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
-        console.log(chatId.chatId, toUserId.chatId)
-        const uploadID_png = await api.messagePage.createFileuplaodPng(apiUrl.qaEnvUrl, user.userToken, chatId.chatId)
-        const uploadID = await api.profilePage.createFileuplaod(apiUrl.qaEnvUrl, user.userToken, chatId.chatId)
-        await api.messagePage.MessageFile(apiUrl.qaEnvUrl, user.userToken, toUserId.toId, chatId.chatId, uploadID_png.uploadID_png, uploadID.uploadID )
-
-
-
+    test('Uoload Jpg', async () => {
+    const apiContext = await request.newContext()
+    const api = new Api(apiContext)
+    const receivedChatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
+    await api.messagePage.createFileuplaodJpg(apiUrl.qaEnvUrl, user.userToken, receivedChatId.chatId)
     })
 
-    
-
 })
+
 
 test.describe('3003 API test ', async () => {
     test.beforeEach(async () => {
@@ -152,7 +156,6 @@ test.describe('3003 API test ', async () => {
         const api = new Api(apiContext)
         const leaderboardMonth = await api.leadersPage.getLeders(apiUrl.qaEnvUrl, user.userToken, 'month')
         await api.messagePage.chatUsersListEmpty(apiUrl.qaEnvUrl, user.userToken, leaderboardMonth.Top1User)
-    })
-
-    
+    })   
 })
+
