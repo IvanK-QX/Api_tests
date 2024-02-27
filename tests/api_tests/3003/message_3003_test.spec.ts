@@ -64,10 +64,6 @@ test.describe('3003 API test ', async () => {
         await api.messagePage.myList(apiUrl.qaEnvUrl, user.userToken, message.lastMessageId)
     })
 
-
-
-    
-
     test('My Get', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
@@ -160,7 +156,6 @@ test.describe('3003 API test ', async () => {
     })   
 })
 
-
 test.describe('3003 API test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
@@ -184,18 +179,16 @@ test.describe('3003 API test ', async () => {
     test('Upload Png', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        // const createdChatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
         await api.messagePage.createFileuplaodPng(apiUrl.qaEnvUrl, user.userToken, createdInfo.chatId)
         }) 
     
     test('Upload Jpg', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        // const receivedChatId = await api.messagePage.createMessage(apiUrl.qaEnvUrl, user.userToken, user2.id, apiDataSet.messageText)
         await api.messagePage.createFileuplaodJpg(apiUrl.qaEnvUrl, user.userToken, createdInfo.chatId)
         })
 
-    test.only('MessageFile', async () => {
+    test('MessageFile', async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
         const createFileuplaodPng_png = await api.messagePage.createFileuplaodPng(apiUrl.qaEnvUrl, user.userToken, createdInfo.chatId)
