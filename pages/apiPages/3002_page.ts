@@ -16,7 +16,7 @@ export class Api3002Page {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3002/getAgoraTokenForChannel`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/auth/getAgoraTokenForChannel`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         const responseJson = await apiRequest.json()
@@ -32,7 +32,7 @@ export class Api3002Page {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3002/moderator/getAgoraTokenForChannel`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/auth/moderator/getAgoraTokenForChannel`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('token')
@@ -46,7 +46,7 @@ export class Api3002Page {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3002/moderator/getAgoraTokenForChannel`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/auth/moderator/getAgoraTokenForChannel`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response[0].streamId).toContain(streamerId)

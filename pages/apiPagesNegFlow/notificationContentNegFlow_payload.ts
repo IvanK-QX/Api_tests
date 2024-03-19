@@ -1,8 +1,8 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const notificationsContentCreateUrl = `${apiUrl.qaEnvUrl}:3000/admin/notificationsContent/create`
-const notificationsContentUpdateUrl = `${apiUrl.qaEnvUrl}:3000/admin/notificationsContent/update`
-const notificationsContentDeleteUrl = `${apiUrl.qaEnvUrl}:3000/admin/notificationsContent/delete`
+const notificationsContentCreateUrl = `${apiUrl.qaEnvUrl}/core/admin/notificationsContent/create`
+const notificationsContentUpdateUrl = `${apiUrl.qaEnvUrl}/core/admin/notificationsContent/update`
+const notificationsContentDeleteUrl = `${apiUrl.qaEnvUrl}/core/admin/notificationsContent/delete`
 
 export const notificationContentCreateTestCases  = [
     {

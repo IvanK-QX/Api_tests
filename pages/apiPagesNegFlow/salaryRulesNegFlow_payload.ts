@@ -1,10 +1,10 @@
 import { apiUrl } from '../../utils/apiUrl'
 //mport { apiDataSet } from '../../utils/dataSet'
 
-const salaryRulesCreateUrl = `${apiUrl.qaEnvUrl}:3000/rules/create`
-const salaryRulesUpdateUrl = `${apiUrl.qaEnvUrl}:3000/rules/update`
-const botSalaryRulesCreateUrl = `${apiUrl.qaEnvUrl}:3000/bot/rules/create`
-const botSalaryRulesUpdateUrl = `${apiUrl.qaEnvUrl}:3000/rules/update`
+const salaryRulesCreateUrl = `${apiUrl.qaEnvUrl}/core/rules/create`
+const salaryRulesUpdateUrl = `${apiUrl.qaEnvUrl}/core/rules/update`
+const botSalaryRulesCreateUrl = `${apiUrl.qaEnvUrl}/core/bot/rules/create`
+const botSalaryRulesUpdateUrl = `${apiUrl.qaEnvUrl}/core/rules/update`
 
 export const salaryRulesCreateTestCases = [
     {

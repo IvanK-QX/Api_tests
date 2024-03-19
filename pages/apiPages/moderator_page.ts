@@ -16,7 +16,7 @@ export class ApiModeratorPage {
 
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/create`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/create`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const id = response._id
@@ -31,7 +31,7 @@ export class ApiModeratorPage {
         const data = ModetarorPayloads.moderatorLogin(guestUserToken, email, deviceId)
         const headers = Headers.guestHeader()
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/login`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/login`, {
             data,
             headers: headers,
         })
@@ -54,7 +54,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/agent/referalEarnings`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/agent/referalEarnings`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedUserId = response.user._id
@@ -70,7 +70,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/status`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/status`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const success = response.success
@@ -87,7 +87,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/agent`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/agent`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedAgentStatus = response.isOfficialAgent
@@ -99,7 +99,7 @@ export class ApiModeratorPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/admin/approvalQueue/count`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/admin/approvalQueue/count`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const approvalQueueCount = response.count
@@ -115,7 +115,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/approvalQueue/list/new`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/profile/approvalQueue/list/new`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const avatarId = response.approvalQueue[0]._id
@@ -130,7 +130,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/avatar/approve`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/profile/avatar/approve`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedApprovedAvatarId = response[0].id
@@ -148,7 +148,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/avatar/decline`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/profile/avatar/decline`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedDeclinedAvatarId = response[0].id
@@ -167,7 +167,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/list`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/list`, {
             data,
             headers: headers,
         })
@@ -184,7 +184,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile`, {
             data,
             headers: headers,
         })
@@ -205,7 +205,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/agent/profile`, {
+        const apiRequest = await apiContext.post(`${url}/core/agent/profile`, {
             data,
             headers: headers,
         })
@@ -224,7 +224,7 @@ export class ApiModeratorPage {
         const data = ModetarorPayloads.adminProfileUpdate(userId, action, userName, payoneerEmail)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/update`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/update`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedUpdatedPayoutEmail = response.payoutEmail
@@ -242,7 +242,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/setPayoutEmail`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/setPayoutEmail`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedPayoutEmail = response.payoutEmail
@@ -255,7 +255,7 @@ export class ApiModeratorPage {
         const data = ModetarorPayloads.adminModeratorAction(streamId, type, reason)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/moderator/action`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/moderator/action`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedStreamId = response[0].streamId
@@ -272,7 +272,7 @@ export class ApiModeratorPage {
         const data = ModetarorPayloads.getAdminActionList(streamId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/action/list`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/action/list`, {
             data,
             headers: headers,
         })
@@ -290,7 +290,7 @@ export class ApiModeratorPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/timer/stop`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/timer/stop`, {
             data,
             headers: headers,
         })

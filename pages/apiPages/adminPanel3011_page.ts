@@ -12,7 +12,7 @@ export class Api3011Page {
     async getQueueCount(url: string, userToken: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.get(`${url}:3011/admin/approvalQueue/count`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/admin/admin/approvalQueue/count`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const count = response.count
@@ -24,7 +24,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterUsersList(searchBy, value)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/profile/list`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/admin/profile/list`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const _id = response.documents[0]._id
@@ -36,7 +36,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterActionsList(searchBy1, value1, searchBy2, value2)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/action/list`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/admin/action/list`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const streamId = response.documents[0].streamId
@@ -48,7 +48,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterPayoutsList(searchBy1, value1)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/payouts/v2/history`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/admin/payouts/v2/history`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const userId = response.documents[0].userId
@@ -60,7 +60,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterReportsList(searchBy1, value1)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/admin/reports`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/admin/reports`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const userId = response.documents[0].reportedUserId
@@ -72,7 +72,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterStreamersList(searchBy1, value1, streamerType)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/streamersStats`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/streamersStats`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const userId = response.documents[0]._id
@@ -84,7 +84,7 @@ export class Api3011Page {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = AdminPanelPayloads.filterAgentsList(searchBy1, value1, dateStart, dateEnd)
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3011/agentsStats`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/agentsStats`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const userId = response.documents[0]._id

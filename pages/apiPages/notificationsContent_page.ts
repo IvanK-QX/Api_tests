@@ -13,7 +13,7 @@ export class ApiNotificationsContentPage {
         const data = NotificationsContentPayloads.notificationsContentCreate(contentTitle, contentText)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/notificationsContent/create`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/notificationsContent/create`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const createdNotificationTitle = response.resultId.title
@@ -30,7 +30,7 @@ export class ApiNotificationsContentPage {
         const data = NotificationsContentPayloads.notificationsContentUpdate(notificationContentId, contentTitle, contentText)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/notificationsContent/update`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/notificationsContent/update`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
     }
 
@@ -41,7 +41,7 @@ export class ApiNotificationsContentPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/notificationsContent/delete`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/notificationsContent/delete`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
     }
 }

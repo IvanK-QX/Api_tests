@@ -1,14 +1,14 @@
 import { apiUrl } from '../../utils/apiUrl'
 //mport { apiDataSet } from '../../utils/dataSet'
 
-const editProfileUrl = `${apiUrl.qaEnvUrl}:3000/profile`
-const searchUrl = `${apiUrl.qaEnvUrl}:3000/find`
-const addMediaSourceUrl = `${apiUrl.qaEnvUrl}:3000/v2/addMediaSource`
-const otherUserProfileUrl = `${apiUrl.qaEnvUrl}:3000/otherUserProfile`
-const createFileUplaodUrl = `${apiUrl.qaEnvUrl}:3000/createFileUpload`
-const allowedToStartPremiumUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/allowedToStartPremium`
-const addDiamondsUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/allowedToStartPremium`
-const leaderboardsUrl = `${apiUrl.qaEnvUrl}:3000/streams/leaderboard`
+const editProfileUrl = `${apiUrl.qaEnvUrl}/core/profile`
+const searchUrl = `${apiUrl.qaEnvUrl}/core/find`
+const addMediaSourceUrl = `${apiUrl.qaEnvUrl}/core/v2/addMediaSource`
+const otherUserProfileUrl = `${apiUrl.qaEnvUrl}/core/otherUserProfile`
+const createFileUplaodUrl = `${apiUrl.qaEnvUrl}/core/createFileUpload`
+const allowedToStartPremiumUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/allowedToStartPremium`
+const addDiamondsUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/allowedToStartPremium`
+const leaderboardsUrl = `${apiUrl.qaEnvUrl}/core/streams/leaderboard`
 
 
 export const editProfileTestCases = [

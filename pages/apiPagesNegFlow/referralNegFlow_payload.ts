@@ -1,7 +1,7 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const referralSetUrl = `${apiUrl.qaEnvUrl}:3000/referal/user/set`
-const referralStatisticsUrl = `${apiUrl.qaEnvUrl}:3000/referal/users/statistics`
+const referralSetUrl = `${apiUrl.qaEnvUrl}/core/referal/user/set`
+const referralStatisticsUrl = `${apiUrl.qaEnvUrl}/core/referal/users/statistics`
 
 
 export const referralSetTestCases = [

@@ -1,9 +1,9 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const payoutRequestUrl = `${apiUrl.qaEnvUrl}:3000/payouts/request`
-const payoutsHistoryUrl = `${apiUrl.qaEnvUrl}:3000/payouts/history`
-const adminPayoutRequestUrl = `${apiUrl.qaEnvUrl}:3000/admin/payouts/request`
-const adminPayoutHistoryUrl = `${apiUrl.qaEnvUrl}:3011/admin/payouts/v2/history`
+const payoutRequestUrl = `${apiUrl.qaEnvUrl}/core/payouts/request`
+const payoutsHistoryUrl = `${apiUrl.qaEnvUrl}/core/payouts/history`
+const adminPayoutRequestUrl = `${apiUrl.qaEnvUrl}/core/admin/payouts/request`
+const adminPayoutHistoryUrl = `${apiUrl.qaEnvUrl}/admin/admin/payouts/v2/history`
 
 
 export const payoutRequestTestCases = [

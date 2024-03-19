@@ -1,11 +1,11 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const doIFollowUrl = `${apiUrl.qaEnvUrl}:3000/doIFollow`
-const followUrl = `${apiUrl.qaEnvUrl}:3000/follow`
-const unFollowUrl = `${apiUrl.qaEnvUrl}:3000/unfollow`
-const followMultipleUrl = `${apiUrl.qaEnvUrl}:3000/followMultiple`
-const getFollowingListUrl = `${apiUrl.qaEnvUrl}:3000/followMultiple`
-const followCounterstUrl = `${apiUrl.qaEnvUrl}:3000/followCounters`
+const doIFollowUrl = `${apiUrl.qaEnvUrl}/core/doIFollow`
+const followUrl = `${apiUrl.qaEnvUrl}/core/follow`
+const unFollowUrl = `${apiUrl.qaEnvUrl}/core/unfollow`
+const followMultipleUrl = `${apiUrl.qaEnvUrl}/core/followMultiple`
+const getFollowingListUrl = `${apiUrl.qaEnvUrl}/core/followMultiple`
+const followCounterstUrl = `${apiUrl.qaEnvUrl}/core/followCounters`
 
 export const doIFollowTestCases = [
     {

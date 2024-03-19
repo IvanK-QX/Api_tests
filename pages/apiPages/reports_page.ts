@@ -29,7 +29,7 @@ export class ApiReportsPage {
 
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/report`, {
+        const apiRequest = await apiContext.post(`${url}/core/report`, {
             data,
             headers: headers,
         })
@@ -57,7 +57,7 @@ export class ApiReportsPage {
 
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/reports`, {
+        const apiRequest = await apiContext.post(`${url}/core/admin/reports`, {
             data,
             headers: headers,
         })
@@ -78,7 +78,7 @@ export class ApiReportsPage {
 
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/report/status`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/report/status`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const id = response[0]._id

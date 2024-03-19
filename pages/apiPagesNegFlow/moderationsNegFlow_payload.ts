@@ -1,13 +1,13 @@
 import { apiUrl } from '../../utils/apiUrl'
 
 
-const actionsOnOtherUserUrl = `${apiUrl.qaEnvUrl}:3000/moderation/actionsOnOtherUser`
-const moderationUserListUserUrl = `${apiUrl.qaEnvUrl}:3000/moderation/updatedUser/list`
-const moderationForbiddenWordsUrl = `${apiUrl.qaEnvUrl}:3000/moderation/forbiidenWords`
-const moderationForbiddenWordsDeleteUrl = `${apiUrl.qaEnvUrl}:3000/moderation/forbiidenWords/delete`
-const moderationAbusiveWordsUrl = `${apiUrl.qaEnvUrl}:3000/moderation/abusiveWords`
-const moderationAbusiveWordsDeleteUrl = `${apiUrl.qaEnvUrl}:3000/moderation/abusiveWords/delete`
-const moderationSuspendRemoveUrl = `${apiUrl.qaEnvUrl}:3000/moderation/suspend-action/remove`
+const actionsOnOtherUserUrl = `${apiUrl.qaEnvUrl}/core/moderation/actionsOnOtherUser`
+const moderationUserListUserUrl = `${apiUrl.qaEnvUrl}/core/moderation/updatedUser/list`
+const moderationForbiddenWordsUrl = `${apiUrl.qaEnvUrl}/core/moderation/forbiidenWords`
+const moderationForbiddenWordsDeleteUrl = `${apiUrl.qaEnvUrl}/core/moderation/forbiidenWords/delete`
+const moderationAbusiveWordsUrl = `${apiUrl.qaEnvUrl}/core/moderation/abusiveWords`
+const moderationAbusiveWordsDeleteUrl = `${apiUrl.qaEnvUrl}/core/moderation/abusiveWords/delete`
+const moderationSuspendRemoveUrl = `${apiUrl.qaEnvUrl}/core/moderation/suspend-action/remove`
 
 export const actionsOnOtherUserTestCases = [
     {

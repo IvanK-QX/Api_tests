@@ -16,7 +16,7 @@ export class ApiModerationsPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/forbiidenWords`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/forbiidenWords`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const setForbiddenWord = response[0].text
@@ -33,7 +33,7 @@ export class ApiModerationsPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/abusiveWords`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/abusiveWords`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const setAbusiveWord = response[0].text
@@ -50,7 +50,7 @@ export class ApiModerationsPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/forbiidenWords/delete`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/forbiidenWords/delete`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`The Forbidden Word is Deleted`)
     }
@@ -62,7 +62,7 @@ export class ApiModerationsPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/abusiveWords/delete`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/abusiveWords/delete`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`The Abusive Word is Deleted`)
     }
@@ -72,7 +72,7 @@ export class ApiModerationsPage {
         const data = ModerationsPayloads.actionsOnOtherUser(userId)
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/actionsOnOtherUser`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/actionsOnOtherUser`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedStreamerId = response.documents[0].streamerId
@@ -87,7 +87,7 @@ export class ApiModerationsPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/suspend-action/remove`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/suspend-action/remove`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedActionId = response.deletedAction._id
@@ -102,7 +102,7 @@ export class ApiModerationsPage {
         const data = ModerationsPayloads.getUpdatedUsersList(moderatorHumanReadableId, humanReadableId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/moderation/updatedUser/list`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/moderation/updatedUser/list`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const updatedHumanReadableId = response.documents[0].userHumanReadableId
@@ -116,7 +116,7 @@ export class ApiModerationsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/moderation/forbiidenWords`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/moderation/forbiidenWords`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain(forbiddenWord)
@@ -127,7 +127,7 @@ export class ApiModerationsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/moderation/forbiidenWords`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/moderation/forbiidenWords`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).not.toContain(forbiddenWord)
@@ -138,7 +138,7 @@ export class ApiModerationsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/moderation/abusiveWords`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/moderation/abusiveWords`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain(abusiveWord)
@@ -149,7 +149,7 @@ export class ApiModerationsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/moderation/abusiveWords`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/moderation/abusiveWords`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).not.toContain(abusiveWord)
