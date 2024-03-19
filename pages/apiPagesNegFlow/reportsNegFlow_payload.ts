@@ -1,8 +1,8 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const reportUrl = `${apiUrl.qaEnvUrl}:3000/report`
-const adminReportUrl = `${apiUrl.qaEnvUrl}:3000/admin/reports`
-const adminReportStatusUrl = `${apiUrl.qaEnvUrl}:3000/admin/report/status`
+const reportUrl = `${apiUrl.qaEnvUrl}/core/report`
+const adminReportUrl = `${apiUrl.qaEnvUrl}/core/admin/reports`
+const adminReportStatusUrl = `${apiUrl.qaEnvUrl}/core/admin/report/status`
 
 export const reportTestCases = [
     {

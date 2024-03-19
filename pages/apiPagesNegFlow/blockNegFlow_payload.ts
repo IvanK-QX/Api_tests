@@ -1,7 +1,7 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const blockUrl = `${apiUrl.qaEnvUrl}:3000/block`
-const unblockUrl = `${apiUrl.qaEnvUrl}:3000/unblock`
+const blockUrl = `${apiUrl.qaEnvUrl}/core/block`
+const unblockUrl = `${apiUrl.qaEnvUrl}/core/unblock`
 
 export const blockTestCases = [
     {

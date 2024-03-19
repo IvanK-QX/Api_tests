@@ -11,7 +11,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/list`, {
+        const apiRequest = await apiContext.get(`${url}/core/gifts/list`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -27,7 +27,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/all`, {
+        const apiRequest = await apiContext.get(`${url}/core/gifts/all`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -47,7 +47,7 @@ export class ApiGiftsPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/gifts/send`, {
+        const apiRequest = await apiContext.post(`${url}/core/gifts/send`, {
             data,
             headers: headers,
         })
@@ -66,7 +66,7 @@ export class ApiGiftsPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/gifts/send`, {
+        const apiRequest = await apiContext.post(`${url}/core/gifts/send`, {
             data,
             headers: headers,
         })
@@ -77,7 +77,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/my/listSent`, {
+        const apiRequest = await apiContext.get(`${url}/core/gifts/my/listSent`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -91,7 +91,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/my/listReceived`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/gifts/my/listReceived`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const responseGiftId = response[0].gift._id
@@ -103,7 +103,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/recommendation`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/gifts/recommendation`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('popular')
@@ -114,7 +114,7 @@ export class ApiGiftsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/gifts/premiumStream`, {
+        const apiRequest = await apiContext.get(`${url}/core/gifts/premiumStream`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -133,7 +133,7 @@ export class ApiGiftsPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/gifts/my/top-gifters`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/gifts/my/top-gifters`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('itemsPerPage')
@@ -147,7 +147,7 @@ export class ApiGiftsPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/gifts/stream-top-gifters`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/gifts/stream-top-gifters`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`List of stream top gifters is displayed`)
     }

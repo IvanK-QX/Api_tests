@@ -18,7 +18,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile`, {
+        const apiRequest = await apiContext.post(`${url}/core/profile`, {
             data,
             headers: headers,
         })
@@ -35,7 +35,7 @@ export class ApiProfilePage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/profile`, {
+        const apiRequest = await apiContext.get(`${url}/core/profile`, {
             headers: headers,
         })
         const response = await apiRequest.json()
@@ -56,7 +56,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/find`, {
+        const apiRequest = await apiContext.post(`${url}/core/find`, {
             data,
             headers: headers,
         })
@@ -76,7 +76,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/otherUserProfile`, {
+        const apiRequest = await apiContext.post(`${url}/core/otherUserProfile`, {
             data,
             headers: headers,
         })
@@ -95,7 +95,7 @@ export class ApiProfilePage {
             purpose: 'avatar',
             type: 'photo',
         }
-        const apiRequest = await apiContext.post(`${url}:3000/createFileUpload`, {
+        const apiRequest = await apiContext.post(`${url}/core/createFileUpload`, {
             data,
             headers: Headers.userHeader(userToken),
         })
@@ -177,7 +177,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profileAvatar`, {
+        const apiRequest = await apiContext.post(`${url}/core/profileAvatar`, {
             data,
             headers: headers,
         })
@@ -195,7 +195,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/setAllowedInviteToStream`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/profile/setAllowedInviteToStream`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const allowedInviteToStream = response.allowedInviteToStream
@@ -211,7 +211,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/profile/allowedToStartPremium`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/profile/allowedToStartPremium`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const allowedToStartPremium = response.allowedToStartPremium
@@ -227,7 +227,7 @@ export class ApiProfilePage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/balance/diamonds`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/profile/balance/diamonds`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         expect(response.diamondsAllTime).toEqual(110000)
@@ -239,7 +239,7 @@ export class ApiProfilePage {
         const data = {}
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/profile/kyc`, {
+        const apiRequest = await apiContext.post(`${url}/core/profile/kyc`, {
             data,
             headers: headers,
         })

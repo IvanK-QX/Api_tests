@@ -14,7 +14,7 @@ export class ApiBlockedPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/block`, {
+        const apiRequest = await apiContext.post(`${url}/core/block`, {
             data,
             headers: headers,
         })
@@ -26,7 +26,7 @@ export class ApiBlockedPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/blocked`, {
+        const apiRequest = await apiContext.get(`${url}/core/blocked`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -43,7 +43,7 @@ export class ApiBlockedPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/unblock`, {
+        const apiRequest = await apiContext.post(`${url}/core/unblock`, {
             data,
             headers: headers,
         })

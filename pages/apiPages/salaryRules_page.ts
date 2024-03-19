@@ -14,7 +14,7 @@ export class ApiSalaryRulesPage {
         const data = SalaryRulesPayloads.createRule(myStreamerId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/rules/create`, {
+        const apiRequest = await apiContext.post(`${url}/core/rules/create`, {
             data,
             headers: headers,
         })
@@ -32,7 +32,7 @@ export class ApiSalaryRulesPage {
         const data = SalaryRulesPayloads.updateRule(myStreamerId, botRuleId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/rules/update`, {
+        const apiRequest = await apiContext.post(`${url}/core/rules/update`, {
             data,
             headers: headers,
         })
@@ -47,7 +47,7 @@ export class ApiSalaryRulesPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/rules/list`, {
+        const apiRequest = await apiContext.get(`${url}/core/rules/list`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -61,7 +61,7 @@ export class ApiSalaryRulesPage {
         const data = SalaryRulesPayloads.createBotRule(botRuleId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/bot/rules/create`, {
+        const apiRequest = await apiContext.post(`${url}/core/bot/rules/create`, {
             data,
             headers: headers,
         })
@@ -79,7 +79,7 @@ export class ApiSalaryRulesPage {
         const data = SalaryRulesPayloads.updateBotRule(secondBotRuleId, botRuleId)
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/bot/rules/update`, {
+        const apiRequest = await apiContext.post(`${url}/core/bot/rules/update`, {
             data,
             headers: headers,
         })
@@ -94,7 +94,7 @@ export class ApiSalaryRulesPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/bot/rules/list`, {
+        const apiRequest = await apiContext.get(`${url}/core/bot/rules/list`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -107,7 +107,7 @@ export class ApiSalaryRulesPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/rules/byUser`, {
+        const apiRequest = await apiContext.get(`${url}/core/rules/byUser`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()

@@ -12,7 +12,7 @@ export class ApiInternalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/profile/getBotRule`, {
+        const apiRequest = await apiContext.get(`${url}/core/profile/getBotRule`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -25,7 +25,7 @@ export class ApiInternalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/testSlackBotNotification`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/testSlackBotNotification`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('error')
@@ -36,7 +36,7 @@ export class ApiInternalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/getStreamsShiftModerator`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/getStreamsShiftModerator`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`StreamsShiftModerator is displayed`)
     }
@@ -45,7 +45,7 @@ export class ApiInternalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/profile`, {
+        const apiRequest = await apiContext.get(`${url}/core/profile`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -63,7 +63,7 @@ export class ApiInternalPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streamer/type`, {
+        const apiRequest = await apiContext.post(`${url}/core/streamer/type`, {
             data,
             headers: headers,
         })
@@ -81,7 +81,7 @@ export class ApiInternalPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/analitics/revcat`, {
+        const apiRequest = await apiContext.post(`${url}/core/analitics/revcat`, {
             data,
             headers: headers,
         })
@@ -96,7 +96,7 @@ export class ApiInternalPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/webhooks/revcat`, {
+        const apiRequest = await apiContext.post(`${url}/core/webhooks/revcat`, {
             data,
             headers: headers,
         })

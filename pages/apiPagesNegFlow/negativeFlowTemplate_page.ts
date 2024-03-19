@@ -39,7 +39,7 @@ export class ApiNegativeFlowTemplate {
         //console.log(headers)     //Need for debug
         const apiRequest = await apiContext.post(url, { data, headers: headers })
         const response = await apiRequest.text()
-        //console.log(response)     //Need for debug 
+        // console.log(response)     //Need for debug 
         const actualStatusCode = apiRequest.status()
         const testStatus = actualStatusCode === ExpectedStatusCode
         console.log(`The test ${testSuiteName} -> ${testName} ${testStatus ? 'passed' : 'failed'}`) //display the Test Suite and Case Name of the Passed/Failed Test

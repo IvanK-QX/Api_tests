@@ -15,7 +15,7 @@ export class ApiPayoutPage {
             cryptoWallet: `${wallet}`,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3000/profile`, {
+        const apiRequest = await apiContext.post(`${url}/core/profile`, {
             data,
             headers: headers,
         })
@@ -31,7 +31,7 @@ export class ApiPayoutPage {
         data[payoutType] = value1;
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/payouts/request`, {
+        const apiRequest = await apiContext.post(`${url}/core/payouts/request`, {
             data,
             headers: headers,
         })
@@ -47,7 +47,7 @@ export class ApiPayoutPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/payouts/history`, {
+        const apiRequest = await apiContext.post(`${url}/core/payouts/history`, {
             data,
             headers: headers,
         })
@@ -70,7 +70,7 @@ export class ApiPayoutPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/admin/payouts/request`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/admin/payouts/request`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`The Request with ${payoneerEmail} Payoneer Email is sent by Admin`)
     }
@@ -104,7 +104,7 @@ export class ApiPayoutPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/payouts/status`, {
+        const apiRequest = await apiContext.post(`${url}/core/payouts/status`, {
             data,
             headers: headers,
         })

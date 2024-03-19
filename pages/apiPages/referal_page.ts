@@ -14,7 +14,7 @@ export class ApiReferalPage {
             referringUserId: `${userId}`,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3000/referal/user/set`, {
+        const apiRequest = await apiContext.post(`${url}/core/referal/user/set`, {
             data,
             headers: headers,
         })
@@ -28,7 +28,7 @@ export class ApiReferalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/referal/users`, {
+        const apiRequest = await apiContext.get(`${url}/core/referal/users`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -42,7 +42,7 @@ export class ApiReferalPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/referal/rules/list`, {
+        const apiRequest = await apiContext.get(`${url}/core/referal/rules/list`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -56,7 +56,7 @@ export class ApiReferalPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/referal/users/statistics`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/referal/users/statistics`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         console.log(`The Statistics for the ${period} period is displayed.`)
     }

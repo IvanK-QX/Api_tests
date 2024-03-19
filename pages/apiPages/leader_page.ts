@@ -16,7 +16,7 @@ export class ApiLeadersPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/leaderboard`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/streams/leaderboard`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(response)

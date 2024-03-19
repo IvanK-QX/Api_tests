@@ -12,7 +12,7 @@ export class ApiClientSettingsPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/clientSettings`, {
+        const apiRequest = await apiContext.get(`${url}/core/clientSettings`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -25,7 +25,7 @@ export class ApiClientSettingsPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/v2/addMediaSource`, {
+        const apiRequest = await apiContext.post(`${url}/core/v2/addMediaSource`, {
             data,
             headers: headers,
         })
