@@ -1,18 +1,18 @@
 import { apiUrl } from '../../utils/apiUrl'
 
-const streamsListUrl = `${apiUrl.qaEnvUrl}:3000/streams/list`
-const streamsCreateUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/create`
-const streamsGetUrl = `${apiUrl.qaEnvUrl}:3000/streams/get`
-const streamsSendInviteUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/sendInvite`
-const streamsUpdateUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/update`
-const streamsStopUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/stop`
-const streamsWatchersUrl = `${apiUrl.qaEnvUrl}:3000/stream/watchers`
-const streamsRankUrl = `${apiUrl.qaEnvUrl}:3000/streams/rank`
-const streamsDesiredGiftUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/desiredGift`
-const streamsDesiredGiftDeleteUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/desiredGift/delete`
-const streamsStatusUpdateUrl = `${apiUrl.qaEnvUrl}:3000/streams/my/statusUpdate`
-const streamsGetByStreamerUrl = `${apiUrl.qaEnvUrl}:3000/streams/getByStreamer`
-const streamsReferalEarningsUrl = `${apiUrl.qaEnvUrl}:3000/referalEarnings`
+const streamsListUrl = `${apiUrl.qaEnvUrl}/core/streams/list`
+const streamsCreateUrl = `${apiUrl.qaEnvUrl}/core/streams/my/create`
+const streamsGetUrl = `${apiUrl.qaEnvUrl}/core/streams/get`
+const streamsSendInviteUrl = `${apiUrl.qaEnvUrl}/core/streams/my/sendInvite`
+const streamsUpdateUrl = `${apiUrl.qaEnvUrl}/core/streams/my/update`
+const streamsStopUrl = `${apiUrl.qaEnvUrl}/core/streams/my/stop`
+const streamsWatchersUrl = `${apiUrl.qaEnvUrl}/core/stream/watchers`
+const streamsRankUrl = `${apiUrl.qaEnvUrl}/core/streams/rank`
+const streamsDesiredGiftUrl = `${apiUrl.qaEnvUrl}/core/streams/my/desiredGift`
+const streamsDesiredGiftDeleteUrl = `${apiUrl.qaEnvUrl}/core/streams/my/desiredGift/delete`
+const streamsStatusUpdateUrl = `${apiUrl.qaEnvUrl}/core/streams/my/statusUpdate`
+const streamsGetByStreamerUrl = `${apiUrl.qaEnvUrl}/core/streams/getByStreamer`
+const streamsReferalEarningsUrl = `${apiUrl.qaEnvUrl}/core/referalEarnings`
 
 export const streamsListTestCases = [
     {

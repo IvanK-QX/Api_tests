@@ -17,7 +17,7 @@ export class ApiMessage3003Page {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3003/message`, {
+        const apiRequest = await apiContext.post(`${url}/chat/message`, {
             data,
             headers: headers,
         })
@@ -45,7 +45,7 @@ export class ApiMessage3003Page {
             skip: 0,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/message/list`, {
+        const apiRequest = await apiContext.post(`${url}/chat/message/list`, {
             data,
             headers: headers,
         })
@@ -66,7 +66,7 @@ export class ApiMessage3003Page {
             toUserId: `${userId}`,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/doIcanChatting`, {
+        const apiRequest = await apiContext.post(`${url}/chat/doIcanChatting`, {
             data,
             headers: headers,
         })
@@ -87,7 +87,7 @@ export class ApiMessage3003Page {
             userId: `${userId}`,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/chat/unblock`, {
+        const apiRequest = await apiContext.post(`${url}/chat/chat/unblock`, {
             data,
             headers: headers,
         })
@@ -109,7 +109,7 @@ export class ApiMessage3003Page {
             itemsPerPage: 20
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/chat/chat/users/list`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const responsetext = await apiRequest.text()
@@ -128,7 +128,7 @@ export class ApiMessage3003Page {
             itemsPerPage: 20,
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/chat/users/list`, {
+        const apiRequest = await apiContext.post(`${url}/chat/chat/users/list`, {
             data,
             headers: headers,
         })
@@ -145,7 +145,7 @@ export class ApiMessage3003Page {
             "limit" : 10
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/my/list`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/my/list`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const privateType = response.documents[0].type
@@ -163,7 +163,7 @@ export class ApiMessage3003Page {
             "chatId" : `${chatId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/my/get`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/chat/my/get`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const receivedChatId = response._id
@@ -178,7 +178,7 @@ export class ApiMessage3003Page {
             "messageId" : `${messageId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/message/delete`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/message/delete`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
@@ -196,7 +196,7 @@ export class ApiMessage3003Page {
             "chatId" : `${chatId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/mark-read`, {data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/mark-read`, {data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
@@ -207,7 +207,7 @@ export class ApiMessage3003Page {
     async messageCount ( url: string, userToken: string ) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.get(`${url}:3003/message/count`, {headers: headers})
+        const apiRequest = await apiContext.get(`${url}/chat/message/count`, {headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const counter = response.count
@@ -221,7 +221,7 @@ export class ApiMessage3003Page {
             "userIds" : [`${userId}`]
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/chat/users/online`, { data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/chat/users/online`, { data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
     }
 
@@ -231,7 +231,7 @@ export class ApiMessage3003Page {
             "chatId" : `${myChatId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/subscribe`, { data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/subscribe`, { data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
@@ -244,7 +244,7 @@ export class ApiMessage3003Page {
             "chatId" : `${myChatId}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/leave`, { data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/leave`, { data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const status = response.success
@@ -431,7 +431,7 @@ export class ApiMessage3003Page {
             "fileId":`${uploadID_jpg}`
         }
         const headers = Headers.userHeader(userToken)
-        const apiRequest = await apiContext.post(`${url}:3003/message/file`, { data, headers: headers})
+        const apiRequest = await apiContext.post(`${url}/chat/message/file`, { data, headers: headers})
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         console.log(apiRequest.status())

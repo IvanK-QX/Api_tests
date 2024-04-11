@@ -19,7 +19,7 @@ export class ApiDeleteAccountPage {
             appversion: '1',
             os: 'browser',
         }
-        const apiRequest = await apiContext.post(`${url}:3000/delete`, {
+        const apiRequest = await apiContext.post(`${url}/core/delete`, {
             data,
             headers: headers,
         })

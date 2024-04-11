@@ -1,18 +1,18 @@
 import { apiUrl } from '../../utils/apiUrl'
 import { apiDataSet } from '../../utils/dataSet'
 
-const adminProfileCreateUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/create`
-const adminReferralEarningsUrl = `${apiUrl.qaEnvUrl}:3000/admin/agent/referalEarnings`
-const adminProfileStatusUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/status`
-const adminProfileAgentUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/agent`
-const adminProfileListUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/list`
-const adminProfileUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile`
-const agentProfileUrl = `${apiUrl.qaEnvUrl}:3000/agent/profile`
-const adminProfileUpdateUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/update`
-const adminSetPayoutEmailUrl = `${apiUrl.qaEnvUrl}:3000/admin/profile/setPayoutEmail`
-const adminModeratorActionlUrl = `${apiUrl.qaEnvUrl}:3000/admin/moderator/action`
-const adminModeratorActionListlUrl = `${apiUrl.qaEnvUrl}:3000/admin/action/list`
-const adminModeratorActionTimerStoplUrl = `${apiUrl.qaEnvUrl}:3000/admin/timer/stop`
+const adminProfileCreateUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/create`
+const adminReferralEarningsUrl = `${apiUrl.qaEnvUrl}/core/admin/agent/referalEarnings`
+const adminProfileStatusUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/status`
+const adminProfileAgentUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/agent`
+const adminProfileListUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/list`
+const adminProfileUrl = `${apiUrl.qaEnvUrl}/core/admin/profile`
+const agentProfileUrl = `${apiUrl.qaEnvUrl}/core/agent/profile`
+const adminProfileUpdateUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/update`
+const adminSetPayoutEmailUrl = `${apiUrl.qaEnvUrl}/core/admin/profile/setPayoutEmail`
+const adminModeratorActionlUrl = `${apiUrl.qaEnvUrl}/core/admin/moderator/action`
+const adminModeratorActionListlUrl = `${apiUrl.qaEnvUrl}/core/admin/action/list`
+const adminModeratorActionTimerStoplUrl = `${apiUrl.qaEnvUrl}/core/admin/timer/stop`
 
 
 export const moderatorProfileCreateTestCases = [

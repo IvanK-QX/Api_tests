@@ -16,7 +16,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/list`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/list`, {
             data,
             headers: headers,
         })
@@ -28,7 +28,7 @@ export class ApiStreamPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/streams/listInternal`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/streams/listInternal`, { headers: headers })
         const response = await apiRequest.text()
         expect(apiRequest.ok()).toBeTruthy()
         expect(response).toContain('internals')
@@ -43,7 +43,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/create`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/create`, {
             data,
             headers: headers,
         })
@@ -67,7 +67,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/get`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/get`, {
             data,
             headers: headers,
         })
@@ -88,7 +88,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/sendInvite`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/sendInvite`, { data, headers: headers })
         const response = await apiRequest.json()
         expect(apiRequest.ok()).toBeTruthy()
         const streamID = response[0].streamId
@@ -104,7 +104,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/update`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/update`, {
             data,
             headers: headers,
         })
@@ -123,7 +123,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/stop`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/stop`, {
             data,
             headers: headers,
         })
@@ -135,7 +135,7 @@ export class ApiStreamPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/streams/my/list`, {
+        const apiRequest = await apiContext.get(`${url}/core/streams/my/list`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -151,7 +151,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/rank`, {
+        const apiRequest = await apiContext.post(`${url}/core/streams/rank`, {
             data,
             headers: headers,
         })
@@ -171,7 +171,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/desiredGift`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/desiredGift`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const desiredGiftId = response.desiredGiftId
@@ -188,7 +188,7 @@ export class ApiStreamPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/streams/my/desiredGift/delete`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/streams/my/desiredGift/delete`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const desiredGiftId = response.desiredGiftId

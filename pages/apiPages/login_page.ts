@@ -104,12 +104,12 @@ export class ApiLoginPage {
     }
 
     async createNewUser(url: string) {
-        const login = await this.login(`${url}:3000/login`)
-        return await this.addEmail(`${url}:3000/login`, login.token, faker.string.uuid())
+        const login = await this.login(`${url}/core/login`)
+        return await this.addEmail(`${url}/core/login`, login.token, faker.string.uuid())
     }
 
     async loginWithAdminUser(url: string) {
-        const adminLogin = await this.login(`${url}:3000/login`)
-        return await this.adminLogin(`${url}:3000/admin/login`, adminLogin.token, faker.string.uuid(), apiDataSet.email)
+        const adminLogin = await this.login(`${url}/core/login`)
+        return await this.adminLogin(`${url}/core/admin/login`, adminLogin.token, faker.string.uuid(), apiDataSet.email)
     }
 }

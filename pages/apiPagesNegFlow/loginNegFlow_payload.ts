@@ -1,7 +1,7 @@
 import { apiUrl } from '../../utils/apiUrl'
 import { apiDataSet } from '../../utils/dataSet'
 
-const loginUrl = `${apiUrl.qaEnvUrl}:3000/login`
+const loginUrl = `${apiUrl.qaEnvUrl}/core/login`
 
 export const loginGuestTestCases = [
     {

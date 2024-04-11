@@ -12,7 +12,7 @@ export class ApiOtherPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/featureFlag`, {
+        const apiRequest = await apiContext.get(`${url}/core/featureFlag`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -28,7 +28,7 @@ export class ApiOtherPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/snap/auth`, {
+        const apiRequest = await apiContext.post(`${url}/core/snap/auth`, {
             data,
             headers: headers,
         })
@@ -43,7 +43,7 @@ export class ApiOtherPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/snap/init`, {
+        const apiRequest = await apiContext.post(`${url}/core/snap/init`, {
             data,
             headers: headers,
         })
@@ -55,7 +55,7 @@ export class ApiOtherPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/shop`, {
+        const apiRequest = await apiContext.get(`${url}/core/shop`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -69,7 +69,7 @@ export class ApiOtherPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/ratios`, {
+        const apiRequest = await apiContext.get(`${url}/core/ratios`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -83,7 +83,7 @@ export class ApiOtherPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/purchases/coinsBoughtLast30Days`, { headers: headers })
+        const apiRequest = await apiContext.get(`${url}/core/purchases/coinsBoughtLast30Days`, { headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const coins = response.coins
@@ -99,7 +99,7 @@ export class ApiOtherPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/lastLaunch`, {
+        const apiRequest = await apiContext.post(`${url}/core/lastLaunch`, {
             data,
             headers: headers,
         })
@@ -111,7 +111,7 @@ export class ApiOtherPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.get(`${url}:3000/modelProblem`, {
+        const apiRequest = await apiContext.get(`${url}/core/modelProblem`, {
             headers: headers,
         })
         expect(apiRequest.ok()).toBeTruthy()
@@ -129,7 +129,7 @@ export class ApiOtherPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/bonuses/monthlyBonus`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/bonuses/monthlyBonus`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const hoursStreamed = response.hoursStreamed
@@ -149,7 +149,7 @@ export class ApiOtherPage {
         }
         const headers = Headers.userHeader(userToken)
 
-        const apiRequest = await apiContext.post(`${url}:3000/bonuses/agentMonthlyBonus`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/core/bonuses/agentMonthlyBonus`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.text()
         expect(response).toContain('0')
