@@ -11,7 +11,7 @@ export class ApiSlackPage {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const multipart = {
             command: '/qaplam',
-            channel: 'C066KMR5TC4',
+            channel: 'C06UHBUCTJP',
             blocks: `[{"type":"rich_text","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"add-coins-to-user ${humanReadebleId} 999"}]}]}]`,
             token: `${process.env.SLACK_TOKEN}`,
         }

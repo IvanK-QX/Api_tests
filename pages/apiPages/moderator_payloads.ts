@@ -45,12 +45,25 @@ export class ModetarorPayloads {
         return query
     }
 
-    static getAdminActionList(streamId: string) {
+    static getAdminActionList(streamId: string, type: string) {
         const query = {
-            type: 'warning',
+            type: `${type}`,
             streamIds: [`${streamId}`],
             skip: 0,
             itemsPerPage: 10,
+        }
+        return query
+    }
+
+    static getAdminActionListTriggeredClass(triggeredClass: string) {
+        const query = {
+            skip:0,
+            triggeredClass:`${triggeredClass}`,
+            itemsPerPage:50,
+            period:"month",
+            sortDateDirection:-1,
+            useNewDb:true,
+            isOnlyAi:true
         }
         return query
     }

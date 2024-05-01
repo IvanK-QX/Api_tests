@@ -250,7 +250,7 @@ export class ApiModeratorPage {
         console.log(`The PayoutEmail is updated to ${returnedPayoutEmail}`)
     }
 
-    async adminModeratorAction(url: string, adminToken: string, streamId: string, type: 'warning' | 'blockStream', reason: 'closedCamera/emptyRoom' | 'adultContent' | 'minorsInTheStream') {
+    async adminModeratorAction(url: string, adminToken: string, streamId: string, type: 'warning' | 'blockStream' | 'endStream' , reason: 'closedCamera/emptyRoom' | 'adultContent' | 'minorsInTheStream') {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
         const data = ModetarorPayloads.adminModeratorAction(streamId, type, reason)
         const headers = Headers.userHeader(adminToken)
@@ -269,10 +269,10 @@ export class ApiModeratorPage {
 
     async getAdminActionList(url: string, adminToken: string, streamId: string) {
         const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
-        const data = ModetarorPayloads.getAdminActionList(streamId)
+        const data = ModetarorPayloads.getAdminActionList(streamId, "warning")
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}/core/admin/action/list`, {
+        const apiRequest = await apiContext.post(`${url}/admin/admin/action/list`, {
             data,
             headers: headers,
         })
@@ -281,6 +281,33 @@ export class ApiModeratorPage {
         const returnedStreamId = response.documents[0].streamId
         expect(returnedStreamId).toEqual(streamId)
         console.log(`The correct StreamId: ${returnedStreamId} is displayed`)
+    }
+
+    async getAdminActionListTriggeredClass(url: string, adminToken: string, triggeredClass: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = ModetarorPayloads.getAdminActionListTriggeredClass(triggeredClass)
+        const headers = Headers.userHeader(adminToken)
+        const apiRequest = await apiContext.post(`${url}/admin/admin/action/list`, {
+            data,
+            headers: headers,
+        })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const returnedTriggeredClass = response.documents[0].triggeredClass
+        expect(returnedTriggeredClass).toEqual(triggeredClass)
+        console.log(`Moderation actions with correct triggered class are returned`)
+    }
+
+    async getAdminActionListSuspendCount(url: string, adminToken: string, streamId: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = ModetarorPayloads.getAdminActionList(streamId, "endStream")
+        const headers = Headers.userHeader(adminToken)
+        const apiRequest = await apiContext.post(`${url}/admin/admin/action/list`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const suspendCountReturned = response.documents[0].suspendCount.count
+        expect(suspendCountReturned).toEqual(1)
+        console.log(`Moderation actions with correct suspendCount value is returned`)
     }
 
     async adminTimerStop(url: string, adminToken: string, actionId: string) {
