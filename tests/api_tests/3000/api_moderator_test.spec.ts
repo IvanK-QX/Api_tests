@@ -9,7 +9,7 @@ test.describe('API test ', async () => {
     test.beforeEach(async () => {
         const apiContext = await request.newContext()
         const api = new Api(apiContext)
-        const guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}:3000/login`)
+        const guestUser = await api.loginPage.login(`${apiUrl.qaEnvUrl}/core/login`)
         const admin = await api.loginPage.loginWithAdminUser(apiUrl.qaEnvUrl)
         const createdNewAdmin = await api.moderatorPage.createNewModerator(apiUrl.qaEnvUrl, admin.adminToken, apiDataSet.randomEmail)
         newAdmin = await api.moderatorPage.moderatorLogin(apiUrl.qaEnvUrl, guestUser.token, createdNewAdmin.email, apiDataSet.deviceUUID)
@@ -60,6 +60,14 @@ test.describe('API test ', async () => {
         const api = new Api(apiContext)
         const streamAction = await api.moderatorPage.adminModeratorAction(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId, 'warning', 'closedCamera/emptyRoom')
         await api.moderatorPage.getAdminActionList(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId)
+        await api.moderatorPage.getAdminActionListTriggeredClass(apiUrl.qaEnvUrl, newAdmin.newAdminToken, "general_nsfw")
         await api.moderatorPage.adminTimerStop(apiUrl.qaEnvUrl, newAdmin.newAdminToken, streamAction.returnedActionId)
+    })
+
+    test('Suspend Count in Moderator Actions', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        await api.moderatorPage.adminModeratorAction(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId, 'endStream', 'adultContent')
+        await api.moderatorPage.getAdminActionListSuspendCount(apiUrl.qaEnvUrl, newAdmin.newAdminToken, newStream.myStreamId)
     })
 })
