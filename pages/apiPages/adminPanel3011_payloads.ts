@@ -78,4 +78,16 @@ export class AdminPanelPayloads {
             query.filters[searchBy1] = value1;
         return query
     }
+
+    static screenshotSearch (searchBy1: string, value1) {
+        const query = {"filters": {
+           
+        },
+          "pagination": {
+            "itemsPerPage": 20,
+            "skip": 0
+          }}
+            query.filters[searchBy1] = value1;
+        return query
+    }
 }
