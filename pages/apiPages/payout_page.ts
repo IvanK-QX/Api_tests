@@ -84,7 +84,7 @@ export class ApiPayoutPage {
         }
         const headers = Headers.userHeader(adminToken)
 
-        const apiRequest = await apiContext.post(`${url}:3011/admin/payouts/v2/history`, { data, headers: headers })
+        const apiRequest = await apiContext.post(`${url}/admin/admin/payouts/v2/history`, { data, headers: headers })
         expect(apiRequest.ok()).toBeTruthy()
         const response = await apiRequest.json()
         const returnedPayoneerEmail = response.documents[0].payoneerEmail
