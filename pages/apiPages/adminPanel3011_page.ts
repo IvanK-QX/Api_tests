@@ -91,4 +91,66 @@ export class Api3011Page {
         expect(userId).toEqual(idVer)
         console.log(`Officaial Agent is found by start/end date and filter ${searchBy1} = ${value1}`)
     }
+
+    async createApprovalRule(url: string, userToken: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = AdminPanelPayloads.approvalRule("isActive", true)
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}/admin/admin/approval/rule`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const id = response._id
+        console.log(`Rule with id ${id} was successfully created`)
+        return { id }
+    }
+
+    async updateApprovalRule(url: string, userToken: string, id: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = AdminPanelPayloads.approvalRule("isActive", false)
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.put(`${url}/admin/admin/approval/${id}/rule`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const isActive = response.isActive
+        const id1 = response._id
+        expect(isActive).toEqual(false)
+        console.log(`Rule with id ${id} was successfully updated`)
+    }
+
+    async getApprovalRule(url: string, userToken: string, id: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = {}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.get(`${url}/admin/admin/approval`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const expectedId = id;
+        const foundObject = response.find(obj => obj._id === expectedId);
+        expect(foundObject._id).toEqual(id)
+        console.log(`Rule with id ${id} is successfully found in all rules`)
+    }
+
+    async deleteApprovalRule(url: string, userToken: string, id: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = {}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.delete(`${url}/admin/admin/approval/${id}/rule`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        console.log(`Rule with id ${id} was successfully deleted`)
+    }
+
+    async getApprovalRuleAfterDeletion(url: string, userToken: string, id: string) {
+        const apiContext = await request.newContext({ ignoreHTTPSErrors: true })
+        const data = {}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.get(`${url}/admin/admin/approval`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const expectedId = id;
+        const foundObject = response.find(obj => obj._id === expectedId);
+        expect(foundObject).toEqual(undefined)
+        console.log(`Rule with id ${id} is not found in all rules`)
+    }
+    
 }

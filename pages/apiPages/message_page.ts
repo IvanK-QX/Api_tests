@@ -156,6 +156,20 @@ export class ApiMessage3003Page {
         expect(privateMessageId).toEqual(lastMessageId)
     }
 
+    async myListSystem ( url: string, userToken: string ) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors:true})
+        const data = {
+            "limit" : 10
+        }
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}/chat/my/list`, {data, headers: headers})
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const systemTypeId = response.documents[0].lastMessage.chatId
+        const systemType = response.documents[0].type
+        expect(systemType).toEqual('system')
+        return {systemTypeId}
+    }
 
     async myGet ( url: string, userToken: string, chatId: string) {
         const apiContext = await request.newContext({ignoreHTTPSErrors: true})
@@ -170,6 +184,26 @@ export class ApiMessage3003Page {
         expect(receivedChatId).toEqual(chatId)
         console.log(`Received ChatId : ${chatId}`)
         return { chatId }
+    }
+
+    async myGetLastMessageSystem ( url: string, userToken: string, chatId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {"chatId" : `${chatId}`,"type" : "system"}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}/chat/my/get`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+    }
+
+    async myGetLastMessageCron ( url: string, userToken: string, chatId: string) {
+        const apiContext = await request.newContext({ignoreHTTPSErrors: true})
+        const data = {"chatId" : `${chatId}`, "type" : "system"}
+        const headers = Headers.userHeader(userToken)
+        const apiRequest = await apiContext.post(`${url}/chat/my/get`, { data, headers: headers })
+        expect(apiRequest.ok()).toBeTruthy()
+        const response = await apiRequest.json()
+        const receivedLastMessageTitle = response.lastMessage.title
+        expect(receivedLastMessageTitle).toEqual("TOP 5 Winners and New Weekly Contest!")
+        console.log(`Mass Notify message is received`)
     }
 
     async messageDelete (url: string, userToken: string, messageId : string, toId: string, fromId: string ) {

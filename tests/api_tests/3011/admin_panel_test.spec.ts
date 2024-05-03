@@ -102,4 +102,14 @@ test.describe('Admin Panel API test', async () => {
         // BUG await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "email", profile1.email, "2023-01-01", "2030-12-01", user1.id)
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
     })
+
+    test('Approvals tab', async () => {
+        const apiContext = await request.newContext()
+        const api = new Api(apiContext)
+        const rule = await api.api3011Page.createApprovalRule(apiUrl.qaEnvUrl, admin.adminToken)
+        await api.api3011Page.updateApprovalRule(apiUrl.qaEnvUrl, admin.adminToken, rule.id)
+        await api.api3011Page.getApprovalRule(apiUrl.qaEnvUrl, admin.adminToken, rule.id)
+        await api.api3011Page.deleteApprovalRule(apiUrl.qaEnvUrl, admin.adminToken, rule.id)
+        await api.api3011Page.getApprovalRuleAfterDeletion(apiUrl.qaEnvUrl, admin.adminToken, rule.id)
+    })
 })
