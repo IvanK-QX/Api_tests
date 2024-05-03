@@ -81,13 +81,38 @@ export class AdminPanelPayloads {
 
     static screenshotSearch (searchBy1: string, value1) {
         const query = {"filters": {
-           
         },
           "pagination": {
             "itemsPerPage": 20,
             "skip": 0
           }}
             query.filters[searchBy1] = value1;
+        return query
+    }
+
+    static approvalRule (field: string, value1) {
+        const query = {
+            "streamTypes": "public",
+            "mp": true,
+            "diamondsAllTime": [
+              0
+            ],
+            "streamDiamonds": [
+              0
+            ],
+            "watchingAmount": [
+              0
+            ],
+            "coinsSpentAllTime": [
+              0
+            ],
+            "reasons": "minorsInTheStream",
+            "action": "warning",
+            "roles": "guest",
+            "isAi": true,
+            "durationForTimer": 600
+          }
+          query[field] = value1;
         return query
     }
 }
