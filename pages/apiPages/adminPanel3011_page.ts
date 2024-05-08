@@ -41,7 +41,7 @@ export class Api3011Page {
         const response = await apiRequest.json()
         const streamId = response.documents[0].streamId
         expect(streamId).toEqual(idVer)
-        console.log(`Action is found by reason, streamerType, streamType, action, streamerId filters`)
+        console.log(`Action is found by reason, streamerType, streamType, action, ${searchBy1}, ${searchBy2} filters`)
     }
 
     async filterPayoutsList(url: string, userToken: string, searchBy1: string, value1, idVer: string) {
