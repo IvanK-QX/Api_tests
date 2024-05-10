@@ -52,7 +52,7 @@ test.describe('Admin Panel API test', async () => {
         const profile = await api.profilePage.getProfile(apiUrl.qaEnvUrl, user.userToken, user.email)
         await api.api3011Page.filterUsersList(apiUrl.qaEnvUrl, admin.adminToken, "userId", profile.humanReadableId, profile._id)
         await api.api3011Page.filterUsersList(apiUrl.qaEnvUrl, admin.adminToken, "userName", profile.name, profile._id)
-        // BUG await api.api3011Page.filterUsersList(apiUrl.qaEnvUrl, admin.adminToken, "email", profile.email, profile._id)
+        await api.api3011Page.filterUsersList(apiUrl.qaEnvUrl, admin.adminToken, "email", "oleh.b.test11@gmail.com", "6516dd395fc36151b18246af")
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user.userToken)
     })
 
@@ -103,7 +103,7 @@ test.describe('Admin Panel API test', async () => {
         await api.moderatorPage.setAdminProfileAgent(apiUrl.qaEnvUrl, admin.adminToken, user1.id)
         await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "humanReadableId", profile1.humanReadableId, "2023-01-01", "2030-12-01", user1.id)
         await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "name", profile1.name, "2023-01-01", "2030-12-01", user1.id)
-        // BUG await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "email", profile1.email, "2023-01-01", "2030-12-01", user1.id)
+        await api.api3011Page.filterAgentsList(apiUrl.qaEnvUrl, admin.adminToken, "email", "oleh.b.test11@gmail.com", "2023-01-01", "2030-12-01", "6516dd395fc36151b18246af")
         await api.deleteAccountPage.deleteAccount(apiUrl.qaEnvUrl, user1.userToken)
     })
 
